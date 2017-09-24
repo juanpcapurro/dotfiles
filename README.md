@@ -1,5 +1,12 @@
 # dotfiles
 [I'm not a smart person, i copypaste stuff](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/)
+to use the alias for the first time: 
+```
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+echo ".cfg" >> .gitignore
+git clone --bare https://github.com/juanpcapurro/dotfiles.git $HOME/.cfg
+config checkout
+```
 ## Installation of (hopefully) all the related software under arch-based distros
 as root: 
 ```bash
@@ -10,6 +17,7 @@ pacman --noconfirm --needed -Sy base-devel xorg-xinit xorg-server terminator feh
 
 pip install netifaces psutil 
 ```
+remember to set zsh as the default shell with `chsh`
 with regular privileges
 ```bash
 for PACKAGE in i3-gaps ttf-font-awesome vim-pathogen vim-live-latex-preview projectm-pulseaudio neofetch tamzen-font-git speedometer nodejs-markdown-pdf rambox-bin google-chrome i3lock-blur oh-my-zsh-git ttf-ms-fonts tree bumblebee-status-git rofi arc-gtk-theme gnome-keyring neofetch ; do yaourt --noconfirm -S $PACKAGE ; done
@@ -37,4 +45,4 @@ cd ~/.config/nvim/bundle/YouCompleteMe
 ```
 
 ### other notes
-* oh-my-zsh files are tracked by this repo, i removed the `~/.oh-my-zsh/.git` in hope of being able to better keep track of themes.
+
