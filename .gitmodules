@@ -1,0 +1,3 @@
+[submodule ".config/nvim/bundle/auto-pairs"]
+	path = .config/nvim/bundle/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
