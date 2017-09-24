@@ -31,3 +31,9 @@
 [submodule ".config/nvim/bundle/YouCompleteMe"]
 	path = .config/nvim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule ".config/nvim/pack/default/start/vim-polyglot"]
+	path = .config/nvim/pack/default/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
+[submodule ".i3/bumblebee-status"]
+	path = .i3/bumblebee-status
+	url = https://github.com/tobi-wan-kenobi/bumblebee-status.git
