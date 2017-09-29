@@ -89,6 +89,7 @@ nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
 nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
+nnoremap <leader>ei :tabnew ~/.i3/config<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 vnoremap <leader>/ <esc>'<O/*<esc>'>o*/<esc>
 nnoremap <leader>nt d0i<tab>def ""(){<cr>}<esc>k0wwa
