@@ -176,34 +176,30 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        font pango: Liberation Mono Powerline 8
-        status_command bumblebee-status -m sensors cpu memory nic battery amixer brightness caffeine time -t gruvbox-powerline -p interval=1 
+        font pango: Fira Mono 8
+        status_command i3status
         tray_output primary
 		position top
 }
 
+#######################################################################
+# automatically start i3-config-wizard to offer the user to create a
+# keysym-based config which used their favorite modifier (alt or windows)
+#
+# i3-config-wizard will not launch if there already is a config file
+# in ~/.i3/config.
+#
+# Please remove the following exec line:
+#######################################################################
+
 #Sets the wallpaper
-exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
+exec --no-startup-id feh --bg-scale ~/.desktop_bg.png
+
+#Disables mouse acceleration
+exec --no-startup-id xset m 00
 
 #Disables borders
 for_window [class="^.*"] border pixel 1
-bindsym $mod+Shift+b exec "i3lock -b -f -t && systemctl suspend"
-bindsym $mod+b exec "i3lock -b -f -t"
+bindsym $mod+Shift+b exec "i3lock -i ~/.i3lockbg.png -b -f -t && systemctl suspend"
 
-#control brightness
-bindsym --release $mod+minus exec "xbacklight -dec 2 -time 10"
-bindsym --release $mod+equal exec "xbacklight -inc 2 -time 10"
-
-#control audio
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
-bindsym XF86AudioMute exec amixer -q set Master toggle
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-
-bindsym --release Print exec "scrot -s ~/tmp_screenshot && xclip -i ~/tmp_screenshot"
-exec --no-startup-id "i3lock -b -f -t "
-exec --no-startup-id "setxkbmap ; xmodmap .Xmodmap"
-
+bindsym --release Print exec --no-startup-id ksnapshot --region
