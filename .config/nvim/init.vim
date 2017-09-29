@@ -102,8 +102,6 @@ let g:EasyGrepCommand=0
 let g:EasyGrepRecursive=1
 let g:EasyGrepIgnoreCase=1
 
-"MRU
-cnoreabbrev mru MRU
 cnoreabbrev mks mksession!
 
 "Tabularize
