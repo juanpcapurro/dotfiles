@@ -176,6 +176,5 @@ bindsym XF86AudioPrev exec playerctl previous
 
 
 bindsym --release Print exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png && rm /home/vasectomio/tmp_screenshot.png"
-exec --no-startup-id "i3lock -c 3F8AC2"
-exec --no-startup-id "xmodmap .Xmodmap"
-
+exec --no-startup-id "i3lock -c 0F0F0F"
+exec --no-startup-id "setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap"
