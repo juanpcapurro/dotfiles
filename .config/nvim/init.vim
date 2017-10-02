@@ -83,6 +83,9 @@ nnoremap tt :tab split <CR>
 "CommandT
 set wildignore+=*.class,.git,.hg,.svn,target/**
 
+nnoremap <leader>l :CommandTLine<cr>
+nnoremap <leader>m :CommandTMRU<cr>
+
 inoremap <c-u> <esc>bveUA
 nnoremap <c-u> bveU
 nnoremap <leader>o o<esc>
