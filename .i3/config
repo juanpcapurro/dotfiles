@@ -150,7 +150,7 @@ bindsym $mod+r mode "resize"
 bar {
         font pango: Liberation Mono Powerline 8
         status_command bumblebee-status -m sensors cpu memory nic battery amixer brightness caffeine time -t gruvbox-powerline -p interval=1 
-        tray_output primary
+        tray_output DP-1
 		position top
 }
 

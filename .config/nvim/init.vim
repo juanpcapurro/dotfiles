@@ -19,10 +19,16 @@ colorscheme gruvbox
 filetype indent on
 filetype plugin on 
 
+"autoloading: 
+set autoread
+au CursorHold,CursorHoldI * checktime
+au FocusGained,BufEnter * :checktime
+
 set wildmenu
 let g:gruvbox_contrast_dark="hard"
 let g:airline#extensions#tabline#enabled = 1
 set incsearch
+set ignorecase
 set hlsearch
 set background=dark
 set cursorline
@@ -82,6 +88,8 @@ nnoremap tt :tab split <CR>
 
 "CommandT
 set wildignore+=*.class,.git,.hg,.svn,target/**
+let g:CommandTAcceptSelectionMap=['<C-CR>', '<CR>']
+let g:CommandTAcceptSelectionSplitMap=['<C-s>']
 
 nnoremap <leader>l :CommandTLine<cr>
 nnoremap <leader>m :CommandTMRU<cr>
