@@ -27,8 +27,10 @@ au FocusGained,BufEnter * :checktime
 set wildmenu
 let g:gruvbox_contrast_dark="hard"
 let g:airline#extensions#tabline#enabled = 1
+let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
 set incsearch
 set ignorecase
+set smartcase
 set hlsearch
 set background=dark
 set cursorline
@@ -65,17 +67,15 @@ augroup cfggroup
     autocmd BufEnter *.html setlocal softtabstop=2
 augroup END
 
-"visual navigation
+"visual    navigation
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-nnoremap B ^
-nnoremap E $
-nnoremap H g^
-nnoremap L g$
-vnoremap H g^
-vnoremap L g$
+vnoremap J 5jzz
+nnoremap J 5jzz
+vnoremap K 5kzz
+nnoremap K 5kzz
 
 nnoremap gV `[v`]
 
@@ -87,7 +87,8 @@ nnoremap <c-h> <c-w>h
 nnoremap tt :tab split <CR>
 
 "CommandT
-set wildignore+=*.class,.git,.hg,.svn,target/**
+set switchbuf=usetab
+set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,.pdf
 let g:CommandTAcceptSelectionMap=['<C-CR>', '<CR>']
 let g:CommandTAcceptSelectionSplitMap=['<C-s>']
 
