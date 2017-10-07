@@ -93,7 +93,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export SDKMAN_DIR="/home/vasectomio/.sdkman"
 [[ -s "/home/vasectomio/.sdkman/bin/sdkman-init.sh" ]] && source "/home/vasectomio/.sdkman/bin/sdkman-init.sh"
 
-export PATH="/home/vasectomio/.gem/ruby/2.4.0/bin:/home/vasectomio/.vim/bundle/vim-live-latex-preview/bin:/home/vasectomio/anaconda/bin:$PATH"
+export PATH="/home/vasectomio/.vim/bundle/vim-live-latex-preview/bin:/home/vasectomio/anaconda/bin:$PATH"
 
 # resty
 source ~/.restyexec
