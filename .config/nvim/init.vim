@@ -89,10 +89,9 @@ nnoremap tt :tab split <CR>
 "CommandT
 set switchbuf=usetab
 set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,.pdf
-let g:CommandTAcceptSelectionMap=['<C-CR>', '<CR>']
-let g:CommandTAcceptSelectionSplitMap=['<C-s>']
 "disable smart goto-or-open when opening in current window
 let g:CommandTAcceptSelectionCommand='e'
+let g:CommandTAcceptSelectionSplitCommand='split'
 
 nnoremap <leader>l :CommandTLine<cr>
 nnoremap <leader>m :CommandTMRU<cr>
