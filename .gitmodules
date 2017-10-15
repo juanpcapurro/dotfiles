@@ -1,39 +1,3 @@
-[submodule ".config/nvim/bundle/auto-pairs"]
-	path = .config/nvim/bundle/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs.git
-[submodule ".config/nvim/bundle/command-t"]
-	path = .config/nvim/bundle/command-t
-	url = https://github.com/wincent/command-t.git
-[submodule ".config/nvim/bundle/gruvbox"]
-	path = .config/nvim/bundle/gruvbox
-	url = https://github.com/morhetz/gruvbox.git
-[submodule ".config/nvim/bundle/nerdtree"]
-	path = .config/nvim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule ".config/nvim/bundle/tabular"]
-	path = .config/nvim/bundle/tabular
-	url = https://github.com/godlygeek/tabular.git
-[submodule ".config/nvim/bundle/vim-airline"]
-	path = .config/nvim/bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
-[submodule ".config/nvim/bundle/vim-easygrep"]
-	path = .config/nvim/bundle/vim-easygrep
-	url = https://github.com/dkprice/vim-easygrep.git
-[submodule ".config/nvim/bundle/vim-gutentags"]
-	path = .config/nvim/bundle/vim-gutentags
-	url = https://github.com/ludovicchabant/vim-gutentags.git
-[submodule ".config/nvim/bundle/vim-repeat"]
-	path = .config/nvim/bundle/vim-repeat
-	url = https://github.com/tpope/vim-repeat.git
-[submodule ".config/nvim/bundle/vim-surround"]
-	path = .config/nvim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-[submodule ".config/nvim/bundle/YouCompleteMe"]
-	path = .config/nvim/bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule ".config/nvim/pack/default/start/vim-polyglot"]
-	path = .config/nvim/pack/default/start/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot.git
 [submodule ".i3/bumblebee-status"]
 	path = .i3/bumblebee-status
 	url = https://github.com/tobi-wan-kenobi/bumblebee-status.git

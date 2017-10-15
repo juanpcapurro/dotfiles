@@ -93,7 +93,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export SDKMAN_DIR="/home/vasectomio/.sdkman"
 [[ -s "/home/vasectomio/.sdkman/bin/sdkman-init.sh" ]] && source "/home/vasectomio/.sdkman/bin/sdkman-init.sh"
 
-export PATH="/home/vasectomio/.vim/bundle/vim-live-latex-preview/bin:/home/vasectomio/anaconda/bin:$PATH"
+export PATH="/home/vasectomio/.vim/bundle/vim-live-latex-preview/bin:/home/vasectomio/.gem/ruby/2.4.0/bin:$PATH"
 
 # resty
 source ~/.restyexec
@@ -104,4 +104,5 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 alias node="nodejs"
+alias winesteam="wine /home/vasectomio/.wine/drive_c/Program\ Files/Steam/Steam.exe"
 alias config='/usr/bin/git --git-dir=/home/vasectomio/.cfg/ --work-tree=/home/vasectomio'
