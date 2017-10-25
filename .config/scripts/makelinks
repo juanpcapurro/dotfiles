@@ -1,0 +1,4 @@
+for FILE in *
+do
+    ln -s `pwd`/$FILE /usr/bin/$file
+done
