@@ -1,8 +1,8 @@
 #set locales
-exec "export LC_CTYPE=en_US.UTF-8i ; export LC_ALL=en_US.UTF-8 ; export LANG=en_US.UTF-8"
-exec nm-applet
+exec --no-startup-id "export LC_CTYPE=en_US.UTF-8i ; export LC_ALL=en_US.UTF-8 ; export LANG=en_US.UTF-8"
+exec --no-startup-id nm-applet
 exec --no-startup-id "setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap"
-exec "xset dpms 0 0 0 && xset s 0"
+exec --no-startup-id "xset dpms 0 0 0 && xset s 0"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -166,6 +166,4 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-
 bindsym --release Print exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png && rm /home/vasectomio/tmp_screenshot.png"
-exec --no-startup-id "i3lock -c 00FF00"
