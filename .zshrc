@@ -53,6 +53,8 @@ DEFAULT_USER="vasectomio"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+eval $(thefuck --alias fuck)
+. ~/.z.sh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,3 +108,5 @@ export LANG=en_US.UTF-8
 alias node="nodejs"
 alias winesteam="wine /home/vasectomio/.wine/drive_c/Program\ Files/Steam/Steam.exe"
 alias config='/usr/bin/git --git-dir=/home/vasectomio/.cfg/ --work-tree=/home/vasectomio'
+
+eval $(thefuck --alias)
