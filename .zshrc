@@ -106,4 +106,3 @@ export LANG=en_US.UTF-8
 alias node="nodejs"
 alias winesteam="wine /home/vasectomio/.wine/drive_c/Program\ Files/Steam/Steam.exe"
 alias config='/usr/bin/git --git-dir=/home/vasectomio/.cfg/ --work-tree=/home/vasectomio'
-alias qutechat='qutebrowser https://web.whatsapp.com/ https://web.telegram.org https://mobile.twitter.com/messages tinder.com'
