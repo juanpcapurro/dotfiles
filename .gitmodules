@@ -7,3 +7,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/juanpcapurro/vimfiles.git
+[submodule "/home/vasectomio/.zsh/zsh-autosuggestions"]
+	path = /home/vasectomio/.zsh/zsh-autosuggestions
+	url = git://github.com/zsh-users/zsh-autosuggestions
