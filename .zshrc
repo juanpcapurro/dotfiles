@@ -3,7 +3,7 @@ ZSH_THEME="nicoulaj"
 DEFAULT_USER="vasectomio"
 
 HYPHEN_INSENSITIVE="true"
-ENABLE_CORRECTION="true"
+DISABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(git)
