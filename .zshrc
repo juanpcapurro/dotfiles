@@ -13,7 +13,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
 
 echo ">^.^<"
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 export PATH=$PATH:$JAVA_HOME/bin
 export GRADLE_HOME=/opt/gradle/gradle-2.13
 export PATH=$PATH:/opt/gradle/gradle-2.13/bin
