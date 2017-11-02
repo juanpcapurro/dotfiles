@@ -1,16 +1,18 @@
-export ZSH=/home/capurro/.oh-my-zsh
-ZSH_THEME="nicoulaj"
 DEFAULT_USER="capurro"
+bindkey -v
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git)
 eval $(thefuck --alias fuck)
-. ~/.z.sh
+source ~/.zsh/z.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZSH/oh-my-zsh.sh
+source ~/.zsh/prompt.sh
+source ~/.zsh/oh-my-zsh/lib/history.zsh
+source ~/.zsh/oh-my-zsh/lib/completion.zsh
+source ~/.zsh/oh-my-zsh/lib/key-bindings.zsh
+source ~/.zsh/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
 
 echo ">^.^<"
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
@@ -33,9 +35,9 @@ export PATH="/home/capurro/.vim/bundle/vim-live-latex-preview/bin:/home/capurro/
 # resty
 source ~/.restyexec
 
+#variables
 export EDITOR='nvim'
 export VISUAL='nvim'
-#set locales
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -46,4 +48,9 @@ alias config='/usr/bin/git --git-dir=/home/capurro/.cfg/ --work-tree=/home/capur
 alias ira="ionic run android -l -c -s"
 
 #keybindings
-
+function accept_suggestion() {
+    zle history-beginning-search-backward
+    zle accept-line
+}
+zle -N accept_suggestion
+bindkey "^y" accept_suggestion
