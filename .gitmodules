@@ -1,12 +1,12 @@
 [submodule ".i3/bumblebee-status"]
 	path = .i3/bumblebee-status
 	url = https://github.com/tobi-wan-kenobi/bumblebee-status.git
-[submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/juanpcapurro/vimfiles.git
 [submodule ".zsh/zsh-autosuggestions"]
 	path = .zsh/zsh-autosuggestions
 	url = git://github.com/zsh-users/zsh-autosuggestions
+[submodule ".zsh/oh-my-zsh"]
+	path = .zsh/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
