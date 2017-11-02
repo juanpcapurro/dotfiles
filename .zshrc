@@ -1,6 +1,7 @@
 export ZSH=/home/vasectomio/.oh-my-zsh
 ZSH_THEME="nicoulaj"
 DEFAULT_USER="vasectomio"
+bindkey -v
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_CORRECTION="true"
@@ -36,4 +37,10 @@ alias node="nodejs"
 alias config='/usr/bin/git --git-dir=/home/vasectomio/.cfg/ --work-tree=/home/vasectomio'
 
 #keybindings
+function accept_suggestion() {
+    zle history-beginning-search-backward
+    zle accept-line
+}
+zle -N accept_suggestion
+bindkey "^y" accept_suggestion
 
