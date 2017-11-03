@@ -1,5 +1,6 @@
 DEFAULT_USER="vasectomio"
 bindkey -v
+export KEYTIMEOUT=1
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_CORRECTION="true"
