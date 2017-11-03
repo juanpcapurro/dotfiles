@@ -1,16 +1,7 @@
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-
-#set locales
-exec "export LC_CTYPE=en_US.UTF-8i ; export LC_ALL=en_US.UTF-8 ; export LANG=en_US.UTF-8"
-exec nm-applet
+exec --no-startup-id "export LC_CTYPE=en_US.UTF-8 ; export LC_ALL=en_US.UTF-8 ; export LANG=en_US.UTF-8"
+exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon
+exec --no-startup-id "setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -132,12 +123,6 @@ mode "resize" {
         bindsym $up         resize shrink height 4 px or 4 ppt
         bindsym $right      resize grow width 4 px or 4 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 4 px or 4 ppt
-        bindsym Down        resize grow height 4 px or 4 ppt
-        bindsym Up          resize shrink height 4 px or 4 ppt
-        bindsym Right       resize grow width 4 px or 4 ppt
-
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -174,7 +159,6 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-
 bindsym --release Print exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png && rm /home/vasectomio/tmp_screenshot.png"
+
 exec --no-startup-id "i3lock -b -f -t"
-exec --no-startup-id "setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap"
