@@ -48,7 +48,7 @@ export LANG=en_US.UTF-8
 alias node="nodejs"
 alias ira="ionic run android -l -c -s"
 alias la='ls -la'
-alias config='/usr/bin/git --git-dir=/home/vasectomio/.cfg/ --work-tree=/home/vasectomio'
+alias config='/usr/bin/git --git-dir=/home/capurro/.cfg/ --work-tree=/home/capurro'
 
 #keybindings
 bindkey "^y" autosuggest-execute
