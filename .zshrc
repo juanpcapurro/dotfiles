@@ -9,6 +9,7 @@ eval $(thefuck --alias fuck)
 source ~/.zsh/z.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/prompt.sh
+source ~/.zsh/fixls.zsh
 source ~/.zsh/oh-my-zsh/lib/history.zsh
 source ~/.zsh/oh-my-zsh/lib/completion.zsh
 source ~/.zsh/oh-my-zsh/lib/key-bindings.zsh
@@ -35,12 +36,9 @@ export LANG=en_US.UTF-8
 
 #aliases
 alias node="nodejs"
+alias la='ls -la'
 alias config='/usr/bin/git --git-dir=/home/vasectomio/.cfg/ --work-tree=/home/vasectomio'
 
 #keybindings
-function accept_suggestion() {
-    zle history-beginning-search-backward
-    zle accept-line
-}
-zle -N accept_suggestion
-bindkey "^y" accept_suggestion
+bindkey "^y" autosuggest-execute
+bindkey "^ " autosuggest-accept
