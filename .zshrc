@@ -43,3 +43,6 @@ alias config='/usr/bin/git --git-dir=/home/vasectomio/.cfg/ --work-tree=/home/va
 #keybindings
 bindkey "^y" autosuggest-execute
 bindkey "^ " autosuggest-accept
+
+#syntax highlight (wraps widgets)
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
