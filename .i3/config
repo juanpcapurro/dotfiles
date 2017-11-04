@@ -162,4 +162,4 @@ bindsym XF86AudioPrev exec playerctl previous
 
 bindsym --release Print exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png && rm /home/vasectomio/tmp_screenshot.png"
 
-exec --no-startup-id "i3lock -b -f -t"
+
