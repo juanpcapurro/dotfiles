@@ -45,8 +45,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 #aliases
-alias node="nodejs"
 alias ira="ionic run android -l -c -s"
+alias enepeeme="npm"
 alias la='ls -la'
 alias config='/usr/bin/git --git-dir=/home/capurro/.cfg/ --work-tree=/home/capurro'
 
