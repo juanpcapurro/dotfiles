@@ -2,7 +2,9 @@ exec --no-startup-id "export LC_CTYPE=en_US.UTF-8 ; export LC_ALL=en_US.UTF-8 ; 
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id "setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap"
+exec --no-startup-id "xmodmap .Xmodmap"
 exec --no-startup-id "xset dpms 0 0 0 && xset s 0"
+exec --no-startup-id "xset s 0"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
