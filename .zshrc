@@ -7,13 +7,11 @@ DISABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 eval $(thefuck --alias fuck)
-source ~/.zsh/z.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/prompt.sh
 source ~/.zsh/fixls.zsh
-source ~/.zsh/oh-my-zsh/lib/history.zsh
-source ~/.zsh/oh-my-zsh/lib/completion.zsh
-source ~/.zsh/oh-my-zsh/lib/key-bindings.zsh
+source /usr/share/autojump/autojump.zsh
+source ~/.zsh/oh-my-zsh/lib/*.zsh
 source ~/.zsh/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
 
 echo ">^.^<"
