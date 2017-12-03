@@ -1,0 +1,6 @@
+tags*
+.git
+*.make
+*.cmake
+*.asm
+
