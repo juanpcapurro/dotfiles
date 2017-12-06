@@ -6,14 +6,20 @@ HYPHEN_INSENSITIVE="true"
 DISABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
+HISTSIZE=5000               #How many lines of history to keep in memory
+HISTFILE=~/.zsh_history     #Where to save history to disk
+SAVEHIST=5000               #Number of history entries to save to disk
+#HISTDUP=erase               #Erase duplicates in the history file
+setopt    appendhistory     #Append history to the history file (no overwriting)
+setopt    sharehistory      #Share history across terminals
+setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
+
 eval $(thefuck --alias fuck)
-source ~/.zsh/z.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/prompt.sh
 source ~/.zsh/fixls.zsh
-source ~/.zsh/oh-my-zsh/lib/history.zsh
-source ~/.zsh/oh-my-zsh/lib/completion.zsh
-source ~/.zsh/oh-my-zsh/lib/key-bindings.zsh
+source /usr/share/autojump/autojump.zsh
+source ~/.zsh/oh-my-zsh/lib/*.zsh
 source ~/.zsh/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
 
 echo ">^.^<"
@@ -49,6 +55,7 @@ alias ira="ionic run android -l -c -s"
 alias enepeeme="npm"
 alias la='ls -la'
 alias config='/usr/bin/git --git-dir=/home/capurro/.cfg/ --work-tree=/home/capurro'
+alias tmux='tmux -2'
 
 #keybindings
 bindkey "^y" autosuggest-execute
