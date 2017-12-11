@@ -5,15 +5,17 @@ export KEYTIMEOUT=1
 HYPHEN_INSENSITIVE="true"
 DISABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
+setopt inc_append_history
+setopt share_history
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+export HISTSIZE=10000
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=$HISTSIZE
 
-HISTSIZE=5000               #How many lines of history to keep in memory
-HISTFILE=~/.zsh_history     #Where to save history to disk
-SAVEHIST=5000               #Number of history entries to save to disk
-#HISTDUP=erase               #Erase duplicates in the history file
-setopt    appendhistory     #Append history to the history file (no overwriting)
-setopt    sharehistory      #Share history across terminals
-setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
-
+autoload -U is-at-least
+autoload -Uz compinit
+compinit
 eval $(thefuck --alias fuck)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/prompt.sh
@@ -21,6 +23,10 @@ source ~/.zsh/fixls.zsh
 source /usr/share/autojump/autojump.zsh
 source ~/.zsh/oh-my-zsh/lib/*.zsh
 source ~/.zsh/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
+source ~/.zsh/oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh
+source ~/.zsh/oh-my-zsh/plugins/git/git.plugin.zsh
+source ~/.zsh/oh-my-zsh/plugins/lol/lol.plugin.zsh
+
 
 echo ">^.^<"
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
@@ -59,7 +65,8 @@ alias tmux='tmux -2'
 
 #keybindings
 bindkey "^y" autosuggest-execute
-bindkey "^ " autosuggest-accept
+bindkey "^ " vi-forward-word
+bindkey "^u" autosuggest-accept
 
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
