@@ -2,4 +2,6 @@
 Session.vim
 __pycache__/
 tags*
+build/
+.vimlocal
 
