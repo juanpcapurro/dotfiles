@@ -1,6 +1,7 @@
 DEFAULT_USER="capurro"
 bindkey -v
 export KEYTIMEOUT=1
+export TERM=xterm-256color
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_CORRECTION="true"
@@ -27,6 +28,7 @@ source ~/.zsh/oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh
 source ~/.zsh/oh-my-zsh/plugins/git/git.plugin.zsh
 source ~/.zsh/oh-my-zsh/plugins/lol/lol.plugin.zsh
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 echo ">^.^<"
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
@@ -70,3 +72,7 @@ bindkey "^u" autosuggest-accept
 
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+make(){
+    command make $@ ; notify-send "Build terminada. Deja de pedorrear"
+}
