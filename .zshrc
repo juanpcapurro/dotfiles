@@ -1,11 +1,22 @@
 DEFAULT_USER="vasectomio"
 bindkey -v
 export KEYTIMEOUT=1
+export TERM=xterm-256color
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
+setopt inc_append_history
+setopt share_history
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+export HISTSIZE=10000
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=$HISTSIZE
 
+autoload -U is-at-least
+autoload -Uz compinit
+compinit
 eval $(thefuck --alias fuck)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/prompt.sh
@@ -13,6 +24,11 @@ source ~/.zsh/fixls.zsh
 source /usr/share/autojump/autojump.zsh
 source ~/.zsh/oh-my-zsh/lib/*.zsh
 source ~/.zsh/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
+source ~/.zsh/oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh
+source ~/.zsh/oh-my-zsh/plugins/git/git.plugin.zsh
+source ~/.zsh/oh-my-zsh/plugins/lol/lol.plugin.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 echo ">^.^<"
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
@@ -40,7 +56,12 @@ alias config='/usr/bin/git --git-dir=/home/vasectomio/.cfg/ --work-tree=/home/va
 
 #keybindings
 bindkey "^y" autosuggest-execute
-bindkey "^ " autosuggest-accept
+bindkey "^ " vi-forward-word
+bindkey "^u" autosuggest-accept
 
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+make(){
+    command make $@ ; notify-send "Build terminada. Deja de pedorrear"
+}
