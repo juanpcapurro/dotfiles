@@ -1,4 +1,4 @@
-DEFAULT_USER="vasectomio"
+DEFAULT_USER="user"
 bindkey -v
 export KEYTIMEOUT=1
 export TERM=xterm-256color
@@ -34,10 +34,10 @@ echo ">^.^<"
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/vasectomio/.sdkman"
-[[ -s "/home/vasectomio/.sdkman/bin/sdkman-init.sh" ]] && source "/home/vasectomio/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/home/user/.sdkman"
+[[ -s "/home/user/.sdkman/bin/sdkman-init.sh" ]] && source "/home/user/.sdkman/bin/sdkman-init.sh"
 
-export PATH="/home/vasectomio/.config/nvim/plugged/vim-live-latex-preview/bin:/home/vasectomio/.gem/ruby/2.4.0/bin:$PATH"
+export PATH="/home/user/.config/nvim/plugged/vim-live-latex-preview/bin:/home/user/.gem/ruby/2.4.0/bin:$PATH"
 
 # resty
 source ~/.restyexec
@@ -52,7 +52,7 @@ export LANG=en_US.UTF-8
 #aliases
 alias node="nodejs"
 alias la='ls -la'
-alias config='/usr/bin/git --git-dir=/home/vasectomio/.cfg/ --work-tree=/home/vasectomio'
+alias config='/usr/bin/git --git-dir=/home/user/.cfg/ --work-tree=/home/user'
 
 #keybindings
 bindkey "^y" autosuggest-execute
