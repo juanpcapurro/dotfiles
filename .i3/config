@@ -5,6 +5,7 @@ exec --no-startup-id "setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodm
 exec --no-startup-id "xmodmap .Xmodmap"
 exec --no-startup-id "xset dpms 0 0 0 && xset s 0"
 exec --no-startup-id "xset s 0"
+exec --no-startup-id "uidiskie"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -148,7 +149,7 @@ exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 #Disables borders
 for_window [class="^.*"] border pixel 1
 bindsym $mod+Shift+b exec "i3lock -b -f -t 3F8AC2 && systemctl suspend"
-bindsym $mod+b exec "i3lock -b -f -t"
+bindsym $mod+b exec "i3lock "
 
 #control brightness
 bindsym --release $mod+minus exec "xbacklight -dec 2 -time 10"
@@ -163,5 +164,4 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 bindsym --release Print exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png && rm /home/vasectomio/tmp_screenshot.png"
-
 
