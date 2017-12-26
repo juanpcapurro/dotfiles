@@ -4,4 +4,7 @@ __pycache__/
 tags*
 build/
 .vimlocal
+build/
+release/
+
 
