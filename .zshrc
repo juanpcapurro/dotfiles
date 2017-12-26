@@ -1,4 +1,3 @@
-DEFAULT_USER="capurro"
 bindkey -v
 export KEYTIMEOUT=1
 export TERM=xterm-256color
@@ -31,6 +30,41 @@ source ~/.zsh/oh-my-zsh/plugins/lol/lol.plugin.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 echo ">^.^<"
+
+# resty
+source ~/.restyexec
+
+#variables
+export EDITOR='nvim'
+export VISUAL='nvim'
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+#aliases
+alias ira="ionic run android -l -c -s"
+alias enepeeme="npm"
+alias la='ls -la'
+alias tmux='tmux -2'
+alias node="nodejs"
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+unalias rm
+
+#keybindings
+bindkey "^y" autosuggest-execute
+bindkey "^ " vi-forward-word
+bindkey "^u" autosuggest-accept
+make(){
+    command make $@ ; notify-send "Build terminada. Deja de pedorrear"
+}
+
+# variables required by various software
+#SDKMAN 
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+#vim-latex-preview, ruby gems
+export PATH="$HOME/.config/nvim/plugged/vim-live-latex-preview/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
+
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 export PATH=$PATH:$JAVA_HOME/bin
 export GRADLE_HOME=/opt/gradle/gradle-2.13
@@ -47,32 +81,5 @@ export SDKMAN_DIR="/home/capurro/.sdkman"
 [[ -s "/home/capurro/.sdkman/bin/sdkman-init.sh" ]] && source "/home/capurro/.sdkman/bin/sdkman-init.sh"
 
 export PATH="/home/capurro/.vim/bundle/vim-live-latex-preview/bin:/home/capurro/.gem/ruby/2.4.0/bin:$PATH"
-
-# resty
-source ~/.restyexec
-
-#variables
-export EDITOR='nvim'
-export VISUAL='nvim'
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-#aliases
-alias ira="ionic run android -l -c -s"
-alias enepeeme="npm"
-alias la='ls -la'
-alias config='/usr/bin/git --git-dir=/home/capurro/.cfg/ --work-tree=/home/capurro'
-alias tmux='tmux -2'
-
-#keybindings
-bindkey "^y" autosuggest-execute
-bindkey "^ " vi-forward-word
-bindkey "^u" autosuggest-accept
-
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-make(){
-    command make $@ ; notify-send "Build terminada. Deja de pedorrear"
-}

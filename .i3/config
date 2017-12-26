@@ -137,7 +137,7 @@ bar {
         font pango: Liberation Mono for Powerline 8
         status_command bumblebee-status -m sensors cpu memory nic battery amixer brightness time -t gruvbox-powerline -p interval=1 
         tray_output primary
-		position top
+	position top
 }
 
 #Sets the wallpaper
@@ -146,7 +146,7 @@ exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 #Disables borders
 for_window [class="^.*"] border pixel 1
 bindsym $mod+Shift+b exec "i3lock -b -f -t 3F8AC2 && systemctl suspend"
-bindsym $mod+b exec "i3lock -b -f -t"
+bindsym $mod+b exec "i3lock "
 
 #control brightness
 bindsym --release $mod+minus exec "xbacklight -dec 2 -time 10"
