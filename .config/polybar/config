@@ -1,15 +1,16 @@
 [colors]
-    background     = #1b1918
-    background-alt = #766e6b
-    foreground     = #a8a19f
-    foreground-alt = #555
-    danger         = #ff22c40
-    primary        = #d5911a
-    secondary      = #6666ea
-    alert          = #bd2c40
-    cyan           = #00ad9c
-    green          = #5ab738
-    blue           = #407ee7
+    background        = #1b1918
+    background-alt    = #766e6b
+    foreground        = #a8a19f
+    foreground-alt    = #555
+    default-underline = #000
+    danger            = #ff22c40
+    primary           = #d5911a
+    secondary         = #6666ea
+    alert             = #bd2c40
+    cyan              = #00ad9c
+    green             = #5ab738
+    blue              = #407ee7
 
 [bar/example]
     monitor = ${env:MONITOR:LVDS1}
@@ -32,12 +33,15 @@
     module-margin-left  = 1
     module-margin-right = 2
     
-    font-0              = mono:pixelsize=11;1
-    font-1              = unifont:fontformat=truetype:size=8:antialias=false;0
-    font-2              = Wuncon Siji:pixelsize=11;1
+    font-0 = "Roboto Mono for Powerline:style=Regular:pixelsize=10"
+    font-1 = fixed:pixelsize=10;1
+    font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+    font-3 = "Wuncon Siji:pixelsize=10;1"
+    font-4 = "Font Awesome 5 Free:pixelsize=12"
+    font-5 = "Font Awesome 5 Brands:pixelsize=12"
     
     modules-left        = i3
-    modules-right       = temperature cpu memory filesystem volume date 
+    modules-right       = temperature cpu memory backlight filesystem volume battery date 
     
     tray-position       = right
     tray-padding        = 0
@@ -52,6 +56,36 @@
     label-mounted              = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
     label-unmounted            = %mountpoint% not mounted
     label-unmounted-foreground = ${colors.foreground-alt}
+    format-underline           = ${colors.default-underline}
+
+[module/battery]
+    type                         = internal/battery
+    battery                      = BAT0
+    adapter                      = AC
+    full-at                      = 99
+    time-format                  = %H:%M
+
+    format-charging              = <animation-charging> <label-charging>
+    format-underline             = ${colors.default-underline}
+    format-discharging           = <ramp-capacity> <label-discharging>
+    format-full                  = <ramp-capacity> <label-full>
+    label-charging               = Charging %percentage%%
+    label-discharging            = Discharging %percentage%% %time%
+    label-full                   = Fully charged
+
+    ramp-capacity-0              = 
+    ramp-capacity-1              = 
+    ramp-capacity-2              = 
+    ramp-capacity-3              = 
+    ramp-capacity-4              = 
+
+    bar-capacity-width           = 10
+    animation-charging-0         = 
+    animation-charging-1         = 
+    animation-charging-2         = 
+    animation-charging-3         = 
+    animation-charging-4         = 
+    animation-charging-framerate = 750
 
 [module/i3]
     type                     = internal/i3
@@ -59,8 +93,15 @@
     index-sort               = true
     wrapping-scroll          = false
 
-;    Only show workspaces on the same output as the bar
-;   pin-workspaces           = true
+    strip-wsnumbers = true
+    pin-workspaces  = true
+    ws-icon-0       = 1: term;
+    ws-icon-1       = 2: web;
+    ws-icon-2       = 3: media;
+    ws-icon-3       = 4: code;
+    ws-icon-4       = 5: chat;
+    ws-icon-5       = 6;
+    ws-icon-default = 
 
     label-mode-padding       = 2
     label-mode-foreground    = #000
@@ -92,7 +133,7 @@
     interval                 = 2
     format-prefix            = " "
     format-prefix-foreground = ${colors.foreground-alt}
-    format-underline         = ${colors.background}
+    format-underline         = ${colors.default-underline}
     label                    = %percentage%%
 
 [module/memory]
@@ -100,15 +141,15 @@
     interval                 = 2
     format-prefix            = " "
     format-prefix-foreground = ${colors.foreground-alt}
-    format-underline         = ${colors.background}
+    format-underline         = ${colors.default-underline}
     label                    = %gb_used%/%gb_total%
 
-[module/eth]
+[module/network]
     type      = internal/network
     interface = enp3s0
     interval  = 3.0
 
-    format-connected-underline         = ${colors.background}
+    format-connected-underline         = ${colors.default-underline}
     format-connected-prefix            = " "
     format-connected-prefix-foreground = ${colors.foreground-alt}
     label-connected                    = %local_ip%
@@ -117,6 +158,14 @@
    format-disconnected-underline  = ${colors.danger}
 ;   label-disconnected-foreground = ${colors.foreground-alt}
 
+[module/backlight]
+    type = internal/xbacklight
+    format = <bar><label>
+    bar-width = 10
+    bar-indicator = |
+    bar-fill = ─
+    bar-empty = ─
+
 [module/date]
     type                     = internal/date
     interval                 = 5
@@ -124,12 +173,10 @@
     date                     = "%d/%m"
 
     time                     = "%I:%M"
-;   time-alt                 = %H:%M:%S
-;   time-alt                 = %H:%M:%S
 
     format-prefix            = 
     format-prefix-foreground = ${colors.foreground-alt}
-    format-underline         = ${colors.background}
+    format-underline         = ${colors.default-underline}
     label                    = %date% %time%
 
 [module/volume]
@@ -166,7 +213,7 @@
     warn-temperature      = 60
 
     format                = <ramp> <label>
-    format-underline      = ${colors.background}
+    format-underline      = ${colors.default-underline}
     format-warn           = <ramp> <label-warn>
     format-warn-underline = ${colors.danger}
 
