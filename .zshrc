@@ -46,7 +46,6 @@ alias ira="ionic run android -l -c -s"
 alias enepeeme="npm"
 alias la='ls -la'
 alias tmux='tmux -2'
-alias node="nodejs"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 unalias rm
 
