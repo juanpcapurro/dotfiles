@@ -32,6 +32,9 @@ echo ">^.^<"
 
 # resty
 source ~/.restyexec
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #variables
 export EDITOR='nvim'
@@ -41,7 +44,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 #aliases
-alias node="nodejs"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 unalias rm
 
@@ -58,14 +60,9 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 # esptool
 export ESP_HOME=/opt/esp-open-sdk
 export PATH=$PATH:$ESP_HOME/esptool2
-# Sming Framework
-export SMING_HOME=/opt/Sming/Sming
-export ESP_HOME=/opt/esp-open-sdk
-#SDKMAN 
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 #vim-latex-preview, ruby gems
 export PATH="$HOME/.config/nvim/plugged/vim-live-latex-preview/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
 
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
