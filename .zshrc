@@ -42,10 +42,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 #aliases
-alias ira="ionic run android -l -c -s"
-alias enepeeme="npm"
-alias la='ls -la'
-alias tmux='tmux -2'
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 unalias rm
 
@@ -58,9 +54,8 @@ make(){
 }
 
 # variables required by various software
-#SDKMAN 
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+# esptool
 #vim-latex-preview, ruby gems
 export PATH="$HOME/.config/nvim/plugged/vim-live-latex-preview/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
 
