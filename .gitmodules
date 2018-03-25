@@ -13,6 +13,3 @@
 [submodule ".fzf"]
 	path = .fzf
 	url = https://github.com/junegunn/fzf.git
-[submodule ".password-store"]
-	path = .password-store
-	url = git@github.com:juanpcapurro/passwords.git

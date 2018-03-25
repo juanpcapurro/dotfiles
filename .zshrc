@@ -66,3 +66,6 @@ export PATH="$HOME/.config/nvim/plugged/vim-live-latex-preview/bin:$HOME/.gem/ru
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+make(){
+    command make $@ ; notify-send "Build terminada. Deja de pedorrear"
+}
