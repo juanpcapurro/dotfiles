@@ -25,12 +25,10 @@ source ~/.zsh/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
 source ~/.zsh/oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh
 source ~/.zsh/oh-my-zsh/plugins/git/git.plugin.zsh
 source ~/.zsh/oh-my-zsh/plugins/lol/lol.plugin.zsh
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
+# shell-based programs
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-echo ">^.^<"
-
-# resty
 source ~/.restyexec
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -42,6 +40,8 @@ export VISUAL='nvim'
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export PATH="$HOME/.config/nvim/plugged/vim-live-latex-preview/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
 #aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
@@ -51,21 +51,12 @@ unalias rm
 bindkey "^y" autosuggest-execute
 bindkey "^ " vi-forward-word
 bindkey "^u" autosuggest-accept
+
+#functions
 make(){
     command make $@ ; notify-send "Build terminada. Deja de pedorrear"
 }
-
-# variables required by various software
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-# esptool
-export ESP_HOME=/opt/esp-open-sdk
-export PATH=$PATH:$ESP_HOME/esptool2
-#vim-latex-preview, ruby gems
-export PATH="$HOME/.config/nvim/plugged/vim-live-latex-preview/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
 
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-make(){
-    command make $@ ; notify-send "Build terminada. Deja de pedorrear"
-}
+echo ">^.^<"
