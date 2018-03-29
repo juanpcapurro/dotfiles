@@ -1,5 +1,6 @@
 bindkey -v
 export KEYTIMEOUT=1
+export TERM=xterm-256color
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_CORRECTION="true"

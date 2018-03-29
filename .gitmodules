@@ -1,6 +1,3 @@
-[submodule ".i3/bumblebee-status"]
-	path = .i3/bumblebee-status
-	url = https://github.com/tobi-wan-kenobi/bumblebee-status.git
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/juanpcapurro/vimfiles.git
@@ -16,6 +13,3 @@
 [submodule ".fzf"]
 	path = .fzf
 	url = https://github.com/junegunn/fzf.git
-[submodule ".password-store"]
-	path = .password-store
-	url = git@github.com:juanpcapurro/passwords.git
