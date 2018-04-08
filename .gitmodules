@@ -1,6 +1,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
-	url = https://github.com/juanpcapurro/vimfiles.git
+	url = git@github.com:juanpcapurro/vimfiles.git
 [submodule ".zsh/zsh-autosuggestions"]
 	path = .zsh/zsh-autosuggestions
 	url = git://github.com/zsh-users/zsh-autosuggestions

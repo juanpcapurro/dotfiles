@@ -57,6 +57,9 @@ bindkey "^u" autosuggest-accept
 make(){
     command make $@ ; notify-send "Build terminada. Deja de pedorrear"
 }
+launch(){
+  command $@ &>/dev/null & disown
+}
 
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
