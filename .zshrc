@@ -54,7 +54,7 @@ bindkey "^u" autosuggest-accept
 
 #functions
 make(){
-    command make $@ ; notify-send "Build terminada. Deja de pedorrear"
+  command make $@ ; notify-send "Build terminada. Deja de pedorrear"
 }
 launch(){
   command $@ &>/dev/null & disown
