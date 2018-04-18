@@ -1,6 +1,5 @@
 bindkey -v
 export KEYTIMEOUT=1
-export TERM=xterm-256color
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_CORRECTION="true"
@@ -52,7 +51,7 @@ bindkey "^u" autosuggest-accept
 
 #functions
 make(){
-    command make $@ ; notify-send "Build terminada. Deja de pedorrear"
+  command make $@ ; notify-send "Build terminada. Deja de pedorrear"
 }
 launch(){
   command $@ &>/dev/null & disown
