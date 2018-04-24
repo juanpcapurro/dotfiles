@@ -1,7 +1,5 @@
-DEFAULT_USER="user"
 bindkey -v
 export KEYTIMEOUT=1
-export TERM=xterm-256color
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_CORRECTION="true"
@@ -27,20 +25,14 @@ source ~/.zsh/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
 source ~/.zsh/oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh
 source ~/.zsh/oh-my-zsh/plugins/git/git.plugin.zsh
 source ~/.zsh/oh-my-zsh/plugins/lol/lol.plugin.zsh
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
+# shell-based programs
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-echo ">^.^<"
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/user/.sdkman"
-[[ -s "/home/user/.sdkman/bin/sdkman-init.sh" ]] && source "/home/user/.sdkman/bin/sdkman-init.sh"
-
-export PATH="/home/user/.config/nvim/plugged/vim-live-latex-preview/bin:/home/user/.gem/ruby/2.4.0/bin:$PATH"
-
-# resty
 source ~/.restyexec
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #variables
 export EDITOR='nvim'
@@ -48,20 +40,23 @@ export VISUAL='nvim'
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export PATH="$HOME/.config/nvim/plugged/vim-live-latex-preview/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
 #aliases
-alias node="nodejs"
-alias la='ls -la'
-alias config='/usr/bin/git --git-dir=/home/user/.cfg/ --work-tree=/home/user'
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+unalias rm
 
 #keybindings
 bindkey "^y" autosuggest-execute
 bindkey "^ " vi-forward-word
 bindkey "^u" autosuggest-accept
 
+#functions
+launch(){
+  command $@ &>/dev/null & disown
+}
+
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-make(){
-    command make $@ ; notify-send "Build terminada. Deja de pedorrear"
-}
+echo ">^.^<"

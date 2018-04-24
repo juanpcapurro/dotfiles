@@ -1,7 +1,10 @@
-exec --no-startup-id "export LC_CTYPE=en_US.UTF-8 ; export LC_ALL=en_US.UTF-8 ; export LANG=en_US.UTF-8"
+exec --no-startup-id export LC_CTYPE=en_US.UTF-8 ; export LC_ALL=en_US.UTF-8 ; export LANG=en_US.UTF-8
 exec --no-startup-id nm-applet
-exec --no-startup-id volumeicon
-exec --no-startup-id "setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap"
+exec --no-startup-id blueman-applet
+exec --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
+exec --no-startup-id xrandr --output LVDS1 --primary
+exec --no-startup-id udiskie
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -130,22 +133,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        font pango: Liberation Mono Powerline 8
-        status_command bumblebee-status -m sensors cpu memory nic battery amixer brightness caffeine time -t gruvbox-powerline -p interval=1 
-        tray_output primary
-		position top
-}
-
 #Sets the wallpaper
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
 #Disables borders
 for_window [class="^.*"] border pixel 1
 bindsym $mod+Shift+b exec "i3lock -b -f -t 3F8AC2 && systemctl suspend"
-bindsym $mod+b exec "i3lock -b -f -t"
+bindsym $mod+b exec "i3lock "
 
 #control brightness
 bindsym --release $mod+minus exec "xbacklight -dec 2 -time 10"
@@ -160,5 +154,4 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 bindsym --release Print exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png && rm /home/vasectomio/tmp_screenshot.png"
-
 
