@@ -2,6 +2,8 @@ exec --no-startup-id export LC_CTYPE=en_US.UTF-8 ; export LC_ALL=en_US.UTF-8 ; e
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id xset s 0
+exec --no-startup-id xset dpms 0 0 0
 exec --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
 exec --no-startup-id xrandr --output LVDS1 --primary
 exec --no-startup-id udiskie
@@ -138,8 +140,8 @@ exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
 #Disables borders
 for_window [class="^.*"] border pixel 1
-bindsym $mod+Shift+b exec "i3lock -b -f -t 3F8AC2 && systemctl suspend"
-bindsym $mod+b exec "i3lock "
+bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
+bindsym $mod+b exec "i3lock -f -c 0f0f0f "
 
 #control brightness
 bindsym --release $mod+minus exec "xbacklight -dec 2 -time 10"

@@ -62,7 +62,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 export GRADLE_HOME=/opt/gradle/gradle-2.13
 export PATH=$PATH:/opt/gradle/gradle-2.13/bin
 export ANDROID_HOME=/home/capurro/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
