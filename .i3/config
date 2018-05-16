@@ -109,7 +109,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r restart ; exec pkill polybar ; exec --no-startup-id $HOME/.config/polybar/launch.sh
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -141,10 +141,6 @@ for_window [class="^.*"] border pixel 1
 bindsym $mod+Shift+b exec "i3lock -b -f -t 3F8AC2 && systemctl suspend"
 bindsym $mod+b exec "i3lock "
 
-#control brightness
-bindsym --release $mod+minus exec "xbacklight -dec 2 -time 10"
-bindsym --release $mod+equal exec "xbacklight -inc 2 -time 10"
-
 #control audio
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
@@ -153,5 +149,5 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-bindsym --release Print exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png && rm /home/vasectomio/tmp_screenshot.png"
+bindsym --release Print exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png"
 
