@@ -141,7 +141,7 @@ exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 #Disables borders
 for_window [class="^.*"] border pixel 1
 bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
-bindsym $mod+b exec "i3lock -f -c 0f0f0f "
+bindsym $mod+b exec "i3lock -f -c 0f0f0f && xset dpms force suspend"
 
 #control brightness
 bindsym --release $mod+minus exec "xbacklight -dec 2 -time 10"
