@@ -37,7 +37,7 @@ export VISUAL='nvim'
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export PATH="$HOME/.config/nvim/plugged/vim-live-latex-preview/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
+export PATH="$HOME/.config/nvim/plugged/vim-live-latex-preview/bin:$HOME/.scripts:$PATH"
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
 #aliases
