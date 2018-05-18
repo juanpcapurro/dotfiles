@@ -1,0 +1,12 @@
+#!/bin/zsh
+xrandr --output VIRTUAL1 --off --output DP3 --off --output DP2 --off --output DP1 --off --output HDMI3 --off --output HDMI2 --off --output HDMI1 --off --output LVDS1 --mode 1366x768 --primary --rotate normal --output VGA1 --off
+pkill polybar
+MONITOR=LVDS1 polybar --reload example &
+setxkbmap -layout us -variant altgr-intl ; xmodmap ~/.Xmodmap
+
+for i in 1 2 3 4 5 6 7 8 9 10
+do
+  i3-msg workspace $i, move workspace to output LVDS1
+done
+
+i3-msg workspace 10
