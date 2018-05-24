@@ -1,0 +1,6 @@
+for FILE in *
+do
+    chmod 766 `pwd`/$FILE
+    rm -f /usr/bin/$FILE
+    test -L /usr/bin/$FILE && rm -f /usr/bin/$FILE ; ln -s `pwd`/$FILE /usr/bin/$FIL
+done
