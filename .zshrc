@@ -41,6 +41,10 @@ export LANG=en_US.UTF-8
 #aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 unalias rm
+alias nano="notify-send 'Usa un editor de verdad'|| echo 'Usa un editor de verdad'"
+alias code="notify-send 'Usa un editor de verdad'|| echo 'Usa un editor de verdad'"
+alias atom="notify-send 'Usa un editor de verdad'|| echo 'Usa un editor de verdad'"
+alias gedit="notify-send 'Usa un editor de verdad'|| echo 'Usa un editor de verdad'"
 
 #keybindings
 bindkey "^y" autosuggest-execute
