@@ -4,15 +4,17 @@ pkill polybar
 MONITOR=LVDS1 polybar --reload example &
 MONITOR=DP-1 polybar --reload example &
 setxkbmap -layout us -variant altgr-intl ; xmodmap ~/.Xmodmap
+xset s 0
+xset dpms 0 0 0
 
 for i in 6 7 8 9 10
 do
-  i3-msg workspace $i, move workspace to output LVDS1
+  i3-msg workspace $i, move workspace to output DP-1
 done
 
 for i in 1 2 3 4 5
 do
-  i3-msg workspace $i, move workspace to output DP-1
+  i3-msg workspace $i, move workspace to output LVDS1
 done
 
 i3-msg workspace 1
