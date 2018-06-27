@@ -1,6 +1,6 @@
-exec --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id setxkbmap -layout us -variant altgr-intl ; xmodmap .Xmodmap
-exec --no-startup-id xset dpms 0 0 0 ; xset s 0 ; nm-applet ; xrandr --output DP-1 --primary
+exec_always --no-startup-id pkill polybar ; $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl ; xmodmap .Xmodmap
+exec_always --no-startup-id xset dpms 0 0 0 ; xset s 0 ; nm-applet ; xrandr --output DP-1 --primary
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.

@@ -5,7 +5,8 @@
   },
   "Cell": {
     "cm_config": {
-      "lineWrapping": true
+      "lineWrapping": true,
+      "lineNumbers": true
     }
   },
   "load_extensions": {
