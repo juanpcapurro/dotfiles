@@ -18,6 +18,10 @@ workspace 8 output DP1
 workspace 9 output DP1
 workspace 10 output DP1
 
+assign [class="qutebrowser"] 2
+assign [class="Google-chrome"] 9
+focus_on_window_activation urgent
+
 font pango: Hack 0
 
 set $color_background        #414A59
