@@ -2,6 +2,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id xset s 0
 exec --no-startup-id xset dpms 0 0 0
+#exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
 exec --no-startup-id nextcloud
 exec --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
 exec --no-startup-id xrandr --output eDP-1 --primary
@@ -18,6 +19,10 @@ workspace 7 output HDMI-1
 workspace 8 output HDMI-1
 workspace 9 output HDMI-1
 workspace 10 output HDMI-1
+
+assign [class="qutebrowser"] 2
+assign [class="Google-chrome"] 9
+focus_on_window_activation urgent
 
 font pango: Hack 0
 
@@ -176,6 +181,8 @@ bar {
 
 #Disables borders
 for_window [class="^.*"] border pixel 2
+
+bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 1910 710
 
 #block/suspend
 bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
