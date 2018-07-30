@@ -1,5 +1,6 @@
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
+#exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
 exec --no-startup-id nextcloud
 exec --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
 exec --no-startup-id xrandr --output LVDS1 --primary
@@ -173,6 +174,8 @@ bar {
 
 #Disables borders
 for_window [class="^.*"] border pixel 2
+
+bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 1910 710
 
 #block/suspend
 bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"

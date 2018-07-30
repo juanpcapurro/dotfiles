@@ -17,7 +17,7 @@
   [[default]]
     background_color = "#2e2e2d"
     cursor_color = "#25C3DC"
-    font = Hack 10
+    font = Source Code Pro 13
     foreground_color = "#f2f2f2"
     icon_bell = False
     palette = "#2c2c2c:#c62828:#558b2e:#f9a825:#1565c1:#6a1e9a:#00838f:#ffffff:#969694:#f15250:#86bd47:#f8e63a:#77b2f6:#b963c8:#25c3dc:#ffffff"
