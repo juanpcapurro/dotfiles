@@ -1,4 +1,7 @@
-exec --no-startup-id nm-applet; blueman-applet; nextcloud
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+#exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
+exec --no-startup-id nextcloud
 exec --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
 exec_always --no-startup-id xset dpms 0 0 0 ; xset s 0 ; xrandr --output DP-1 --primary
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
@@ -14,6 +17,10 @@ workspace 7 output DP1
 workspace 8 output DP1
 workspace 9 output DP1
 workspace 10 output DP1
+
+assign [class="qutebrowser"] 2
+assign [class="Google-chrome"] 9
+focus_on_window_activation urgent
 
 font pango: Hack 0
 
@@ -111,12 +118,8 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym $mod+y resize shrink width 6 px or 6 ppt
 bindsym $mod+u resize grow height 6 px or 6 ppt
@@ -129,9 +132,8 @@ bindsym $mod+Shift+i resize shrink height 1 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 1 px or 1 ppt
 
 bar {
-  status_command i3status
+  status_command i3blocks
   position top
-  output DP1
   output DP-1
   tray_output primary
   font pango: Hack 9
@@ -153,9 +155,9 @@ bar {
   hidden_state hide
   modifier $mod
   status_command i3blocks
-  position top
+  position bottom
   output LVDS1
-  tray_output primary
+  tray_output LVDS1
   font pango: Hack 10
 
   colors {
@@ -176,6 +178,8 @@ bar {
 
 #Disables borders
 for_window [class="^.*"] border pixel 2
+
+bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 1910 710
 
 #block/suspend
 bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
