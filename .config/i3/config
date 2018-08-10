@@ -2,7 +2,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id xset s 0
 exec --no-startup-id xset dpms 0 0 0
-#exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
+exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
 exec --no-startup-id nextcloud
 exec --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
 exec --no-startup-id xrandr --output eDP-1 --primary
@@ -21,7 +21,11 @@ workspace 9 output HDMI-1
 workspace 10 output HDMI-1
 
 assign [class="qutebrowser"] 2
+assign [class="VirtualBox.*"] 2
+assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] 5
+assign [title="Oracle SQL Developer.*"] 5
 assign [class="Google-chrome"] 9
+assign [title="Eclipse.*"] 10
 focus_on_window_activation urgent
 
 font pango: Hack 0
@@ -139,9 +143,11 @@ bar {
   status_command i3blocks
   position bottom
   output HDMI-1
+  tray_output primary
+  tray_padding 0
   font pango: Hack 10
   colors {
-    background $color_background_darker
+    background #000000
     statusline $color_accent
     separator $color_primary
 
@@ -160,7 +166,8 @@ bar {
   status_command i3blocks
   position top
   output eDP-1
-  tray_output eDP-1
+  tray_output primary
+  tray_padding 0
   font pango: Hack 10
 
   colors {
@@ -200,12 +207,5 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-bindsym --release Print exec "scrot -s /home/capurro/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/capurro/tmp_screenshot.png && rm /home/capurro/tmp_screenshot.png"
+bindsym --release Print exec "scrot -s /home/capurro/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/capurro/tmp_screenshot.png"
 exec --no-startup-id "setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap"
-
-for_window [class="chromium-browser"] move container to workspace 3
-for_window [class="chromium-browser" window_role="pop-up" ] move container to workspace 2
-
-for_window [class="jetbrains-pycharm"] move container to workspace 4
-for_window [class="jetbrains-webstorm"] move container to workspace 1
-for_window [class="Eclipse"] move container to workspace 10
