@@ -1,0 +1,201 @@
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+#exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
+exec --no-startup-id nextcloud
+exec --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
+exec --no-startup-id xrandr --output LVDS1 --primary
+exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
+
+workspace 1 output LVDS1
+workspace 2 output LVDS1
+workspace 3 output LVDS1
+workspace 4 output LVDS1
+workspace 5 output LVDS1
+
+workspace 6 output DP1
+workspace 7 output DP1
+workspace 8 output DP1
+workspace 9 output DP1
+workspace 10 output DP1
+
+assign [class="qutebrowser"] 2
+assign [class="Google-chrome"] 9
+focus_on_window_activation urgent
+
+font pango: Hack 0
+
+set $color_background        #414A59
+set $color_background_darker #303642
+set $color_primary           #5294E2
+set $color_alert             #CC575D
+set $color_accent            #F5F6F7
+
+#colorclass             border                   backgr.           text    indicator
+client.focused          $color_primary           $color_primary    #00BAA7 #00DA8E
+client.focused_inactive $color_background        $color_background #ffffff #484e50
+client.unfocused        $color_background_darker $color_background #888888 #292d2e
+client.urgent           $color_accent            $color_alert      #ffffff #900000
+
+#set modkey to meta key
+set $mod mod4 
+set $up k
+set $down j
+set $left h
+set $right l
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# start a terminal
+bindsym $mod+Return exec terminator
+# kill focused window
+bindsym $mod+q kill
+# start rofi
+bindsym $mod+d exec rofi -show run
+
+# change focus
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# move focused window
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
+
+# split in horizontal orientation
+bindsym $mod+semicolon split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+y resize shrink width 6 px or 6 ppt
+bindsym $mod+u resize grow height 6 px or 6 ppt
+bindsym $mod+i resize shrink height 6 px or 6 ppt
+bindsym $mod+o resize grow width 6 px or 6 ppt
+
+bindsym $mod+Shift+y resize shrink width 1 px or 1 ppt
+bindsym $mod+Shift+u resize grow height 1 px or 1 ppt
+bindsym $mod+Shift+i resize shrink height 1 px or 1 ppt
+bindsym $mod+Shift+o resize grow width 1 px or 1 ppt
+
+bar {
+  status_command i3blocks
+  position top
+  output DP1
+  tray_output LVDS1
+  font pango: Hack 9
+  colors {
+    background $color_background_darker
+    statusline $color_accent
+    separator $color_primary
+
+    #colorclass        border background text
+    focused_workspace  #4c7899 $color_primary $color_accent
+    active_workspace   #333333 #5f676a        #ffffff
+    inactive_workspace #333333 #222222        #888888
+    urgent_workspace   #2f343a $color_alert   #ffffff
+    binding_mode       #2f343a #900000        #ffffff
+  }
+}
+bar {
+  mode hide
+  hidden_state hide
+  modifier $mod
+  status_command i3blocks
+  position bottom
+  output LVDS1
+  tray_output LVDS1
+  font pango: Hack 10
+
+  colors {
+    background #000000
+    statusline $color_accent
+    separator $color_accent
+
+    #colorclass        border background text
+    focused_workspace  #4c7899 $color_primary $color_accent
+    active_workspace   #333333 $color_background        #ffffff
+    inactive_workspace #333333 #222222        #888888
+    urgent_workspace   #2f343a $color_alert   #ffffff
+    binding_mode       #2f343a #900000        #ffffff
+  }
+
+}
+
+
+#Disables borders
+for_window [class="^.*"] border pixel 2
+
+bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 1910 710
+
+#block/suspend
+bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
+bindsym $mod+b exec "i3lock -f -c 0f0f0f && xset dpms force suspend"
+
+#control brightness
+bindsym --release $mod+minus exec "xbacklight -dec 2 -time 10"
+bindsym --release $mod+equal exec "xbacklight -inc 2 -time 10"
+
+#control audio
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
+bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+bindsym --release Print exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png && rm /home/vasectomio/tmp_screenshot.png"
+
