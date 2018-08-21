@@ -59,10 +59,10 @@ bindsym $mod+$up    focus up
 bindsym $mod+$right focus right
 
 # move focused window
-bindsym $mod+Shift+$left  move left
-bindsym $mod+Shift+$down  move down
-bindsym $mod+Shift+$up    move up
-bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+$left  move left 38 px
+bindsym $mod+Shift+$down  move down 38 px
+bindsym $mod+Shift+$up    move up 38 px
+bindsym $mod+Shift+$right move right 38 px
 
 # split in horizontal orientation
 bindsym $mod+semicolon split h
@@ -80,6 +80,8 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+# toggle sticky 
+bindsym $mod+g sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -121,22 +123,22 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+y resize shrink width 6 px or 6 ppt
-bindsym $mod+u resize grow height 6 px or 6 ppt
-bindsym $mod+i resize shrink height 6 px or 6 ppt
-bindsym $mod+o resize grow width 6 px or 6 ppt
+bindsym $mod+y resize shrink width 25 px or 6 ppt
+bindsym $mod+u resize grow height 25 px or 6 ppt
+bindsym $mod+i resize shrink height 25 px or 6 ppt
+bindsym $mod+o resize grow width 25 px or 6 ppt
 
-bindsym $mod+Shift+y resize shrink width 1 px or 1 ppt
-bindsym $mod+Shift+u resize grow height 1 px or 1 ppt
-bindsym $mod+Shift+i resize shrink height 1 px or 1 ppt
-bindsym $mod+Shift+o resize grow width 1 px or 1 ppt
+bindsym $mod+Shift+y resize shrink width 4 px or 1 ppt
+bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
+bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
+bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 
 bar {
   status_command i3blocks
   position top
   output DP1
-  tray_output LVDS1
   font pango: Hack 9
+  tray_output primary
   colors {
     background $color_background_darker
     statusline $color_accent
@@ -157,7 +159,7 @@ bar {
   status_command i3blocks
   position bottom
   output LVDS1
-  tray_output LVDS1
+  tray_output primary
   font pango: Hack 10
 
   colors {
@@ -176,10 +178,11 @@ bar {
 }
 
 
-#Disables borders
+#Default borders
 for_window [class="^.*"] border pixel 2
 
 bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 1910 710
+bindsym $mod+Shift+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 10 710
 
 #block/suspend
 bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
