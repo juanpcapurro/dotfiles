@@ -6,7 +6,7 @@ exec --no-startup-id xset dpms 0 0 0
 exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
 exec --no-startup-id nextcloud
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
-exec_always --no-startup-id xrandr --output eDP-1 --primary
+exec --no-startup-id xrandr --output eDP-1 --primary
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
 workspace 1 output eDP-1
@@ -53,7 +53,8 @@ set $right l
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec terminator --command tmux
+bindsym $mod+Shift+Return exec terminator
 # kill focused window
 bindsym $mod+q kill
 # start rofi
