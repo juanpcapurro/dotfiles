@@ -34,17 +34,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#variables
-export EDITOR='nvim'
-export VISUAL='nvim'
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-#aliases
-alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-unalias rm
-
 #keybindings
 bindkey "^y" autosuggest-execute
 bindkey "^ " vi-forward-word
@@ -53,9 +42,6 @@ bindkey "^u" autosuggest-accept
 #functions
 make(){
   command make $@ ; notify-send "Build terminada. Deja de pedorrear"
-}
-launch(){
-  command $@ &>/dev/null & disown
 }
 
 #syntax highlight (wraps widgets)
