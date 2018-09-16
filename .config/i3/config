@@ -2,7 +2,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 #exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
 exec --no-startup-id nextcloud
-exec --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
+exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
 exec_always --no-startup-id xset dpms 0 0 0 ; xset s 0 ; xrandr --output DP-1 --primary
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
@@ -154,31 +154,6 @@ bar {
     binding_mode       #2f343a #900000        #ffffff
   }
 }
-bar {
-  mode hide
-  hidden_state hide
-  modifier $mod
-  status_command i3blocks
-  position bottom
-  output LVDS1
-  tray_output LVDS1
-  font pango: Hack 10
-
-  colors {
-    background #000000
-    statusline $color_accent
-    separator $color_accent
-
-    #colorclass        border background text
-    focused_workspace  #4c7899 $color_primary $color_accent
-    active_workspace   #333333 $color_background        #ffffff
-    inactive_workspace #333333 #222222        #888888
-    urgent_workspace   #2f343a $color_alert   #ffffff
-    binding_mode       #2f343a #900000        #ffffff
-  }
-
-}
-
 
 #Default borders
 for_window [class="^.*"] border pixel 2
