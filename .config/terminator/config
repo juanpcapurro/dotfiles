@@ -78,6 +78,7 @@
     use_system_font = False
   [[material-light]]
     background_color = "#eeeeee"
+    font = Roboto Mono for Powerline 10
     cursor_color = "#25C3DC"
     font = Source Code Pro 13
     foreground_color = "#3c3c3b"

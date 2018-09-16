@@ -1,10 +1,23 @@
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-#exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
+exec --no-startup-id blueman-applet 
+exec --no-startup-id nm-applet 
+exec --no-startup-id volumeicon 
 exec --no-startup-id nextcloud
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
 exec_always --no-startup-id xset dpms 0 0 0 ; xset s 0 ; xrandr --output DP-1 --primary
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
+
+#Default borders
+for_window [class="^.*"] border pixel 2
+
+# dropdown notes
+for_window [title="i3_dropdown_notes"] floating enable, border pixel 9, move scratchpad, resize set 1250 700
+exec --no-startup-id terminator --title i3_dropdown_notes -e "tmux new-session -A -s i3_dropdown_notes -c ~/logbook nvim" 
+bindsym $mod+n [title="i3_dropdown_notes"] scratchpad show; [title="i3_dropdown_notes"] move position center;
+
+# dropdown terminal
+for_window [title="i3_dropdown_terminal"] floating enable, move scratchpad, resize set 1250 700, border pixel 6
+exec --no-startup-id terminator --title i3_dropdown_terminal -e "tmux new-session -A -s i3_dropdown_terminal" 
+bindsym $mod+apostrophe [title="i3_dropdown_terminal"] scratchpad show; [title="i3_dropdown_terminal"] move position center;
 
 workspace 1 output LVDS1
 workspace 2 output LVDS1
@@ -19,6 +32,7 @@ workspace 9 output DP1
 workspace 10 output DP1
 
 assign [class="qutebrowser"] 2
+assign [class="Zathura"] 3
 assign [class="Google-chrome"] 9
 focus_on_window_activation urgent
 
@@ -46,7 +60,8 @@ set $right l
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec terminator --command tmux
+bindsym $mod+Shift+Return exec terminator
 # kill focused window
 bindsym $mod+q kill
 # start rofi
@@ -121,7 +136,6 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym $mod+y resize shrink width 25 px or 6 ppt
 bindsym $mod+u resize grow height 25 px or 6 ppt
@@ -154,9 +168,6 @@ bar {
     binding_mode       #2f343a #900000        #ffffff
   }
 }
-
-#Default borders
-for_window [class="^.*"] border pixel 2
 
 bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 1910 710
 bindsym $mod+Shift+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 10 710
