@@ -1,5 +1,5 @@
 #!/bin/sh
-xrandr --output DP3 --off --output DP2 --off --output DP1 --primary --mode 2560x1080 --pos 1366x0 --rotate normal --output HDMI3 --off --output HDMI2 --off --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x312 --rotate normal --output VGA1 --off
+xrandr --output DP3 --off --output DP1 --off --output DP2 --primary --mode 2560x1080 --pos 1366x0 --rotate normal --output HDMI3 --off --output HDMI2 --off --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x312 --rotate normal --output VGA1 --off
 setxkbmap -layout us -variant altgr-intl ; xmodmap ~/.Xmodmap
 xset s 0
 xset dpms 0 0 0
