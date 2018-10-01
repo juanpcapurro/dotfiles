@@ -34,14 +34,14 @@ focus_on_window_activation urgent
 for_window [class="^.*"] border pixel 2
 
 # dropdown notes
-for_window [title="i3_dropdown_notes"] floating enable, border pixel 9, move scratchpad, resize set 1250 700
+for_window [title="i3_dropdown_notes"] floating enable, move scratchpad
 exec --no-startup-id terminator --title i3_dropdown_notes -e "tmux new-session -A -s i3_dropdown_notes -c ~/logbook nvim" 
-bindsym $mod+n [title="i3_dropdown_notes"] scratchpad show; [title="i3_dropdown_notes"] move position center;
+bindsym $mod+n [title="i3_dropdown_notes"] scratchpad show, resize set 1300 740, border pixel 6, move position center, sticky enable
 
 # dropdown terminal
-for_window [title="i3_dropdown_terminal"] floating enable, move scratchpad, resize set 1250 700, border pixel 6
+for_window [title="i3_dropdown_terminal"] floating enable, move scratchpad
 exec --no-startup-id terminator --title i3_dropdown_terminal -e "tmux new-session -A -s i3_dropdown_terminal" 
-bindsym $mod+apostrophe [title="i3_dropdown_terminal"] scratchpad show; [title="i3_dropdown_terminal"] move position center;
+bindsym $mod+apostrophe [title="i3_dropdown_terminal"] scratchpad show, resize set 1300 740, border pixel 6, move position center, sticky enable
 
 font pango: Hack 0
 
