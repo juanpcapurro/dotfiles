@@ -34,28 +34,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#variables
-export EDITOR='nvim'
-export VISUAL='nvim'
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export PATH="$HOME/.config/nvim/plugged/vim-live-latex-preview/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-
-#aliases
-alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-unalias rm
-
 #keybindings
 bindkey "^y" autosuggest-execute
 bindkey "^ " vi-forward-word
 bindkey "^u" autosuggest-accept
-
-#functions
-launch(){
-  command $@ &>/dev/null & disown
-}
 
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
