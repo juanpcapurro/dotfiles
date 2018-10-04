@@ -3,7 +3,7 @@ export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin"
 export EDITOR="nvim"
 export VISUAL='nvim'
 export TERMINAL="terminator"
-export BROWSER="qutebrowser"
+export BROWSER="google-chrome-stable"
 export READER="zathura"
 
 export NVM_DIR="$HOME/.nvm"
@@ -13,7 +13,6 @@ export LANG=en_US.UTF-8
 
 #aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-unalias rm
 
 # functions
 launch(){

@@ -39,6 +39,8 @@ bindkey "^y" autosuggest-execute
 bindkey "^ " vi-forward-word
 bindkey "^u" autosuggest-accept
 
+unalias rm
+
 #functions
 make(){
   command make $@ ; notify-send "Build terminada. Deja de pedorrear"
