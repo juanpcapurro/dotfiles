@@ -1,8 +1,24 @@
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
+exec --no-startup-id blueman-applet 
+exec --no-startup-id nm-applet 
+exec --no-startup-id volumeicon 
+exec --no-startup-id nextcloud
+#exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
+exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
 exec --no-startup-id xrandr --output LVDS1 --primary
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
+
+#Default borders
+for_window [class="^.*"] border pixel 2
+
+# dropdown notes
+for_window [title="i3_dropdown_notes"] floating enable, move scratchpad
+exec --no-startup-id terminator --title i3_dropdown_notes -e "tmux new-session -A -s i3_dropdown_notes -c ~/logbook nvim" 
+bindsym $mod+n [title="i3_dropdown_notes"] scratchpad show, resize set 1300 740, border pixel 6, move position center, sticky enable
+
+# dropdown terminal
+for_window [title="i3_dropdown_terminal"] floating enable, move scratchpad
+exec --no-startup-id terminator --title i3_dropdown_terminal -e "tmux new-session -A -s i3_dropdown_terminal" 
+bindsym $mod+apostrophe [title="i3_dropdown_terminal"] scratchpad show, resize set 1300 740, border pixel 6, move position center, sticky enable
 
 workspace 1 output LVDS1
 workspace 2 output LVDS1
@@ -17,6 +33,7 @@ workspace 9 output DP1
 workspace 10 output DP1
 
 assign [class="qutebrowser"] 2
+assign [class="Zathura"] 3
 assign [class="Google-chrome"] 9
 focus_on_window_activation urgent
 
@@ -44,7 +61,8 @@ set $right l
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec terminator --command tmux
+bindsym $mod+Shift+Return exec terminator
 # kill focused window
 bindsym $mod+q kill
 # start rofi
@@ -57,10 +75,10 @@ bindsym $mod+$up    focus up
 bindsym $mod+$right focus right
 
 # move focused window
-bindsym $mod+Shift+$left  move left
-bindsym $mod+Shift+$down  move down
-bindsym $mod+Shift+$up    move up
-bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+$left  move left 38 px
+bindsym $mod+Shift+$down  move down 38 px
+bindsym $mod+Shift+$up    move up 38 px
+bindsym $mod+Shift+$right move right 38 px
 
 # split in horizontal orientation
 bindsym $mod+semicolon split h
@@ -78,6 +96,8 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+# toggle sticky 
+bindsym $mod+g sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -117,24 +137,26 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+y resize shrink width 6 px or 6 ppt
-bindsym $mod+u resize grow height 6 px or 6 ppt
-bindsym $mod+i resize shrink height 6 px or 6 ppt
-bindsym $mod+o resize grow width 6 px or 6 ppt
+bindsym $mod+y resize shrink width 25 px or 6 ppt
+bindsym $mod+u resize grow height 25 px or 6 ppt
+bindsym $mod+i resize shrink height 25 px or 6 ppt
+bindsym $mod+o resize grow width 25 px or 6 ppt
 
-bindsym $mod+Shift+y resize shrink width 1 px or 1 ppt
-bindsym $mod+Shift+u resize grow height 1 px or 1 ppt
-bindsym $mod+Shift+i resize shrink height 1 px or 1 ppt
-bindsym $mod+Shift+o resize grow width 1 px or 1 ppt
+bindsym $mod+Shift+y resize shrink width 4 px or 1 ppt
+bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
+bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
+bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 
 bar {
+  mode hide
+  hidden_state hide
   status_command i3blocks
   position top
   output DP1
-  tray_output LVDS1
-  font pango: Hack 9
+  font pango: Hack 10
+  tray_output primary
+  font pango: Hack 13
   colors {
     background $color_background_darker
     statusline $color_accent
@@ -174,18 +196,13 @@ bar {
 }
 
 
-#Disables borders
-for_window [class="^.*"] border pixel 2
 
 bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 1910 710
+bindsym $mod+Shift+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 10 710
 
 #block/suspend
 bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
 bindsym $mod+b exec "i3lock -f -c 0f0f0f && xset dpms force suspend"
-
-#control brightness
-bindsym --release $mod+minus exec "xbacklight -dec 2 -time 10"
-bindsym --release $mod+equal exec "xbacklight -inc 2 -time 10"
 
 #control audio
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
