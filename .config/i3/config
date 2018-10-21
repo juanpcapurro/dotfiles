@@ -26,11 +26,11 @@ workspace 3 output LVDS1
 workspace 4 output LVDS1
 workspace 5 output LVDS1
 
-workspace 6 output DP2
-workspace 7 output DP2
-workspace 8 output DP2
-workspace 9 output DP2
-workspace 10 output DP2
+workspace 6 output DP3
+workspace 7 output DP3
+workspace 8 output DP3
+workspace 9 output DP3
+workspace 10 output DP3
 
 assign [class="qutebrowser"] 2
 assign [class="Zathura"] 3
@@ -151,7 +151,7 @@ bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 bar {
   status_command i3blocks
   position top
-  output DP2
+  output DP3
   font pango: Hack 10
   tray_output primary
   colors {
