@@ -16,8 +16,6 @@ alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias python="/usr/local/python2.7/bin/python2.7"
 alias pip="/usr/local/python2.7/bin/python2.7"
 
-source ~/.work-secrets
-
 # functions
 launch(){
   command $@ &>/dev/null & disown
