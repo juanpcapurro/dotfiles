@@ -15,7 +15,6 @@ export SAVEHIST=$HISTSIZE
 autoload -U is-at-least
 autoload -Uz compinit
 compinit
-eval $(thefuck --alias fuck)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/prompt.sh
 source ~/.zsh/fixls.zsh
@@ -29,21 +28,17 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 
 # shell-based programs
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/.restyexec
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.secrets ] && source ~/.secrets
 
 #keybindings
 bindkey "^y" autosuggest-execute
 bindkey "^ " vi-forward-word
 bindkey "^u" autosuggest-accept
 
-#functions
-make(){
-  command make $@ ; notify-send "Build terminada. Deja de pedorrear"
-}
-
+echo ">^.^<"
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-echo ">^.^<"

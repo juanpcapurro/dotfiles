@@ -13,7 +13,6 @@ export LANG=en_US.UTF-8
 
 #aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-unalias rm
 
 # functions
 launch(){
