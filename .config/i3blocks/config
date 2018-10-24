@@ -23,7 +23,6 @@ interval=10
 
 [iface]
 #instance=wlan0
-label=CPU
 interval=10
 separator=false
 
