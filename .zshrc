@@ -18,7 +18,6 @@ compinit
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/prompt.sh
 source ~/.zsh/fixls.zsh
-source /usr/share/autojump/autojump.zsh
 source ~/.zsh/oh-my-zsh/lib/*.zsh
 source ~/.zsh/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
 source ~/.zsh/oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh
