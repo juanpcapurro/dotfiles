@@ -1,5 +1,5 @@
 #variables
-export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin"
+export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin:${HOME}/play-2.1.3"
 export EDITOR="nvim"
 export VISUAL='nvim'
 export TERMINAL="terminator"
