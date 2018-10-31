@@ -1,5 +1,7 @@
 #variables
-export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin:${HOME}/play-2.1.3"
+export ORACLE_HOME=/opt/oracle/product/11.2.0/dbhome_1
+export ORACLE_SID=orcl
+export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin:${HOME}/play-2.1.3:${ORACLE_HOME}/bin"
 export EDITOR="nvim"
 export VISUAL='nvim'
 export TERMINAL="terminator"
