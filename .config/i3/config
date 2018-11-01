@@ -21,7 +21,7 @@ workspace 8 output HDMI-1
 workspace 9 output HDMI-1
 workspace 10 output HDMI-1
 
-assign [class="qutebrowser"] 2
+assign [class="qutebrowser"] 3
 assign [class="VirtualBox.*"] 2
 assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] 5
 assign [title="Oracle SQL Developer.*"] 5
