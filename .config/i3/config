@@ -1,10 +1,6 @@
-exec --no-startup-id blueman-applet 
-exec --no-startup-id nm-applet 
-exec --no-startup-id volumeicon 
-exec --no-startup-id nextcloud
 #exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
-exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
-exec --no-startup-id xrandr --output LVDS1 --primary
+exec_always --no-startup-id remapkeyboard
+exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
 #Default borders
@@ -67,6 +63,9 @@ bindsym $mod+Shift+Return exec terminator
 bindsym $mod+q kill
 # start rofi
 bindsym $mod+d exec rofi -show run
+
+bindsym $mod+x exec display_auto
+bindsym $mod+Shift+x exec display_standalone
 
 # change focus
 bindsym $mod+$left  focus left
@@ -195,7 +194,7 @@ bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky e
 
 #block/suspend
 bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
-bindsym $mod+b exec "i3lock -f -c 0f0f0f && xset dpms force suspend"
+bindsym $mod+b exec "i3lock -f -c 0f0f0f "
 
 #control audio
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
