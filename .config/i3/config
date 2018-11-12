@@ -16,11 +16,22 @@ for_window [title="i3_dropdown_terminal"] floating enable, move scratchpad
 exec --no-startup-id terminator --title i3_dropdown_terminal -e "tmux new-session -A -s i3_dropdown_terminal" 
 bindsym $mod+semicolon [title="i3_dropdown_terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
 
-workspace 1 output LVDS1
-workspace 2 output LVDS1
-workspace 3 output LVDS1
-workspace 4 output LVDS1
-workspace 5 output LVDS1
+set $ws1 "1: browser"
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: code"
+set $ws6 "6: misc"
+set $ws7 "7: pdf"
+set $ws8 "8: "
+set $ws9 "9: "
+set $ws10 "10: "
+
+workspace 1 output HDMI2
+workspace 2 output HDMI2
+workspace 3 output HDMI2
+workspace 4 output HDMI2
+workspace 5 output HDMI2
 
 workspace 6 output DP3
 workspace 7 output DP3
@@ -28,9 +39,9 @@ workspace 8 output DP3
 workspace 9 output DP3
 workspace 10 output DP3
 
-assign [class="qutebrowser"] 2
-assign [class="Zathura"] 3
-assign [class="Google-chrome"] 9
+assign [class="qutebrowser"] $ws6
+assign [class="Zathura"] $ws7
+assign [class="Google-chrome"] $ws1
 focus_on_window_activation urgent
 
 font pango: Hack 0
@@ -109,28 +120,28 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $mod+Shift+r restart
 
@@ -144,9 +155,26 @@ bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
 bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 
+set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus"
+bindsym $mod+backslash mode $mode_launcher
+
+mode $mode_launcher{
+  bindsym q exec qutechat ; mode "default"
+  bindsym Shift+q exec qutebrowser ; mode "default"
+  bindsym c exec google-chrome-stable ; mode "default"
+  bindsym Shift+c exec google-chrome-stable --incognito ; mode "default"
+  bindsym d exec displayselect ; mode "default"
+  bindsym n exec nautilus ; mode "default"
+
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym backslash mode "default"
+  bindsym $mod+backslash mode "default"
+}
+
 bar {
   status_command i3blocks
-  position top
+  position bottom
   output DP3
   font pango: Hack 10
   tray_output primary
@@ -163,6 +191,27 @@ bar {
     binding_mode       #2f343a #900000        #ffffff
   }
 }
+
+bar {
+  status_command i3blocks
+  position bottom
+  output HDMI2
+  font pango: Hack 10
+  tray_output primary
+  colors {
+    background $color_background_darker
+    statusline $color_accent
+    separator $color_primary
+
+    #colorclass        border background text
+    focused_workspace  #4c7899 $color_primary $color_accent
+    active_workspace   #333333 #5f676a        #ffffff
+    inactive_workspace #333333 #222222        #888888
+    urgent_workspace   #2f343a $color_alert   #ffffff
+    binding_mode       #2f343a #900000        #ffffff
+  }
+}
+
 bar {
   mode hide
   hidden_state hide
@@ -204,5 +253,5 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-bindsym --release Print exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png"
+bindsym --release $mod+p exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png"
 
