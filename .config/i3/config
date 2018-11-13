@@ -26,7 +26,6 @@ assign [class="VirtualBox.*"] 2
 assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] 5
 assign [title="Oracle SQL Developer.*"] 5
 assign [class="Zathura"] 3
-assign [class="Google-chrome"] 9
 assign [title="Eclipse.*"] 10
 focus_on_window_activation urgent
 
