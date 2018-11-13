@@ -1,0 +1,57 @@
+{
+    "files.autoSave":"onFocusChange",
+    "files.autoSaveDelay":1000,
+    "window.menuBarVisibility": "toggle",
+    "editor.renderWhitespace": "boundary",
+    "editor.tabSize": 2,
+    "editor.renderControlCharacters": true,
+    "editor.fontSize": 12,
+    "editor.wordWrap": "on",
+    "eslint.run": "onType",
+    "vim.hlsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["Z", "Z"],
+            "commands": [
+                ":wq"
+            ]
+        },
+        {
+            "before": ["]", "q"],
+            "commands": [
+                "search.action.focusNextSearchResult"
+            ]
+        },
+        {
+            "before": ["<C-h>"],
+            "commands": ["<C-w>","h"]
+        },
+        {
+            "before": ["<C-j>"],
+            "commands": ["<C-w>","j"]
+        },
+        {
+            "before": ["<C-k>"],
+            "commands": ["<C-w>","k"]
+        },
+        {
+            "before": ["<C-l>"],
+            "commands": ["<C-w>","l"]
+        },
+        {
+            "before": ["[", "q"],
+            "commands": [
+                "search.action.focusPreviousSearchResult"
+            ]
+        }
+    ],
+    "vim.useCtrlKeys": true,
+    "vim.handleKeys": {
+        "<C-b>": false,
+        "<C-t>": false
+    },
+    "vim.enableNeovim":true,
+    "vim.neovimPath": "nvim",
+    "vim.foldfix": true
+}
