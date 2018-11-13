@@ -1,32 +1,14 @@
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec --no-startup-id volumeicon 
-exec --no-startup-id xset s 0
-exec --no-startup-id xset dpms 0 0 0
-exec --no-startup-id nextcloud
-#exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
-exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
-exec --no-startup-id xrandr --output eDP-1 --primary
+#exec --no-startup-id oneoffplayer ~/.assets/sounds/sega.mp3
+exec_always --no-startup-id remapkeyboard
+exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
-workspace 1 output eDP-1
-workspace 2 output eDP-1
-workspace 3 output eDP-1
-workspace 4 output eDP-1
-workspace 5 output eDP-1
-
-workspace 6 output HDMI-1
-workspace 7 output HDMI-1
-workspace 8 output HDMI-1
-workspace 9 output HDMI-1
-workspace 10 output HDMI-1
-
-assign [class="qutebrowser"] 3
-assign [class="VirtualBox.*"] 2
-assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] 5
-assign [title="Oracle SQL Developer.*"] 5
-assign [class="Zathura"] 3
-assign [title="Eclipse.*"] 10
+assign [class="qutebrowser"] $ws3
+assign [class="VirtualBox.*"] $ws2
+assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] $ws5
+assign [title="Oracle SQL Developer.*"] $ws5
+assign [class="Zathura"] $ws3
+assign [title="Eclipse.*"] $ws10
 focus_on_window_activation urgent
 
 #Default borders
@@ -41,6 +23,31 @@ bindsym $mod+n [title="i3_dropdown_notes"] scratchpad show, resize set 1250 740,
 for_window [title="i3_dropdown_terminal"] floating enable, move scratchpad
 exec --no-startup-id terminator --title i3_dropdown_terminal -e "tmux new-session -A -s i3_dropdown_terminal" 
 bindsym $mod+semicolon [title="i3_dropdown_terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
+
+set $ws1  "1: browser"
+set $ws2  "2: "
+set $ws3  "3: "
+set $ws4  "4: "
+set $ws5  "5: code"
+set $ws6  "6: misc"
+set $ws7  "7: pdf"
+set $ws8  "8: "
+set $ws9  "9: "
+set $ws10 "10: "
+
+workspace $ws1 output eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output eDP-1
+
+workspace $ws6 output HDMI-1
+workspace $ws7 output HDMI-1
+workspace $ws8 output HDMI-1
+workspace $ws9 output HDMI-1
+workspace $ws10 output HDMI-1
+
+focus_on_window_activation urgent
 
 font pango: Hack 0
 
@@ -72,6 +79,9 @@ bindsym $mod+Shift+Return exec terminator
 bindsym $mod+q kill
 # start rofi
 bindsym $mod+d exec rofi -show run
+
+bindsym $mod+x exec display_auto
+bindsym $mod+Shift+x exec display_standalone
 
 # change focus
 bindsym $mod+$left  focus left
@@ -115,28 +125,28 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $mod+Shift+r restart
 
@@ -149,6 +159,78 @@ bindsym $mod+Shift+y resize shrink width 4 px or 1 ppt
 bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
 bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
+
+set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol"
+bindsym $mod+backslash mode $mode_launcher
+
+mode $mode_launcher{
+  bindsym q       exec qutechat                         ; mode "default"
+  bindsym Shift+q exec qutebrowser                      ; mode "default"
+  bindsym c       exec google-chrome-stable             ; mode "default"
+  bindsym Shift+c exec google-chrome-stable --incognito ; mode "default"
+  bindsym d       exec displayselect                    ; mode "default"
+  bindsym n       exec nautilus                         ; mode "default"
+  bindsym p       exec pavucontrol                      ; mode "default"
+
+  bindsym Escape         mode "default"
+  bindsym Return         mode "default"
+  bindsym backslash      mode "default"
+  bindsym $mod+backslash mode "default"
+}
+
+set $mode_power_launcher "Run: [r]eboot, [o]ff, [h]ibernate"
+bindsym $mod+Shift+backslash mode $mode_power_launcher
+
+mode $mode_power_launcher{
+  bindsym r       exec reboot              ; mode "default"
+  bindsym o       exec poweroff            ; mode "default"
+  bindsym h       exec systemctl hibernate ; mode "default"
+  bindsym s       exec systemctl suspend   ; mode "default"
+
+  bindsym Escape               mode "default"
+  bindsym Return               mode "default"
+  bindsym backslash            mode "default"
+  bindsym $mod+backslash       mode "default"
+  bindsym $mod+Shift+backslash mode "default"
+}
+
+set $mode_sounds "Sound: [m]aestruli, [a]irhorn"
+bindsym $mod+equal mode $mode_sounds
+
+mode $mode_sounds{
+  bindsym a       exec oneoffplayer ~/.assets/sounds/airhorn.mp3         ; mode "default"
+  bindsym m       exec oneoffplayer ~/.assets/sounds/maestruli_short.mp3 ; mode "default"
+  bindsym Shift+m exec oneoffplayer ~/.assets/sounds/maestruli_long.mp3  ; mode "default"
+
+  bindsym Escape     mode "default"
+  bindsym Return     mode "default"
+  bindsym equal      mode "default"
+  bindsym $mod+equal mode "default"
+}
+
+set $sound_control "Soundctl: ]: V++, [: V--"
+bindsym $mod+BackSpace mode $sound_control
+
+mode $sound_control{
+  bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute
+  bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute
+  bindsym space        exec playerctl play-pause; exec unmute
+  bindsym period       exec playerctl next
+  bindsym comma        exec playerctl previous
+
+  bindsym Escape         mode "default"
+  bindsym Return         mode "default"
+  bindsym BackSpace      mode "default"
+  bindsym $mod+BackSpace mode "default"
+}
+
+#For when i have multimedia keys
+bindsym XF86AudioRaiseVolume exec amixer -q set Master unmute ; exec amixer -q set Master 5%+ ; exec unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
+bindsym XF86AudioMute;       exec unmute ; exec amixer -q set Master toggle
+bindsym XF86AudioPlay        exec playerctl play-pause
+bindsym XF86AudioNext        exec playerctl next
+bindsym XF86AudioPrev        exec playerctl previous
 
 bar {
   mode hide
@@ -172,6 +254,7 @@ bar {
     binding_mode       #2f343a #900000        #ffffff
   }
 }
+
 bar {
   mode hide
   hidden_state hide
@@ -198,20 +281,10 @@ bar {
 
 }
 
-
-
 bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable
 
 #block/suspend
 bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
-bindsym $mod+b exec "i3lock -f -c 0f0f0f && xset dpms force suspend"
+bindsym $mod+b exec "i3lock -f -c 0f0f0f "
 
-#control audio
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
-bindsym XF86AudioMute exec amixer -q set Master toggle
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-bindsym --release Print exec "scrot -s /home/capurro/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/capurro/tmp_screenshot.png"
+bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
