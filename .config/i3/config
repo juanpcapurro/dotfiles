@@ -207,9 +207,11 @@ set $sound_control "Soundctl: ]: V++, [: V--"
 bindsym $mod+BackSpace mode $sound_control
 
 mode $sound_control{
-  bindsym bracketleft  exec amixer -q set Master 5%+ unmute ; exec unmute
-  bindsym bracketright exec amixer -q set Master 5%- unmute ; exec unmute
-  bindsym Space        exec playerctl play-pause; exec unmute
+  bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute
+  bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute
+  bindsym space        exec playerctl play-pause; exec unmute
+  bindsym period       exec playerctl next
+  bindsym comma        exec playerctl previous
 
   bindsym Escape         mode "default"
   bindsym Return         mode "default"
