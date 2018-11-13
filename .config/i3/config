@@ -1,4 +1,4 @@
-#exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
+#exec --no-startup-id oneoffplayer ~/.assets/sounds/sega.mp3
 exec_always --no-startup-id remapkeyboard
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
@@ -16,31 +16,31 @@ for_window [title="i3_dropdown_terminal"] floating enable, move scratchpad
 exec --no-startup-id terminator --title i3_dropdown_terminal -e "tmux new-session -A -s i3_dropdown_terminal" 
 bindsym $mod+semicolon [title="i3_dropdown_terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
 
-set $ws1 "1: browser"
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws5 "5: code"
-set $ws6 "6: misc"
-set $ws7 "7: pdf"
-set $ws8 "8: "
-set $ws9 "9: "
+set $ws1  "1: browser"
+set $ws2  "2: "
+set $ws3  "3: "
+set $ws4  "4: "
+set $ws5  "5: code"
+set $ws6  "6: misc"
+set $ws7  "7: pdf"
+set $ws8  "8: "
+set $ws9  "9: "
 set $ws10 "10: "
 
-workspace 1 output HDMI2
-workspace 2 output HDMI2
-workspace 3 output HDMI2
-workspace 4 output HDMI2
-workspace 5 output HDMI2
+workspace $ws1 output HDMI2
+workspace $ws2 output HDMI2
+workspace $ws3 output HDMI2
+workspace $ws4 output HDMI2
+workspace $ws5 output HDMI2
 
-workspace 6 output DP1
-workspace 7 output DP1
-workspace 8 output DP1
-workspace 9 output DP1
-workspace 10 output DP1
+workspace $ws6 output DP3
+workspace $ws7 output DP3
+workspace $ws8 output DP3
+workspace $ws9 output DP3
+workspace $ws10 output DP3
 
-assign [class="qutebrowser"] $ws6
-assign [class="Zathura"] $ws7
+assign [class="qutebrowser"]   $ws6
+assign [class="Zathura"]       $ws7
 assign [class="Google-chrome"] $ws1
 focus_on_window_activation urgent
 
@@ -155,22 +155,75 @@ bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
 bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 
-set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus"
+set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol"
 bindsym $mod+backslash mode $mode_launcher
 
 mode $mode_launcher{
-  bindsym q exec qutechat ; mode "default"
-  bindsym Shift+q exec qutebrowser ; mode "default"
-  bindsym c exec google-chrome-stable ; mode "default"
+  bindsym q       exec qutechat                         ; mode "default"
+  bindsym Shift+q exec qutebrowser                      ; mode "default"
+  bindsym c       exec google-chrome-stable             ; mode "default"
   bindsym Shift+c exec google-chrome-stable --incognito ; mode "default"
-  bindsym d exec displayselect ; mode "default"
-  bindsym n exec nautilus ; mode "default"
+  bindsym d       exec displayselect                    ; mode "default"
+  bindsym n       exec nautilus                         ; mode "default"
+  bindsym p       exec pavucontrol                      ; mode "default"
 
-  bindsym Escape mode "default"
-  bindsym Return mode "default"
-  bindsym backslash mode "default"
+  bindsym Escape         mode "default"
+  bindsym Return         mode "default"
+  bindsym backslash      mode "default"
   bindsym $mod+backslash mode "default"
 }
+
+set $mode_power_launcher "Run: [r]eboot, [o]ff, [h]ibernate"
+bindsym $mod+Shift+backslash mode $mode_power_launcher
+
+mode $mode_power_launcher{
+  bindsym r       exec reboot              ; mode "default"
+  bindsym o       exec poweroff            ; mode "default"
+  bindsym h       exec systemctl hibernate ; mode "default"
+  bindsym s       exec systemctl suspend   ; mode "default"
+
+  bindsym Escape               mode "default"
+  bindsym Return               mode "default"
+  bindsym backslash            mode "default"
+  bindsym $mod+backslash       mode "default"
+  bindsym $mod+Shift+backslash mode "default"
+}
+
+set $mode_sounds "Sound: [m]aestruli, [a]irhorn"
+bindsym $mod+equal mode $mode_sounds
+
+mode $mode_sounds{
+  bindsym a       exec oneoffplayer ~/.assets/sounds/airhorn.mp3         ; mode "default"
+  bindsym m       exec oneoffplayer ~/.assets/sounds/maestruli_short.mp3 ; mode "default"
+  bindsym Shift+m exec oneoffplayer ~/.assets/sounds/maestruli_long.mp3  ; mode "default"
+
+  bindsym Escape     mode "default"
+  bindsym Return     mode "default"
+  bindsym equal      mode "default"
+  bindsym $mod+equal mode "default"
+}
+
+set $sound_control "Soundctl: ]: V++, [: V--"
+bindsym $mod+BackSpace mode $sound_control
+
+mode $sound_control{
+  bindsym bracketleft  exec amixer -q set Master 5%+ unmute ; exec unmute
+  bindsym bracketright exec amixer -q set Master 5%- unmute ; exec unmute
+  bindsym Space        exec playerctl play-pause; exec unmute
+
+  bindsym Escape         mode "default"
+  bindsym Return         mode "default"
+  bindsym BackSpace      mode "default"
+  bindsym $mod+BackSpace mode "default"
+}
+
+#For when i have multimedia keys
+bindsym XF86AudioRaiseVolume exec amixer -q set Master unmute ; exec amixer -q set Master 5%+ ; exec unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
+bindsym XF86AudioMute;       exec unmute ; exec amixer -q set Master toggle
+bindsym XF86AudioPlay        exec playerctl play-pause
+bindsym XF86AudioNext        exec playerctl next
+bindsym XF86AudioPrev        exec playerctl previous
 
 bar {
   mode hide
@@ -239,21 +292,11 @@ bar {
 
 }
 
-
-
 bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable
 
 #block/suspend
 bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
 bindsym $mod+b exec "i3lock -f -c 0f0f0f "
 
-#control audio
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
-bindsym XF86AudioMute exec amixer -q set Master toggle
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/home/vasectomio~/tmp_screenshot.png"
+bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
 
