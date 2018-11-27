@@ -24,6 +24,20 @@
             ]
         },
         {
+            "before": ["]", "q"],
+            "commands": [
+                "search.action.focusNextSearchResult"
+            ]
+        },
+        {
+            "before": ["j"],
+            "commands": ["gj"]
+        },
+        {
+            "before": ["k"],
+            "commands": ["gk"]
+        },
+        {
             "before": ["<C-h>"],
             "commands": ["<C-w>","h"]
         },
@@ -53,5 +67,6 @@
     },
     "vim.enableNeovim":true,
     "vim.neovimPath": "nvim",
-    "vim.foldfix": true
+    "vim.foldfix": true,
+    "editor.lineNumbers": "relative"
 }
