@@ -1,15 +1,11 @@
-#!/bin/sh
+#!/bin/zsh
 
 xrandr \
-  --output DP3 --mode 2560x1080 --pos 1920x0 --rotate right \
-  --output DP2 --off \
-  --output DP1 --off \
-  --output HDMI3 --off \
-  --output HDMI2 --primary --mode 1920x1080 --pos 0x888 --rotate normal \
-  --output HDMI1 --off \
-  --output LVDS1 --off \
-  --output VGA1 --off \
-  && notify-send "Docked!"|| notify-send "Unable to dock :("
+  --output DP-1 --primary --mode 1920x1080 --pos 0x728 --rotate normal \
+  --output HDMI-1 --mode 2560x1080 --pos 1920x0 --rotate right\
+  --output HDMI-2 --off \
+  --output eDP-1 --off\
+  && notify-send "Docked at home!"|| notify-send "Unable to dock :("
 
 xset s 0
 xset dpms 0 0 0

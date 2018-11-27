@@ -1,0 +1,2 @@
+#!/bin/sh
+${HOME}/bin/nosqlbooster4mongo

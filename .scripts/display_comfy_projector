@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/zsh
 
 xrandr \
-  --output VGA1 --mode 1024x768 --same-as LVDS1\
-  --output LVDS1 --mode 1024x768 --primary \
+  --output VGA1 --mode 1024x768 --same-as eDP-1\
+  --output eDP-1 --mode 1024x768 --primary \
   --output DP3 --off \
   --output DP2 --off \
   --output DP1 --off \

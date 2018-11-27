@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # TODO: projector and work dock modes
 
