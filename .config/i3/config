@@ -207,11 +207,11 @@ set $sound_control "Soundctl: ]: V++, [: V--"
 bindsym $mod+BackSpace mode $sound_control
 
 mode $sound_control{
-  bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute
-  bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute
-  bindsym space        exec playerctl play-pause; exec unmute
-  bindsym period       exec playerctl next
-  bindsym comma        exec playerctl previous
+  bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++"
+  bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--"
+  bindsym space        exec playerctl play-pause ; exec unmute ; exec notify-send "play/pause"
+  bindsym period       exec playerctl next       ; exec notify-send "next"
+  bindsym comma        exec playerctl previous   ; exec notify-send "previous"
 
   bindsym Escape         mode "default"
   bindsym Return         mode "default"
@@ -220,12 +220,13 @@ mode $sound_control{
 }
 
 #For when i have multimedia keys
-bindsym XF86AudioRaiseVolume exec amixer -q set Master unmute ; exec amixer -q set Master 5%+ ; exec unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
-bindsym XF86AudioMute;       exec unmute ; exec amixer -q set Master toggle
-bindsym XF86AudioPlay        exec playerctl play-pause
-bindsym XF86AudioNext        exec playerctl next
-bindsym XF86AudioPrev        exec playerctl previous
+bindsym XF86AudioRaiseVolume exec amixer -q set Master unmute ; exec amixer -q set Master 5%+ ; exec unmute; exec notify-send "vol++"
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-; exec notify-send "vol--"
+bindsym XF86AudioMute;       exec unmute ; exec amixer -q set Master toggle; exec notify-send "mute toggle"
+
+bindsym XF86AudioPlay        exec playerctl play-pause ; exec unmute ; exec notify-send "play/pause"
+bindsym XF86AudioNext        exec playerctl next       ; exec notify-send "next"
+bindsym XF86AudioPrev        exec playerctl previous   ; exec notify-send "previous"
 
 bar {
   mode hide
