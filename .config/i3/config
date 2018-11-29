@@ -1,5 +1,9 @@
 #exec --no-startup-id oneoffplayer ~/.assets/sounds/sega.mp3
 exec_always --no-startup-id remapkeyboard
+exec --no-startup-id nextcloud
+exec --no-startup-id blueman-applet
+exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
@@ -27,8 +31,8 @@ bindsym $mod+semicolon [title="i3_dropdown_terminal"] scratchpad show, resize se
 
 set $ws1  "1: browser"
 set $ws2  "2: term"
-set $ws3  "3: pdf"
-set $ws4  "4: app"
+set $ws3  "3: code|pdf"
+set $ws4  "4: app|vim"
 set $ws5  "5: db"
 set $ws6  "6: misc"
 set $ws7  "7: vim"
@@ -36,11 +40,11 @@ set $ws8  "8: dbg"
 set $ws9  "9: browser"
 set $ws10 "10: code"
 
-workspace $ws1 output eDP-1
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output eDP-1
+workspace $ws1 output primary
+workspace $ws2 output primary
+workspace $ws3 output primary
+workspace $ws4 output primary
+workspace $ws5 output primary
 
 workspace $ws6 output HDMI-1
 workspace $ws7 output HDMI-1
