@@ -154,7 +154,7 @@ bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
 bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 
-set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol"
+set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [m]ongo, [s]ql"
 bindsym $mod+backslash mode $mode_launcher
 
 mode $mode_launcher{
@@ -165,6 +165,9 @@ mode $mode_launcher{
   bindsym d       exec displayselect                    ; mode "default"
   bindsym n       exec nautilus                         ; mode "default"
   bindsym p       exec pavucontrol                      ; mode "default"
+  bindsym m       exec nosqlbooster                     ; mode "default"
+  bindsym v       exec code                             ; mode "default"
+  bindsym s       exec mysql-workbench                  ; mode "default"
 
   bindsym Escape         mode "default"
   bindsym Return         mode "default"
@@ -202,12 +205,13 @@ mode $mode_sounds{
   bindsym $mod+equal mode "default"
 }
 
-set $sound_control "Soundctl: ]: V++, [: V--"
+set $sound_control "Soundctl: ]: V++, [: V--, m: mute"
 bindsym $mod+BackSpace mode $sound_control
 
 mode $sound_control{
   bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++"
   bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--"
+  bindsym m            exec unmute ; exec amixer -q set Master toggle; exec notify-send "mute toggle"
   bindsym space        exec playerctl play-pause ; exec unmute ; exec notify-send "play/pause"
   bindsym period       exec playerctl next       ; exec notify-send "next"
   bindsym comma        exec playerctl previous   ; exec notify-send "previous"
@@ -221,7 +225,7 @@ mode $sound_control{
 #For when i have multimedia keys
 bindsym XF86AudioRaiseVolume exec amixer -q set Master unmute ; exec amixer -q set Master 5%+ ; exec unmute; exec notify-send "vol++"
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-; exec notify-send "vol--"
-bindsym XF86AudioMute;       exec unmute ; exec amixer -q set Master toggle; exec notify-send "mute toggle"
+bindsym XF86AudioMute       exec unmute ; exec amixer -q set Master toggle; exec notify-send "mute toggle"
 
 bindsym XF86AudioPlay        exec playerctl play-pause ; exec unmute ; exec notify-send "play/pause"
 bindsym XF86AudioNext        exec playerctl next       ; exec notify-send "next"
@@ -298,5 +302,5 @@ bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky e
 bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
 bindsym $mod+b exec "i3lock -f -c 0f0f0f "
 
-bindsym --release $mod+p exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png"
+bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
 
