@@ -305,4 +305,4 @@ bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
 bindsym $mod+b exec "i3lock -f -c 0f0f0f "
 
 bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
-
+bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip"
