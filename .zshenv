@@ -2,7 +2,7 @@
 export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin"
 export EDITOR="nvim"
 export VISUAL='nvim'
-export TERMINAL="terminator"
+export TERMINAL="st"
 export BROWSER="qutebrowser"
 export READER="zathura"
 
