@@ -3,18 +3,18 @@ exec_always --no-startup-id remapkeyboard
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
+set $term st
+
 #Default borders
 for_window [class="^.*"] border pixel 2
 
 # dropdown notes
-for_window [title="i3_dropdown_notes"] floating enable, move scratchpad
-exec --no-startup-id terminator --title i3_dropdown_notes -e "tmux new-session -A -s i3_dropdown_notes -c ~/logbook nvim" 
-bindsym $mod+n [title="i3_dropdown_notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
+bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3_tmux_dropdown i3notes nvim,\
+  [title="i3notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
 # dropdown terminal
-for_window [title="i3_dropdown_terminal"] floating enable, move scratchpad
-exec --no-startup-id terminator --title i3_dropdown_terminal -e "tmux new-session -A -s i3_dropdown_terminal" 
-bindsym $mod+semicolon [title="i3_dropdown_terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
+bindsym $mod+semicolon exec --no-startup-id i3_tmux_dropdown i3terminal,\
+  [title="i3terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
 
 set $ws1  "1: browser"
 set $ws2  "2: "
@@ -68,8 +68,8 @@ set $right l
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # start a terminal
-bindsym $mod+Return exec terminator --command tmux
-bindsym $mod+Shift+Return exec terminator
+bindsym $mod+Return exec --no-startup-id $term -e tmux
+bindsym $mod+Shift+Return exec --no-startup-id $term
 # kill focused window
 bindsym $mod+q kill
 # start rofi
