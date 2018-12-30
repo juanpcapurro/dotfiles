@@ -3,7 +3,7 @@ exec_always --no-startup-id remapkeyboard
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
-set $term st
+set $term st -f SourceCodePro:pixelsize=17
 
 #Default borders
 for_window [class="^.*"] border pixel 2
