@@ -155,7 +155,7 @@ bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
 bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 
-set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [m]ongo, [s]ql"
+set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [r]etroarch, [m]ongo, [s]ql"
 bindsym $mod+backslash mode $mode_launcher
 
 mode $mode_launcher{
@@ -168,6 +168,7 @@ mode $mode_launcher{
   bindsym p       exec pavucontrol                      ; mode "default"
   bindsym m       exec nosqlbooster                     ; mode "default"
   bindsym v       exec code                             ; mode "default"
+  bindsym r       exec retroarch                        ; mode "default"
   bindsym s       exec mysql-workbench                  ; mode "default"
 
   bindsym Escape         mode "default"
