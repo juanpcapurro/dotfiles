@@ -90,34 +90,30 @@ bindsym $mod+Shift+$down  move down 38 px
 bindsym $mod+Shift+$up    move up 38 px
 bindsym $mod+Shift+$right move right 38 px
 
-# split in vertical orientation
-bindsym $mod+v split v
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+# focus the parent container
+bindsym $mod+a focus parent
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+bindsym $mod+minus scratchpad show
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+# black out a screen
+bindsym $mod+Shift+f exec feh -F ~/.assets/images/pitchblack.png
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
+# split in vertical orientation
+bindsym $mod+v split v
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 # toggle sticky 
 bindsym $mod+g sticky toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -154,6 +150,15 @@ bindsym $mod+Shift+y resize shrink width 4 px or 1 ppt
 bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
 bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
+
+bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable
+
+#block/suspend
+bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
+bindsym $mod+b exec "i3lock -f -c 0f0f0f "
+
+bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
+bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip"
 
 set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [r]etroarch, [m]ongo, [s]ql"
 bindsym $mod+backslash mode $mode_launcher
@@ -299,11 +304,3 @@ bar {
 
 }
 
-bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable
-
-#block/suspend
-bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
-bindsym $mod+b exec "i3lock -f -c 0f0f0f "
-
-bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
-bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip"
