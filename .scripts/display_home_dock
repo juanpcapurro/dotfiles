@@ -1,14 +1,17 @@
 #!/bin/sh
 
-xrandr \
-  --output DP3 --mode 2560x1080 --pos 1920x0 --rotate right \
-  --output DP2 --off \
-  --output DP1 --off \
-  --output HDMI3 --off \
-  --output HDMI2 --primary --mode 1920x1080 --pos 0x888 --rotate normal \
-  --output HDMI1 --off \
-  --output LVDS1 --off \
-  --output VGA1 --off \
+# idk, sometimes the ultrawide monitor wants to be a 1980i display
+# and list a vga output ¿¿?? so i'll always disable it first
+xrandr --output VGA1 --off --output DP3 --off \
+  && xrandr \
+    --output DP3 --mode 2560x1080 --pos 1920x0 --rotate right \
+    --output DP2 --off \
+    --output DP1 --off \
+    --output HDMI3 --off \
+    --output HDMI2 --primary --mode 1920x1080 --pos 0x888 --rotate normal \
+    --output HDMI1 --off \
+    --output LVDS1 --off \
+    --output VGA1 --off \
   && notify-send "Docked!"|| notify-send "Unable to dock :("
 
 xset s 0
