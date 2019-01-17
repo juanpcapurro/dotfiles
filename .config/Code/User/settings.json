@@ -70,4 +70,5 @@
     "vim.foldfix": true,
     "editor.lineNumbers": "relative",
     "explorer.confirmDelete": false
+    "editor.lineNumbers": "relative"
 }

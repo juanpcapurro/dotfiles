@@ -14,20 +14,21 @@ assign [class="NoSQLBooster for MongoDB"] $ws5
 assign [title="Oracle SQL Developer.*"] $ws5
 assign [class="Zathura"] $ws3
 assign [title="Eclipse.*"] $ws10
+
 focus_on_window_activation urgent
+# todo: set font
+set $term st
 
 #Default borders
 for_window [class="^.*"] border pixel 2
 
 # dropdown notes
-for_window [title="i3_dropdown_notes"] floating enable, move scratchpad
-exec --no-startup-id terminator --title i3_dropdown_notes -e "tmux new-session -A -s i3_dropdown_notes -c ~/logbook nvim" 
-bindsym $mod+n [title="i3_dropdown_notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
+bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3_tmux_dropdown i3notes nvim,\
+  [title="i3notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
 # dropdown terminal
-for_window [title="i3_dropdown_terminal"] floating enable, move scratchpad
-exec --no-startup-id terminator --title i3_dropdown_terminal -e "tmux new-session -A -s i3_dropdown_terminal" 
-bindsym $mod+semicolon [title="i3_dropdown_terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
+bindsym $mod+semicolon exec --no-startup-id i3_tmux_dropdown i3terminal,\
+  [title="i3terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
 
 set $ws1  "1: browser"
 set $ws2  "2: term"
@@ -78,8 +79,8 @@ set $right l
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # start a terminal
-bindsym $mod+Return exec terminator --command tmux
-bindsym $mod+Shift+Return exec terminator
+bindsym $mod+Return exec --no-startup-id $term -e tmux
+bindsym $mod+Shift+Return exec --no-startup-id $term
 # kill focused window
 bindsym $mod+q kill
 # start rofi
@@ -100,34 +101,30 @@ bindsym $mod+Shift+$down  move down 38 px
 bindsym $mod+Shift+$up    move up 38 px
 bindsym $mod+Shift+$right move right 38 px
 
-# split in vertical orientation
-bindsym $mod+v split v
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+# focus the parent container
+bindsym $mod+a focus parent
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+bindsym $mod+minus scratchpad show
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+# black out a screen
+bindsym $mod+Shift+f exec feh -F ~/.assets/images/pitchblack.png
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
+# split in vertical orientation
+bindsym $mod+v split v
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 # toggle sticky 
 bindsym $mod+g sticky toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -165,7 +162,16 @@ bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
 bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 
-set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [m]ongo, [s]ql"
+bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable
+
+#block/suspend
+bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
+bindsym $mod+b exec "i3lock -f -c 0f0f0f "
+
+bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
+bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip"
+
+set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [r]etroarch, [m]ongo, [s]ql"
 bindsym $mod+backslash mode $mode_launcher
 
 mode $mode_launcher{
@@ -178,6 +184,7 @@ mode $mode_launcher{
   bindsym p       exec pavucontrol                      ; mode "default"
   bindsym m       exec nosqlbooster                     ; mode "default"
   bindsym v       exec code                             ; mode "default"
+  bindsym r       exec retroarch                        ; mode "default"
   bindsym s       exec mysql-workbench                  ; mode "default"
 
   bindsym Escape         mode "default"
@@ -220,12 +227,11 @@ set $sound_control "Soundctl: ]: V++, [: V--, m: mute"
 bindsym $mod+BackSpace mode $sound_control
 
 mode $sound_control{
-  bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute
-  bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute
-  bindsym m            exec unmute ; exec amixer -q set Master toggle
-  bindsym space        exec playerctl play-pause; exec unmute
-  bindsym period       exec playerctl next
-  bindsym comma        exec playerctl previous
+  bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++"
+  bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--"
+  bindsym space        exec playerctl play-pause ; exec unmute ; exec notify-send "play/pause"
+  bindsym period       exec playerctl next       ; exec notify-send "next"
+  bindsym comma        exec playerctl previous   ; exec notify-send "previous"
 
   bindsym Escape         mode "default"
   bindsym Return         mode "default"
@@ -234,12 +240,13 @@ mode $sound_control{
 }
 
 #For when i have multimedia keys
-bindsym XF86AudioRaiseVolume exec amixer -q set Master unmute ; exec amixer -q set Master 5%+ ; exec unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
-bindsym XF86AudioMute        exec unmute ; exec amixer -q set Master toggle
-bindsym XF86AudioPlay        exec playerctl play-pause
-bindsym XF86AudioNext        exec playerctl next
-bindsym XF86AudioPrev        exec playerctl previous
+bindsym XF86AudioRaiseVolume exec amixer -q set Master unmute ; exec amixer -q set Master 5%+ ; exec unmute; exec notify-send "vol++"
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-; exec notify-send "vol--"
+bindsym XF86AudioMute;       exec unmute ; exec amixer -q set Master toggle; exec notify-send "mute toggle"
+
+bindsym XF86AudioPlay        exec playerctl play-pause ; exec unmute ; exec notify-send "play/pause"
+bindsym XF86AudioNext        exec playerctl next       ; exec notify-send "next"
+bindsym XF86AudioPrev        exec playerctl previous   ; exec notify-send "previous"
 
 bar {
   mode hide
@@ -316,11 +323,3 @@ bar {
 
 }
 
-bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable
-
-#block/suspend
-bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
-bindsym $mod+b exec "i3lock -f -c 0f0f0f "
-
-bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
-bindsym --release $mod+Shift+p exec "grabc |head --bytes=1|xclip"
