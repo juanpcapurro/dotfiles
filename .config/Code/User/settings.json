@@ -68,5 +68,6 @@
     "vim.enableNeovim":true,
     "vim.neovimPath": "nvim",
     "vim.foldfix": true,
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "explorer.confirmDelete": false
 }
