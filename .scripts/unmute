@@ -1,0 +1,2 @@
+amixer -q set Headphone unmute ; amixer -q set Speaker unmute 
+

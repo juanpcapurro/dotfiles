@@ -1,8 +1,8 @@
 #variables
 export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin"
-export EDITOR="nvim"
+export EDITOR="minvim"
 export VISUAL='nvim'
-export TERMINAL="terminator"
+export TERMINAL="st"
 export BROWSER="qutebrowser"
 export READER="zathura"
 
@@ -13,7 +13,7 @@ export LANG=en_US.UTF-8
 
 #aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-unalias rm
+alias minvim="nvim -u ~/.config/nvim/minimal.vim"
 
 # functions
 launch(){

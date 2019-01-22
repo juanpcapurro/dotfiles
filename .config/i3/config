@@ -1,40 +1,47 @@
-exec --no-startup-id blueman-applet 
-exec --no-startup-id nm-applet 
-exec --no-startup-id volumeicon 
-exec --no-startup-id nextcloud
-#exec --no-startup-id mpv --no-audio-display /home/vasectomio/.config/startup_sound.mp3
-exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl && xmodmap .Xmodmap
-exec --no-startup-id xrandr --output LVDS1 --primary
+#exec --no-startup-id oneoffplayer ~/.assets/sounds/sega.mp3
+exec_always --no-startup-id remapkeyboard
+exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
+
+set $term st
 
 #Default borders
 for_window [class="^.*"] border pixel 2
 
 # dropdown notes
-for_window [title="i3_dropdown_notes"] floating enable, move scratchpad
-exec --no-startup-id terminator --title i3_dropdown_notes -e "tmux new-session -A -s i3_dropdown_notes -c ~/logbook nvim" 
-bindsym $mod+n [title="i3_dropdown_notes"] scratchpad show, resize set 1300 740, border pixel 6, move position center, sticky enable
+bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3_tmux_dropdown i3notes nvim,\
+  [title="i3notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
 # dropdown terminal
-for_window [title="i3_dropdown_terminal"] floating enable, move scratchpad
-exec --no-startup-id terminator --title i3_dropdown_terminal -e "tmux new-session -A -s i3_dropdown_terminal" 
-bindsym $mod+apostrophe [title="i3_dropdown_terminal"] scratchpad show, resize set 1300 740, border pixel 6, move position center, sticky enable
+bindsym $mod+semicolon exec --no-startup-id i3_tmux_dropdown i3terminal,\
+  [title="i3terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
 
-workspace 1 output LVDS1
-workspace 2 output LVDS1
-workspace 3 output LVDS1
-workspace 4 output LVDS1
-workspace 5 output LVDS1
+set $ws1  "1: browser"
+set $ws2  "2: "
+set $ws3  "3: "
+set $ws4  "4: "
+set $ws5  "5: code"
+set $ws6  "6: misc"
+set $ws7  "7: pdf"
+set $ws8  "8: "
+set $ws9  "9: "
+set $ws10 "10: "
 
-workspace 6 output DP1
-workspace 7 output DP1
-workspace 8 output DP1
-workspace 9 output DP1
-workspace 10 output DP1
+workspace $ws1 output HDMI2
+workspace $ws2 output HDMI2
+workspace $ws3 output HDMI2
+workspace $ws4 output HDMI2
+workspace $ws5 output HDMI2
 
-assign [class="qutebrowser"] 2
-assign [class="Zathura"] 3
-assign [class="Google-chrome"] 9
+workspace $ws6 output DP3
+workspace $ws7 output DP3
+workspace $ws8 output DP3
+workspace $ws9 output DP3
+workspace $ws10 output DP3
+
+assign [class="qutebrowser"]   $ws6
+assign [class="Zathura"]       $ws7
+assign [class="Google-chrome"] $ws1
 focus_on_window_activation urgent
 
 font pango: Hack 0
@@ -61,12 +68,15 @@ set $right l
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # start a terminal
-bindsym $mod+Return exec terminator --command tmux
-bindsym $mod+Shift+Return exec terminator
+bindsym $mod+Return exec --no-startup-id $term -e tmux
+bindsym $mod+Shift+Return exec --no-startup-id $term
 # kill focused window
 bindsym $mod+q kill
 # start rofi
 bindsym $mod+d exec rofi -show run
+
+bindsym $mod+x exec display_auto
+bindsym $mod+Shift+x exec display_standalone
 
 # change focus
 bindsym $mod+$left  focus left
@@ -80,61 +90,54 @@ bindsym $mod+Shift+$down  move down 38 px
 bindsym $mod+Shift+$up    move up 38 px
 bindsym $mod+Shift+$right move right 38 px
 
-# split in horizontal orientation
-bindsym $mod+semicolon split h
-
-# split in vertical orientation
-bindsym $mod+v split v
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+# focus the parent container
+bindsym $mod+a focus parent
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+bindsym $mod+minus scratchpad show
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+# black out a screen
+bindsym $mod+Shift+f exec feh -F ~/.assets/images/pitchblack.png
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
+# split in vertical orientation
+bindsym $mod+v split v
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 # toggle sticky 
 bindsym $mod+g sticky toggle
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $mod+Shift+r restart
 
@@ -148,15 +151,100 @@ bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
 bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 
+bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable
+
+#block/suspend
+bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
+bindsym $mod+b exec "i3lock -f -c 0f0f0f "
+
+bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
+bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip"
+
+set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [r]etroarch, [m]ongo, [s]ql"
+bindsym $mod+backslash mode $mode_launcher
+
+mode $mode_launcher{
+  bindsym q       exec qutechat                         ; mode "default"
+  bindsym Shift+q exec qutebrowser                      ; mode "default"
+  bindsym c       exec google-chrome-stable             ; mode "default"
+  bindsym Shift+c exec google-chrome-stable --incognito ; mode "default"
+  bindsym d       exec displayselect                    ; mode "default"
+  bindsym n       exec nautilus                         ; mode "default"
+  bindsym p       exec pavucontrol                      ; mode "default"
+  bindsym m       exec nosqlbooster                     ; mode "default"
+  bindsym v       exec code                             ; mode "default"
+  bindsym r       exec retroarch                        ; mode "default"
+  bindsym s       exec mysql-workbench                  ; mode "default"
+
+  bindsym Escape         mode "default"
+  bindsym Return         mode "default"
+  bindsym backslash      mode "default"
+  bindsym $mod+backslash mode "default"
+}
+
+set $mode_power_launcher "Run: [r]eboot, [o]ff, [h]ibernate"
+bindsym $mod+Shift+backslash mode $mode_power_launcher
+
+mode $mode_power_launcher{
+  bindsym r       exec reboot              ; mode "default"
+  bindsym o       exec poweroff            ; mode "default"
+  bindsym h       exec systemctl hibernate ; mode "default"
+  bindsym s       exec systemctl suspend   ; mode "default"
+
+  bindsym Escape               mode "default"
+  bindsym Return               mode "default"
+  bindsym backslash            mode "default"
+  bindsym $mod+backslash       mode "default"
+  bindsym $mod+Shift+backslash mode "default"
+}
+
+set $mode_sounds "Sound: [m]aestruli, [a]irhorn"
+bindsym $mod+equal mode $mode_sounds
+
+mode $mode_sounds{
+  bindsym a       exec oneoffplayer ~/.assets/sounds/airhorn.mp3         ; mode "default"
+  bindsym m       exec oneoffplayer ~/.assets/sounds/maestruli_short.mp3 ; mode "default"
+  bindsym Shift+m exec oneoffplayer ~/.assets/sounds/maestruli_long.mp3  ; mode "default"
+
+  bindsym Escape     mode "default"
+  bindsym Return     mode "default"
+  bindsym equal      mode "default"
+  bindsym $mod+equal mode "default"
+}
+
+set $sound_control "Soundctl: ]: V++, [: V--, m: mute"
+bindsym $mod+BackSpace mode $sound_control
+
+mode $sound_control{
+  bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++"
+  bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--"
+  bindsym space        exec playerctl play-pause ; exec unmute ; exec notify-send "play/pause"
+  bindsym period       exec playerctl next       ; exec notify-send "next"
+  bindsym comma        exec playerctl previous   ; exec notify-send "previous"
+
+  bindsym Escape         mode "default"
+  bindsym Return         mode "default"
+  bindsym BackSpace      mode "default"
+  bindsym $mod+BackSpace mode "default"
+}
+
+#For when i have multimedia keys
+bindsym XF86AudioRaiseVolume exec amixer -q set Master unmute ; exec amixer -q set Master 5%+ ; exec unmute; exec notify-send "vol++"
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-; exec notify-send "vol--"
+bindsym XF86AudioMute;       exec unmute ; exec amixer -q set Master toggle; exec notify-send "mute toggle"
+
+bindsym XF86AudioPlay        exec playerctl play-pause ; exec unmute ; exec notify-send "play/pause"
+bindsym XF86AudioNext        exec playerctl next       ; exec notify-send "next"
+bindsym XF86AudioPrev        exec playerctl previous   ; exec notify-send "previous"
+
 bar {
   mode hide
   hidden_state hide
   status_command i3blocks
-  position top
-  output DP1
+  position bottom
+  output DP3
   font pango: Hack 10
   tray_output primary
-  font pango: Hack 13
   colors {
     background $color_background_darker
     statusline $color_accent
@@ -170,6 +258,27 @@ bar {
     binding_mode       #2f343a #900000        #ffffff
   }
 }
+
+bar {
+  status_command i3blocks
+  position bottom
+  output HDMI2
+  font pango: Hack 10
+  tray_output primary
+  colors {
+    background $color_background_darker
+    statusline $color_accent
+    separator $color_primary
+
+    #colorclass        border background text
+    focused_workspace  #4c7899 $color_primary $color_accent
+    active_workspace   #333333 #5f676a        #ffffff
+    inactive_workspace #333333 #222222        #888888
+    urgent_workspace   #2f343a $color_alert   #ffffff
+    binding_mode       #2f343a #900000        #ffffff
+  }
+}
+
 bar {
   mode hide
   hidden_state hide
@@ -194,23 +303,4 @@ bar {
   }
 
 }
-
-
-
-bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 1910 710
-bindsym $mod+Shift+m fullscreen disable; floating enable; resize set 640 360; sticky enable; move window to position 10 710
-
-#block/suspend
-bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
-bindsym $mod+b exec "i3lock -f -c 0f0f0f && xset dpms force suspend"
-
-#control audio
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
-bindsym XF86AudioMute exec amixer -q set Master toggle
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-bindsym --release Print exec "scrot -s /home/vasectomio/tmp_screenshot.png && xclip -selection clip-board -t image/png -i /home/vasectomio/tmp_screenshot.png && rm /home/vasectomio/tmp_screenshot.png"
 
