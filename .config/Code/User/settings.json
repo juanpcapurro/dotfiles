@@ -31,11 +31,11 @@
         },
         {
             "before": ["j"],
-            "commands": ["gj"]
+            "after": ["g","j"]
         },
         {
             "before": ["k"],
-            "commands": ["gk"]
+            "after": ["g","k"]
         },
         {
             "before": ["<C-h>"],
@@ -52,14 +52,8 @@
         {
             "before": ["<C-l>"],
             "commands": ["<C-w>","l"]
-        },
-        {
-            "before": ["[", "q"],
-            "commands": [
-                "search.action.focusPreviousSearchResult"
-            ]
         }
-    ],
+],
     "vim.useCtrlKeys": true,
     "vim.handleKeys": {
         "<C-b>": false,
@@ -69,6 +63,6 @@
     "vim.neovimPath": "nvim",
     "vim.foldfix": true,
     "editor.lineNumbers": "relative",
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
     "editor.lineNumbers": "relative"
 }
