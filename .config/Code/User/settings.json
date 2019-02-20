@@ -60,10 +60,10 @@
         "<C-t>": false
     },
     "vim.enableNeovim":true,
-    "vim.neovimPath": "nvim",
+    "vim.neovimPath": "/usr/local/bin/nvim",
     "vim.foldfix": true,
-    "editor.lineNumbers": "relative",
     "explorer.confirmDelete": false,
     "editor.lineNumbers": "relative",
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "window.titleBarStyle": "native"
 }
