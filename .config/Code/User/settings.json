@@ -65,5 +65,24 @@
     "explorer.confirmDelete": false,
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
-    "window.titleBarStyle": "native"
+    "window.titleBarStyle": "native",
+    "solidity.linter": "solium",
+    "solidity.soliumRules": {
+        "blank-lines": "off",
+        "error-reason": "off",
+        "indentation": ["error", 2],
+        "lbrace": "off",
+        "linebreak-style": ["error", "unix"],
+        "max-len": ["error", 145],
+        "no-constant": ["error"],
+        "no-empty-blocks": "off",
+        "quotes": ["error", "double"],
+        "uppercase": "off",
+        "visibility-first": "error",
+        "arg-overflow": "off",
+
+        "security/enforce-explicit-visibility": ["error"],
+        "security/no-block-members": ["warning"],
+        "security/no-inline-assembly": ["warning"]
+    }
 }
