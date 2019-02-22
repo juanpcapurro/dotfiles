@@ -9,12 +9,14 @@ set $term st
 for_window [class="^.*"] border pixel 2
 
 # dropdown notes
-bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3_tmux_dropdown i3notes nvim,\
-  [title="i3notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
+bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3_tmux_dropdown i3_dropdown_notes nvim;\
+  [title="i3_dropdown_(?!notes)"] move scratchpad;\
+  [title="i3_dropdown_notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
 # dropdown terminal
-bindsym $mod+semicolon exec --no-startup-id i3_tmux_dropdown i3terminal,\
-  [title="i3terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
+bindsym $mod+semicolon exec --no-startup-id i3_tmux_dropdown i3_dropdown_terminal;\
+  [title="i3_dropdown_(?!terminal)"] move scratchpad;\
+  [title="i3_dropdown_terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
 
 set $ws1  "1: browser"
 set $ws2  "2: "
