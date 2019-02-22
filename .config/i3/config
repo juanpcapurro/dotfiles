@@ -68,7 +68,7 @@ floating_modifier $mod
 bindsym $mod+Return exec --no-startup-id $term -e tmux
 bindsym $mod+Shift+Return exec --no-startup-id $term
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+q [con_id="__focused__" title="^(?!i3_dropdown_).*$"]kill
 # start rofi
 bindsym $mod+d exec rofi -show run
 
@@ -97,7 +97,7 @@ bindsym $mod+a focus parent
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus [title="^(?!i3_dropdown_).*$"]scratchpad show
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -219,9 +219,9 @@ bindsym $mod+BackSpace mode $sound_control
 mode $sound_control{
   bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++"
   bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--"
-  bindsym space        exec playerctl play-pause ; exec unmute ; exec notify-send "play/pause"
-  bindsym period       exec playerctl next       ; exec notify-send "next"
-  bindsym comma        exec playerctl previous   ; exec notify-send "previous"
+  bindsym space        exec "xdotool key --window $(xdotool search --class mpv) space"  ; exec unmute ; exec notify-send "play/pause"
+  bindsym period       exec "xdotool key --window $(xdotool search --class mpv) greater"; exec notify-send "next"
+  bindsym comma        exec "xdotool key --window $(xdotool search --class mpv) less"   ; exec notify-send "previous"
 
   bindsym Escape         mode "default"
   bindsym Return         mode "default"
