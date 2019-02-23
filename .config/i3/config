@@ -25,7 +25,7 @@ set $ws6  "6: misc"
 set $ws7  "7: pdf"
 set $ws8  "8: "
 set $ws9  "9: "
-set $ws10 "10: "
+set $ws10 "10: browser"
 
 workspace $ws1 output primary
 workspace $ws2 output primary
@@ -33,11 +33,11 @@ workspace $ws3 output primary
 workspace $ws4 output primary
 workspace $ws5 output primary
 
-workspace $ws6 output DP3
-workspace $ws7 output DP3
-workspace $ws8 output DP3
-workspace $ws9 output DP3
-workspace $ws10 output DP3
+workspace $ws6 output HDMI3
+workspace $ws7 output HDMI3
+workspace $ws8 output HDMI3
+workspace $ws9 output HDMI3
+workspace $ws10 output HDMI3
 
 assign [class="qutebrowser"]   $ws6
 assign [class="Zathura"]       $ws7
@@ -240,7 +240,7 @@ bindsym XF86AudioPrev        exec playerctl previous   ; exec notify-send "previ
 bar {
   status_command i3blocks
   position bottom
-  output DP3
+  output HDMI3
   font pango: Hack 10
   tray_output primary
   colors {
