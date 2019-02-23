@@ -83,6 +83,9 @@ bindsym $mod+$down  focus down
 bindsym $mod+$up    focus up
 bindsym $mod+$right focus right
 
+bindsym $mod+bracketleft  focus output left
+bindsym $mod+bracketright focus output right
+
 # move focused window
 bindsym $mod+Shift+$left  move left 38 px
 bindsym $mod+Shift+$down  move down 38 px
@@ -139,6 +142,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $mod+Shift+r restart
+bindsym $mod+r exec remapkeyboard
 
 bindsym $mod+y resize shrink width 25 px or 6 ppt
 bindsym $mod+u resize grow height 25 px or 6 ppt

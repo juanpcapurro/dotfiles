@@ -13,6 +13,7 @@ export LANG=en_US.UTF-8
 
 #aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+alias ssh="TERM=xterm-256color ssh"
 alias minvim="nvim -u ~/.config/nvim/minimal.vim"
 
 # functions
