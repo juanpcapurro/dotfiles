@@ -22,6 +22,7 @@ export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias ssh="TERM=xterm-256color ssh"
 alias minvim="nvim -u ~/.config/nvim/minimal.vim"
+alias feh="feh --magick-timeout 1"
 
 # functions
 launch(){

@@ -9,6 +9,5 @@ SESSION_NAME="$1"
 
 if ! xdotool search --name "${SESSION_NAME}";then
    st -t "$SESSION_NAME" -e tmux new-session -A -s "$1" -c "${WORKING_DIR}" ${COMMAND} &
-   sleep 1
-   i3-msg "[title=\"${SESSION_NAME}\"] move scratchpad"
+   notify-send "Creating dropdown: ${SESSION_NAME}"
 fi
