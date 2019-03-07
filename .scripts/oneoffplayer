@@ -1,1 +1,1 @@
-unmute; amixer -q set Master 60% unmute ; mpv --no-audio-display "$1"
+unmute; amixer -q set Master 90% unmute ; mpv --no-video "$1"

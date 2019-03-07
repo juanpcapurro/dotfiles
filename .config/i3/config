@@ -1,20 +1,38 @@
 #exec --no-startup-id oneoffplayer ~/.assets/sounds/sega.mp3
 exec_always --no-startup-id remapkeyboard
+exec --no-startup-id nextcloud
+exec --no-startup-id keynav daemonize
+exec --no-startup-id blueman-applet
+exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
+assign [class="qutebrowser"] $ws1
+assign [class="VirtualBox.*"] $ws2
+assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] $ws5
+assign [class="NoSQLBooster for MongoDB"] $ws5
+assign [title="Oracle SQL Developer.*"] $ws5
+assign [class="Zathura"] $ws3
+assign [title="Eclipse.*"] $ws10
+assign [class="^mpv$"] $ws6
+
+focus_on_window_activation urgent
+# todo: set font
 set $term st
 
 #Default borders
 for_window [class="^.*"] border pixel 2
 
+for_window [title="^i3_dropdown_.*"] move scratchpad
+
 # dropdown notes
-bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3_tmux_dropdown i3_dropdown_notes nvim;\
+bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3-tmux-dropdown i3_dropdown_notes nvim;\
   [title="i3_dropdown_(?!notes)"] move scratchpad;\
   [title="i3_dropdown_notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
 # dropdown terminal
-bindsym $mod+semicolon exec --no-startup-id i3_tmux_dropdown i3_dropdown_terminal;\
+bindsym $mod+semicolon exec --no-startup-id i3-tmux-dropdown i3_dropdown_terminal;\
   [title="i3_dropdown_(?!terminal)"] move scratchpad;\
   [title="i3_dropdown_terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
 
@@ -67,10 +85,10 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $term -e tmux
 bindsym $mod+Shift+Return exec --no-startup-id $term
-# kill focused window
+
+# kill focused window. Don't ever kill the dropdowns, you moron.
 bindsym $mod+q [con_id="__focused__" title="^(?!i3_dropdown_).*$"]kill
-# start rofi
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec dmenu_run -l 20
 
 bindsym $mod+x exec display_auto
 bindsym $mod+Shift+x exec display_standalone
@@ -152,8 +170,6 @@ bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
 bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 
-bindsym $mod+m fullscreen disable; floating enable; resize set 640 360; sticky enable
-
 #block/suspend
 bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
 bindsym $mod+b exec "i3lock -f -c 0f0f0f "
@@ -161,12 +177,11 @@ bindsym $mod+b exec "i3lock -f -c 0f0f0f "
 bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
 bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip"
 
-set $mode_launcher "Run: [q]utechat, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [r]etroarch, [m]ongo, [s]ql"
+set $mode_launcher "Run: [q]utebrowser, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [r]etroarch, [m]ongo, [s]ql"
 bindsym $mod+backslash mode $mode_launcher
 
 mode $mode_launcher{
-  bindsym q       exec qutechat                         ; mode "default"
-  bindsym Shift+q exec qutebrowser                      ; mode "default"
+  bindsym q       exec qutebrowser                      ; mode "default"
   bindsym c       exec google-chrome-stable             ; mode "default"
   bindsym Shift+c exec google-chrome-stable --incognito ; mode "default"
   bindsym d       exec displayselect                    ; mode "default"

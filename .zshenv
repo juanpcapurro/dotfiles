@@ -15,6 +15,7 @@ export LANG=en_US.UTF-8
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias ssh="TERM=xterm-256color ssh"
 alias minvim="nvim -u ~/.config/nvim/minimal.vim"
+alias feh="feh --magick-timeout 1"
 
 # functions
 launch(){
