@@ -22,3 +22,6 @@
 [submodule "src/st"]
 	path = src/st
 	url = git@github.com:juanpcapurro/st.git
+[submodule "src/keynav"]
+	path = src/keynav
+	url = https://github.com/jordansissel/keynav.git
