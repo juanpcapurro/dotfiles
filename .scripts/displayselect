@@ -2,10 +2,12 @@
 
 # TODO: projector and work dock modes
 
-chosen=$(echo -e 'home-dock\nstandalone\ncomfy-projector\nhd-projector\nwork-dock' | dmenu -i -p "Select display arangement:") &&
+chosen=$(echo -e 'home-dock\nstandalone\ncomfy-projector\nwork-dock\nmaxi' | dmenu -l 20 -i -p "Select display arangement:") &&
 case "$chosen" in
+	"home-dock") display_home_dock ; exit ;;
 	"standalone") display_standalone ; exit ;;
-	"home-dock") display_home_dock ;;
-	"comfy-projector") display_comfy_projector ;;
+	"comfy-projector") display_comfy_projector ; exit ;;
+	"work-dock") display_work  ; exit ;;
+	"maxi") display_maxi ; exit ;;
 	*) arandr;;
 esac

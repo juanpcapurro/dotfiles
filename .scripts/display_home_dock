@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 xrandr \
-  --output DP-1 --primary --mode 1920x1080 --pos 0x728 --rotate normal \
-  --output HDMI-1 --mode 2560x1080 --pos 1920x0 --rotate right\
+  --output DP-1 --primary --mode 1920x1080 --rotate normal \
+  --output HDMI-1 --mode 1920x1080 --right-of DP-1\
   --output HDMI-2 --off \
   --output eDP-1 --off\
   && notify-send "Docked at home!"|| notify-send "Unable to dock :("

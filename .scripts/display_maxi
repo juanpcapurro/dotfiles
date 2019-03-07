@@ -1,0 +1,13 @@
+#!/bin/zsh
+xrandr \
+  --output DP-1 --off \
+  --output HDMI-1 --mode 2560x1440 --rotate normal --right-of eDP-1 \
+  --output eDP-1 --primary --mode 1366x768 --rotate normal \
+  --output HDMI-2 --off \
+  && notify-send "Docked!"|| notify-send "Unable to dock :("
+
+xset s 0
+xset dpms 0 0 0
+xset dpms force on
+remapkeyboard
+i3-msg restart
