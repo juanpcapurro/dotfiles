@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+URL=${QUTE_URL}
+SOCKET="${HOME}/.mpv/socket"
+
+if [ -n "${VIDEO}" ] ; then
+  xdotool search --class mpv || pkill '^mpv$' &&  mpv --idle & disown
+else
+  pgrep '^mpv$' || mpv --no-video --idle & disown
+fi
+
+[ "$#" -eq 1 ] && URL="${1}"
+
+while ! lsof "${SOCKET}"
+do
+  echo "waiting for mpv to start"
+  sleep 1
+done
+
+if [ -n "${URL}" ] ; then
+  mpvctl add "${URL}" \
+  && notify-send "Added ${URL} to playlist"\
+  || notify-send "Couldnt add ${URL} to playlist"
+else
+  exit 1
+fi
+
