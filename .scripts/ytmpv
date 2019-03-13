@@ -1,1 +1,0 @@
-youtube-dl -q -o- $(xclip -o) | mpv -
