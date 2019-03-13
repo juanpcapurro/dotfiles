@@ -94,13 +94,10 @@ bindsym $mod+x exec display_auto
 bindsym $mod+Shift+x exec display_standalone
 
 # change focus
-bindsym $mod+$left  focus left
-bindsym $mod+$down  focus down
-bindsym $mod+$up    focus up
-bindsym $mod+$right focus right
-
-bindsym $mod+bracketleft  focus output left
-bindsym $mod+bracketright focus output right
+bindsym $mod+$left  [title="^i3_dropdown_.*$"] move scratchpad; focus left
+bindsym $mod+$down  [title="^i3_dropdown_.*$"] move scratchpad; focus down
+bindsym $mod+$up    [title="^i3_dropdown_.*$"] move scratchpad; focus up
+bindsym $mod+$right [title="^i3_dropdown_.*$"] move scratchpad; focus right
 
 # move focused window
 bindsym $mod+Shift+$left  move left 38 px
@@ -228,15 +225,16 @@ mode $mode_sounds{
   bindsym $mod+equal mode "default"
 }
 
-set $sound_control "Soundctl: ]: V++, [: V--, m: mute"
+set $sound_control "Soundctl: ]: V++, [: V--, m: mute, a: add"
 bindsym $mod+BackSpace mode $sound_control
 
 mode $sound_control{
   bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++"
   bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--"
-  bindsym space        exec "xdotool key --window $(xdotool search --class mpv) space"  ; exec unmute ; exec notify-send "play/pause"
-  bindsym period       exec "xdotool key --window $(xdotool search --class mpv) greater"; exec notify-send "next"
-  bindsym comma        exec "xdotool key --window $(xdotool search --class mpv) less"   ; exec notify-send "previous"
+  bindsym space        exec "mpvctl play-pause"; exec unmute ; exec notify-send "play/pause"
+  bindsym period       exec "mpvctl next"; exec notify-send "next"
+  bindsym comma        exec "mpvctl previous"; exec notify-send "previous"
+  bindsym a            exec "mpvctl add $(xclip -o -selection clipboard)"; exec notify-send "added $(xclip -o -selection clipboard) to playlist"
 
   bindsym Escape         mode "default"
   bindsym Return         mode "default"
