@@ -14,10 +14,11 @@ shift+j move-down
 shift+k move-up
 shift+l move-right
 space warp,click 1,end
-d drag
-shift+space warp
 Return warp,doubleclick 1,end
+ctrl+space warp, click 1
+ctrl+Return warp, doubleclick 1
 semicolon warp,end
+d drag
 w warp
 t windowzoom
 c cursorzoom 300 300
