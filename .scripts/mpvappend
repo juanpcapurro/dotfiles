@@ -4,7 +4,8 @@ URL=${QUTE_URL}
 SOCKET="${HOME}/.mpv/socket"
 
 if [ -n "${VIDEO}" ] ; then
-  xdotool search --class mpv || pkill '^mpv$' &&  mpv --idle & disown
+  # TODO: choose what to do with dmenu if there's an mpv instance running
+  xdotool search --class mpv || { { pkill '^mpv$' ;  mpv --idle --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" ; } & disown ; }
 else
   pgrep '^mpv$' || mpv --no-video --idle & disown
 fi
