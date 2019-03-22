@@ -29,3 +29,4 @@ c.tabs.background = True
 
 # Bindings for normal mode
 config.bind(';m', 'hint links userscript ~/.scripts/mpvappend')
+config.bind(';M', 'hint --rapid links userscript ~/.scripts/mpvappend')
