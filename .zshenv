@@ -10,13 +10,17 @@ export NVM_DIR="$HOME/.nvm"
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export MPV_SOCKET="${HOME}/.mpv/socket"
+
+# for i3 thingies
+export HEADSET_ADDR="00:1E:7C:35:93:29"
 
 #aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias ssh="TERM=xterm-256color ssh"
 alias minvim="nvim -u ~/.config/nvim/minimal.vim"
 alias feh="feh --magick-timeout 1"
-alias mpv="mpv --input-ipc-server=$HOME/.mpv/socket"
+alias mpv="mpv --input-ipc-server=${MPV_SOCKET}"
 
 # functions
 launch(){
