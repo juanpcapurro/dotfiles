@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+STATUS_STR="⏹️"
+PAUSED=$(${HOME}/.scripts/mpvctl get_paused)
+
+if [ "${PAUSED}" = "yes" ] ; then
+  STATUS_STR="⏸️"
+elif [ "${PAUSED}" = "no" ] ; then
+  STATUS_STR="▶️"
+fi
+
+# for some reason this has a newline
+TITLE=$(${HOME}/.scripts/mpvctl title) 
+
+OUTPUT=$(echo "${STATUS_STR} ${TITLE}")
+
+echo ${OUTPUT}
+echo $(echo ${OUTPUT} | head -c 30)
+
+if [ "${PAUSED}" = "yes" ] ; then
+  echo '#2458a1'
+fi
