@@ -48,7 +48,6 @@ workspace $ws8 output primary
 workspace $ws9 output primary
 workspace $ws10 output primary
 
-assign [class="qutebrowser"] $ws1
 assign [class="VirtualBox.*"] $ws2
 assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] $ws5
 assign [class="NoSQLBooster for MongoDB"] $ws5
@@ -230,9 +229,6 @@ bindsym $mod+BackSpace mode $sound_control
 mode $sound_control{
   bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++"
   bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--"
-  bindsym space        exec "xdotool key --window $(xdotool search --class mpv) space"  ; exec unmute ; exec notify-send "play/pause"
-  bindsym period       exec "xdotool key --window $(xdotool search --class mpv) greater"; exec notify-send "next"
-  bindsym comma        exec "xdotool key --window $(xdotool search --class mpv) less"   ; exec notify-send "previous"
   bindsym space        exec "mpvctl play-pause"; exec unmute ; exec notify-send "play/pause"
   bindsym period       exec "mpvctl next"; exec notify-send "next"
   bindsym comma        exec "mpvctl previous"; exec notify-send "previous"
