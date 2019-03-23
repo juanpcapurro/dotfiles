@@ -6,6 +6,11 @@ command=/usr/lib/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
+[headset]
+command=${HOME}/.config/i3blocks/headset_status
+interval=2
+separator=true
+
 [mpv]
 command=${HOME}/.config/i3blocks/mpvstatus
 interval=2
@@ -25,12 +30,6 @@ separator=false
 
 [memory]
 interval=5
-
-[iface]
-#instance=wlan0
-label=CPU
-interval=10
-separator=false
 
 [battery]
 interval=30

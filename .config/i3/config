@@ -229,17 +229,37 @@ set $sound_control "Soundctl: ]: V++, [: V--, m: mute, a: add"
 bindsym $mod+BackSpace mode $sound_control
 
 mode $sound_control{
-  bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++"
-  bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--"
-  bindsym space        exec "mpvctl play-pause"; exec unmute ; exec notify-send "play/pause"
-  bindsym period       exec "mpvctl next"; exec notify-send "next"
-  bindsym comma        exec "mpvctl previous"; exec notify-send "previous"
-  bindsym a            exec "mpvctl add $(xclip -o -selection clipboard)"; exec notify-send "added $(xclip -o -selection clipboard) to playlist"
+  bindsym Shift+bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++"
+  bindsym Shift+bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--"
+  bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++" ; mode "default"
+  bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--" ; mode "default"
+  bindsym space        exec "mpvctl play-pause"; exec unmute ; exec notify-send "play/pause" ; mode "default"
+  bindsym period       exec "mpvctl next"; exec notify-send "next" ; mode "default"
+  bindsym comma        exec "mpvctl previous"; exec notify-send "previous" ; mode "default"
+  bindsym a            exec "mpvctl add $(xclip -o -selection clipboard)"; exec notify-send "added $(xclip -o -selection clipboard) to playlist" ; mode "default"
+  bindsym m            exec unmute ; exec amixer -q set Master toggle; exec notify-send "mute toggle" ; mode "default"
 
   bindsym Escape         mode "default"
   bindsym Return         mode "default"
   bindsym BackSpace      mode "default"
   bindsym $mod+BackSpace mode "default"
+}
+
+set $headset_control "headset: [c]onnect, [d]isconnect, [a]2dp, [h]eadset, [f]xdaemon"
+bindsym $mod+Shift+BackSpace mode $headset_control
+
+mode $headset_control{
+  bindsym a            exec "headsetctl a2dp" ; mode "default"
+  bindsym h            exec "headsetctl headset" ; mode "default"
+  bindsym c            exec "headsetctl connect" ; mode "default"
+  bindsym d            exec "headsetctl disconnect" ; mode "default"
+  bindsym f            exec "headsetctl fixdaemon" ; mode "default"
+
+  bindsym Escape         mode "default"
+  bindsym Return         mode "default"
+  bindsym BackSpace      mode "default"
+  bindsym $mod+BackSpace mode "default"
+  bindsym $mod+Shift+BackSpace mode "default"
 }
 
 #For when i have multimedia keys
