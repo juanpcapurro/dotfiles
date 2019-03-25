@@ -8,13 +8,14 @@ exec --no-startup-id volumeicon
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
-assign [class="qutebrowser"] $ws1
 assign [class="VirtualBox.*"] $ws2
+assign [class="libreoffice.*"] $ws3
 assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] $ws5
 assign [class="NoSQLBooster for MongoDB"] $ws5
 assign [title="Oracle SQL Developer.*"] $ws5
 assign [class="Zathura"] $ws3
 assign [title="Eclipse.*"] $ws10
+assign [class="jetbrains-idea"] $ws10
 assign [class="^mpv$"] $ws6
 
 focus_on_window_activation urgent
