@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+status_str="🎧: "
+
+# I don't want any output from this
+if  bluetoothctl -- info "${HEADSET_ADDR}" |grep Connected |grep no &>/dev/null   ; then
+  status_str+="OFF"
+else
+  if  pactl list cards |grep 'Active.*a2dp_sink'&>/dev/null  ; then
+    status_str+="A2DP"
+  elif  pactl list cards |grep 'Active.*headset_head_unit'&>/dev/null  ; then
+    status_str+="HEADSET"
+  else
+    status_str+="IDK"
+  fi
+fi
+
+# echo adds a newline for some reason
+echo ${status_str}
+

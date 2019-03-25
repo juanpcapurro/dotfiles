@@ -1,22 +1,28 @@
 #!/bin/zsh
 
-STATUS_STR="⏹️"
-PAUSED=$(${HOME}/.scripts/mpvctl get_paused)
+icon="⏹️"
+# is mpv running?
+if lsof "${MPV_SOCKET}" &>/dev/null ; then
+  paused=$(${HOME}/.scripts/mpvctl get_paused)
+  if [ "${paused}" = "yes" ] ; then
+    icon="⏸️"
+  elif [ "${paused}" = "no" ] ; then
+    icon="▶️"
+  fi
 
-if [ "${PAUSED}" = "yes" ] ; then
-  STATUS_STR="⏸️"
-elif [ "${PAUSED}" = "no" ] ; then
-  STATUS_STR="▶️"
+  title=$(${HOME}/.scripts/mpvctl title) 
+  if [ "$title" = null ] ;then
+    icon="⏹️"
+    title=""
+  fi
 fi
 
-# for some reason this has a newline
-TITLE=$(${HOME}/.scripts/mpvctl title) 
+output="${icon} ${title}"
+echo ${output}
+# echo adds the newlines, and i don't want head to remove it
+echo $(echo ${output} |head -c 28)
 
-OUTPUT=$(echo "${STATUS_STR} ${TITLE}")
-
-echo ${OUTPUT}
-echo $(echo ${OUTPUT} | head -c 30)
-
-if [ "${PAUSED}" = "yes" ] ; then
+# set a blueish color to show that the player is paused
+if [ "${paused}" = "yes" ] ; then
   echo '#2458a1'
 fi
