@@ -2,7 +2,6 @@
 exec_always --no-startup-id remapkeyboard
 exec --no-startup-id nextcloud
 exec --no-startup-id keynav daemonize
-exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id display_auto
@@ -168,8 +167,8 @@ bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 
 #block/suspend
-bindsym $mod+Shift+b exec "i3lock -f -c 000000 && systemctl suspend"
-bindsym $mod+b exec "i3lock -f -c 0f0f0f "
+bindsym $mod+Shift+b exec "i3lock -f -c 3f2f3f && systemctl suspend"
+bindsym $mod+b exec "mpvctl pause"; exec "i3lock -f -c  3f2f3f"
 
 bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
 bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip"
@@ -225,7 +224,7 @@ mode $mode_sounds{
   bindsym $mod+equal mode "default"
 }
 
-set $sound_control "Soundctl: ]: V++, [: V--, m: mute, a: add"
+set $sound_control "Soundctl: ]: V++, [: V--, [m]ute, [y]ankpath"
 bindsym $mod+BackSpace mode $sound_control
 
 mode $sound_control{
@@ -236,7 +235,7 @@ mode $sound_control{
   bindsym space        exec "mpvctl play-pause"; exec unmute ; exec notify-send "play/pause" ; mode "default"
   bindsym period       exec "mpvctl next"; exec notify-send "next" ; mode "default"
   bindsym comma        exec "mpvctl previous"; exec notify-send "previous" ; mode "default"
-  bindsym a            exec "mpvctl add $(xclip -o -selection clipboard)"; exec notify-send "added $(xclip -o -selection clipboard) to playlist" ; mode "default"
+  bindsym y            exec "mpvctl get_path |xclip -selection clipboard"; exec notify-send "yanked URI of $(mpvctl title) to clipboard" ; mode "default"
   bindsym m            exec unmute ; exec amixer -q set Master toggle; exec notify-send "mute toggle" ; mode "default"
 
   bindsym Escape         mode "default"
