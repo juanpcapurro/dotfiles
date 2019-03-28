@@ -27,10 +27,14 @@ c.downloads.location.prompt = False
 # Type: Bool
 c.tabs.background = True
 
+# editor setting
+c.editor.command = ["st","-f", "SourceCodePro:pixelsize=17", "-t", "i3_dropdown_quteditor","nvim", "-f", "{file}", "-c", "normal {line}G{column0}1"]
+
 # Bindings for normal mode
+config.bind('e', 'open-editor')
 config.bind(';m', 'hint links userscript ~/.scripts/mpvappend')
 config.bind(';v', 'hint links userscript ~/.scripts/mpvideoappend')
 config.bind(';V', 'hint --rapid links userscript ~/.scripts/mpvideoappend')
 config.bind(';M', 'hint --rapid links userscript ~/.scripts/mpvappend')
-config.bind(';v', 'hint links userscript ~/.scripts/mpvideoappend')
-config.bind(';V', 'hint --rapid links userscript ~/.scripts/mpvideoappend')
+# Bindings for insert mode
+config.bind('<Ctrl-e>', 'open-editor','insert')
