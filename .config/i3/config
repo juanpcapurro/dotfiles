@@ -24,7 +24,7 @@ set $term st
 #Default borders
 for_window [class="^.*"] border pixel 2
 
-for_window [title="^i3_dropdown_.*"] move scratchpad
+for_window [title="^i3_dropdown_.*"] move scratchpad, scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
 # dropdown notes
 bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3-tmux-dropdown i3_dropdown_notes nvim;\
@@ -34,7 +34,12 @@ bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3-tmux-dropdown i3_dr
 # dropdown terminal
 bindsym $mod+semicolon exec --no-startup-id i3-tmux-dropdown i3_dropdown_terminal;\
   [title="i3_dropdown_(?!terminal)"] move scratchpad;\
-  [title="i3_dropdown_terminal"] scratchpad show, resize set 1300 700, border pixel 6, move position center, sticky enable
+  [title="i3_dropdown_terminal"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
+
+# qutebrowser's editor
+bindsym $mod+slash exec --no-startup-id i3-tmux-dropdown i3_dropdown_terminal;\
+  [title="i3_dropdown_(?!quteditor)"] move scratchpad;\
+  [title="i3_dropdown_quteditor"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
 set $ws1  "1: browser"
 set $ws2  "2: term"

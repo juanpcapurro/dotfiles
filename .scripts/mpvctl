@@ -47,16 +47,13 @@ elif [ "$1" = "add" ] ; then
       mpvcommand 'loadfile' "$video" 'append-play';
   done;
 elif [ "$1" = "title" ] ; then
-  # display name of current track
-  mpvcommand 'get_property_string' 'media-title' | jq -j ".data"
+  # don't allow non-printable caracters or anything that can be parsed as json or other weird things
+  mpvcommand 'get_property_string' 'media-title' | jq -j ".data" |tr -cd [:alnum:],[:blank:]
 elif [ "$1" = "raw_command" ] ; then
-# play previous item in playlist
   shift && mpvcommand $@;
 elif [ "$1" = "get_path" ] ; then
-# play previous item in playlist
   mpvcommand 'get_property_string' 'path'| jq -j ".data"
 elif [ "$1" = "get_paused" ] ; then
-# play previous item in playlist
   mpvcommand 'get_property_string' 'pause'| jq -j ".data"
 else
   exit 1
