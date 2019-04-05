@@ -10,7 +10,7 @@ exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 set $term st -f SourceCodePro:pixelsize=17
 
 #Default borders
-for_window [class="^.*"] border pixel 2
+for_window [class=".*"] border pixel 2
 
 for_window [title="^i3_dropdown_.*"] move scratchpad, scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
@@ -61,19 +61,22 @@ assign [title="Eclipse.*"] $ws10
 assign [class="^mpv$"] $ws6
 focus_on_window_activation urgent
 
-font pango: Hack 10
+font pango:Hack Regular 11
 
-set $color_background        #414A59
-set $color_background_darker #303642
-set $color_primary           #5294E2
-set $color_alert             #CC575D
-set $color_accent            #F5F6F7
+set $background #262626
+set $primary    #5294e2
+set $secondary  #5f676a
+set $tertiary   #bbbbbb
+set $alert      #ff7f24
+set $foreground #F5F6F7
 
-#colorclass             border                   backgr.           text    indicator
-client.focused          $color_primary           $color_primary    #00BAA7 #00DA8E
-client.focused_inactive $color_background        $color_background #ffffff #484e50
-client.unfocused        $color_background_darker $color_background #888888 #292d2e
-client.urgent           $color_accent            $color_alert      #ffffff #900000
+#colorclass             border             backgr.     text        indicator   child_border
+client.focused          $primary    $primary    $foreground $primary    $primary
+client.unfocused        $background $background $secondary $background $background
+client.focused_inactive $secondary  $background $foreground  $secondary  $secondary
+client.urgent           $alert      $alert      $foreground $alert      $alert
+
+client.background       $background
 
 #set modkey to meta key
 set $mod mod4 
@@ -87,7 +90,6 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $term -e tmux
 bindsym $mod+Shift+Return exec --no-startup-id $term
-
 # kill focused window. Don't ever kill the dropdowns, you moron.
 bindsym $mod+q [con_id="__focused__" title="^(?!i3_dropdown_).*$"]kill
 bindsym $mod+d exec dmenu_run -l 20
@@ -277,40 +279,23 @@ bindsym XF86AudioPrev        exec playerctl previous   ; exec notify-send "previ
 bar {
   status_command i3blocks
   position bottom
-  output HDMI3
-  font pango: Hack 10
-  tray_output primary
-  colors {
-    background $color_background_darker
-    statusline $color_accent
-    separator $color_primary
-
-    #colorclass        border background text
-    focused_workspace  #4c7899 $color_primary $color_accent
-    active_workspace   #333333 #5f676a        #ffffff
-    inactive_workspace #333333 #222222        #888888
-    urgent_workspace   #2f343a $color_alert   #ffffff
-    binding_mode       #2f343a #900000        #ffffff
-  }
-}
-
-bar {
-  status_command i3blocks
-  position bottom
   output HDMI2
-  font pango: Hack 10
+  output HDMI3
+  font pango:Hack Regular 11
   tray_output primary
   colors {
-    background $color_background_darker
-    statusline $color_accent
-    separator $color_primary
+    focused_background $background
+    background         $background
+    focused_statusline $foreground
+    statusline         $secondary
+    focused_separator  $foreground
+    separator          $secondary
 
-    #colorclass        border background text
-    focused_workspace  #4c7899 $color_primary $color_accent
-    active_workspace   #333333 #5f676a        #ffffff
-    inactive_workspace #333333 #222222        #888888
-    urgent_workspace   #2f343a $color_alert   #ffffff
-    binding_mode       #2f343a #900000        #ffffff
+    #colorclass        border      background text
+    focused_workspace  $secondary  $primary   $foreground
+    active_workspace   $primary    $secondary $primary
+    inactive_workspace $background $secondary $foreground
+    urgent_workspace   $alert      $alert     $foreground
   }
 }
 
@@ -322,19 +307,21 @@ bar {
   position bottom
   output LVDS1
   tray_output primary
-  font pango: Hack 10
+  font pango:Hack Regular 11
 
   colors {
-    background #000000
-    statusline $color_accent
-    separator $color_accent
+    focused_background #000000
+    background         #000000
+    focused_statusline $foreground
+    statusline         $secondary
+    focused_separator  $foreground
+    separator          $secondary
 
     #colorclass        border background text
-    focused_workspace  #4c7899 $color_primary $color_accent
-    active_workspace   #333333 $color_background        #ffffff
-    inactive_workspace #333333 #222222        #888888
-    urgent_workspace   #2f343a $color_alert   #ffffff
-    binding_mode       #2f343a #900000        #ffffff
+    focused_workspace  $primary    $primary           $foreground
+    active_workspace   $primary     $secondary        $primary
+    inactive_workspace $background $secondary $foreground
+    urgent_workspace   $alert      $alert             $foreground
   }
 }
 
