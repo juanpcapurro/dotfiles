@@ -28,7 +28,7 @@ c.downloads.location.prompt = False
 c.tabs.background = True
 
 # editor setting
-c.editor.command = ["st","-f", "SourceCodePro:pixelsize=17", "-t", "i3_dropdown_quteditor","nvim", "-f", "{file}", "-c", "normal {line}G{column0}1"]
+c.editor.command = ["st", "-t", "i3_dropdown_quteditor","nvim", "-f", "{file}", "-c", "normal {line}G{column0}1"]
 
 # Bindings for normal mode
 config.bind('e', 'open-editor')
