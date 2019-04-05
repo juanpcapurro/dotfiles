@@ -22,7 +22,7 @@ focus_on_window_activation urgent
 set $term st
 
 #Default borders
-for_window [class="^.*"] border pixel 2
+for_window [class=".*"] border pixel 2
 
 for_window [title="^i3_dropdown_.*"] move scratchpad, scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
@@ -64,19 +64,22 @@ workspace $ws8 output HDMI-1
 workspace $ws9 output HDMI-1
 workspace $ws10 output HDMI-1
 
-font pango: Hack 0
+font pango:Hack Regular 11
 
-set $color_background        #414A59
-set $color_background_darker #303642
-set $color_primary           #5294E2
-set $color_alert             #CC575D
-set $color_accent            #F5F6F7
+set $background #262626
+set $primary    #5294e2
+set $secondary  #5f676a
+set $tertiary   #bbbbbb
+set $alert      #ff7f24
+set $foreground #F5F6F7
 
-#colorclass             border                   backgr.           text    indicator
-client.focused          $color_primary           $color_primary    #00BAA7 #00DA8E
-client.focused_inactive $color_background        $color_background #ffffff #484e50
-client.unfocused        $color_background_darker $color_background #888888 #292d2e
-client.urgent           $color_alert             $color_alert      #ffffff #900000
+#colorclass             border             backgr.     text        indicator   child_border
+client.focused          $primary    $primary    $foreground $primary    $primary
+client.unfocused        $background $background $secondary $background $background
+client.focused_inactive $secondary  $background $foreground  $secondary  $secondary
+client.urgent           $alert      $alert      $foreground $alert      $alert
+
+client.background       $background
 
 #set modkey to meta key
 set $mod mod4 
@@ -90,7 +93,6 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $term -e tmux
 bindsym $mod+Shift+Return exec --no-startup-id $term
-
 # kill focused window. Don't ever kill the dropdowns, you moron.
 bindsym $mod+q [con_id="__focused__" title="^(?!i3_dropdown_).*$"]kill
 bindsym $mod+d exec dmenu_run -l 20
@@ -136,28 +138,28 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+g sticky toggle
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
 
 bindsym $mod+Shift+r restart
 bindsym $mod+r exec remapkeyboard
@@ -177,7 +179,7 @@ bindsym $mod+Shift+b exec "i3lock -f -c 3f2f3f && systemctl suspend"
 bindsym $mod+b exec "mpvctl pause"; exec "i3lock -f -c  3f2f3f"
 
 bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
-bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip"
+bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip && notify-send $(xclip -o)"
 
 set $mode_launcher "Run: [q]utebrowser, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [r]etroarch, [m]ongo, [s]ql"
 bindsym $mod+backslash mode $mode_launcher
@@ -286,16 +288,17 @@ bar {
   font pango: Hack 10
 
   colors {
-    background #000000
-    statusline $color_accent
-    separator $color_accent
+    focused_background #000000
+    background         #000000
+    focused_statusline $foreground
+    statusline         $secondary
+    focused_separator  $foreground
+    separator          $secondary
 
     #colorclass        border background text
-    focused_workspace  #4c7899 $color_primary $color_accent
-    active_workspace   #333333 $color_background        #ffffff
-    inactive_workspace #333333 #222222        #888888
-    urgent_workspace   #2f343a $color_alert   #ffffff
-    binding_mode       #2f343a #900000        #ffffff
+    focused_workspace  $primary    $primary           $foreground
+    active_workspace   $primary     $secondary        $primary
+    inactive_workspace $background $secondary $foreground
+    urgent_workspace   $alert      $alert             $foreground
   }
-
 }
