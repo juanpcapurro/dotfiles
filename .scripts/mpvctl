@@ -22,26 +22,51 @@ mpvcommand() {
     echo $tosend | socat - $socket
 }
 
+# top level commands, meant to notify the user
 if [ "$1" = "stop" ] ; then
   # exit mpv
   mpvcommand 'quit'
+  notify-send "exiting mpv"
 elif [ "$1" = "play-pause" ] ; then
   # toggle play-pause
   mpvcommand 'cycle' 'pause'
+  if [[ "$(mpvctl get-paused)" == "true" ]] ; then
+    notify-send "paused"
+  else
+    notify-send "paused"
+  fi
 elif [ "$1" = "pause" ] ; then
   # stop playing
   mpvcommand 'set' 'pause' 'yes'
+  notify-send "paused"
 elif [ "$1" = "play" ] ; then
   # start playing
   mpvcommand 'set' 'pause' 'no'
+  notify-send "playing"
 elif [ "$1" = "next" ] ; then
-# play next item in playlist
+  # play next item in playlist
   mpvcommand 'playlist_next'
+  notify-send "next"
 elif [ "$1" = "previous" ] ; then
-# play previous item in playlist
+  # play previous item in playlist
   mpvcommand 'playlist_prev'
+elif [ "$1" = "move-forward" ] ; then
+  # play next item in playlist
+  mpvcommand seek 10 relative
+  notify-send "+10s"
+elif [ "$1" = "move-backwards" ] ; then
+  # play previous item in playlist
+  mpvcommand seek -10 relative
+  notify-send "-10s"
+elif [ "$1" = "add-to-playlist" ] ; then
+  playlist_file="$(ls ~/playlists |dmenu -l 20)"
+  current_url="$(mpvctl get-path| jq -j '.data')"
+  echo "${current_url}"| tee -a "${HOME}/playlists/${playlist_file}"
+  notify-send "saving $(mpvctl title) to playlist ${playlist_file}"
+
+# commands meant to be called from other scripts/programs
 elif [ "$1" = "add" ] ; then
-  # add item(s) to playlist
+  # add item(s) to current playlist
   shift &&\
   for video in "$@"; do
       mpvcommand 'loadfile' "$video" 'append-play';
@@ -49,12 +74,23 @@ elif [ "$1" = "add" ] ; then
 elif [ "$1" = "title" ] ; then
   # don't allow non-printable caracters or anything that can be parsed as json or other weird things
   mpvcommand 'get_property_string' 'media-title' | jq -j ".data" |tr -cd [:alnum:],[:blank:]
-elif [ "$1" = "raw_command" ] ; then
+elif [ "$1" = "raw-command" ] ; then
+  # run an arbitrary command from mpv api
   shift && mpvcommand $@;
-elif [ "$1" = "get_path" ] ; then
+elif [ "$1" = "get-path" ] ; then
+  # get url for youtube or filename if from filesystem
   mpvcommand 'get_property_string' 'path'| jq -j ".data"
-elif [ "$1" = "get_paused" ] ; then
+elif [ "$1" = "get-paused" ] ; then
+  # true if the media is paused
   mpvcommand 'get_property_string' 'pause'| jq -j ".data"
+elif [ "$1" = "get-playlist-index" ] ; then
+  mpvcommand 'get_property_string' 'playlist-pos'| jq -j ".data"
+elif [ "$1" = "get-playlist-length" ] ; then
+  mpvcommand 'get_property_string' 'playlist-count'| jq -j ".data"
+elif [ "$1" = "get-progress-seconds" ] ; then
+  mpvcommand get_property_string time-pos |jq -j ".data"|sed 's/\..*$//g'
+elif [ "$1" = "get-duration-seconds" ] ; then
+  mpvcommand get_property_string duration |jq -j ".data"|sed 's/\..*$//g'
 else
   exit 1
 fi
