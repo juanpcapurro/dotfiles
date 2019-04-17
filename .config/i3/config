@@ -3,7 +3,6 @@ exec_always --no-startup-id remapkeyboard
 exec --no-startup-id nextcloud
 exec --no-startup-id keynav daemonize
 exec --no-startup-id nm-applet
-exec --no-startup-id volumeicon
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
@@ -229,7 +228,7 @@ mode $mode_sounds{
   bindsym $mod+equal mode "default"
 }
 
-set $sound_control "Soundctl: ]: V++, [: V--, [m]ute, [y]ankpath"
+set $sound_control "Soundctl: ]: V++, [: V--, [m]ute, [y]ankpath, [a]dd2playlist"
 bindsym $mod+BackSpace mode $sound_control
 
 mode $sound_control{
@@ -237,12 +236,14 @@ mode $sound_control{
   bindsym Shift+bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--"
   bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++" ; mode "default"
   bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--" ; mode "default"
-  bindsym space        exec "mpvctl play-pause"; exec unmute ; exec notify-send "play/pause" ; mode "default"
-  bindsym period       exec "mpvctl next"; exec notify-send "next" ; mode "default"
-  bindsym comma        exec "mpvctl previous"; exec notify-send "previous" ; mode "default"
-  bindsym y            exec "mpvctl get_path |xclip -selection clipboard"; exec notify-send "yanked URI of $(mpvctl title) to clipboard" ; mode "default"
-  bindsym a            exec "mpvctl add $(xclip -o -selection clipboard)"; exec notify-send "added $(xclip -o -selection clipboard) to playlist" ; mode "default"
   bindsym m            exec unmute ; exec amixer -q set Master toggle; exec notify-send "mute toggle" ; mode "default"
+  bindsym space        exec "mpvctl play-pause"; mode "default"
+  bindsym period       exec "mpvctl next"; mode "default"
+  bindsym comma        exec "mpvctl previous"; mode "default"
+  bindsym Shift+period exec "mpvctl move-forward"
+  bindsym Shift+comma  exec "mpvctl move-backwards"
+  bindsym y            exec "mpvctl get-path |xclip -selection clipboard"; exec notify-send "yanked URI of $(mpvctl title) to clipboard" ; mode "default"
+  bindsym a            exec "mpvctl add-to-playlist" ; mode "default"
 
   bindsym Escape         mode "default"
   bindsym Return         mode "default"
@@ -266,15 +267,6 @@ mode $headset_control{
   bindsym $mod+BackSpace mode "default"
   bindsym $mod+Shift+BackSpace mode "default"
 }
-
-#For when i have multimedia keys
-bindsym XF86AudioRaiseVolume exec amixer -q set Master unmute ; exec amixer -q set Master 5%+ ; exec unmute; exec notify-send "vol++"
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-; exec notify-send "vol--"
-bindsym XF86AudioMute       exec unmute ; exec amixer -q set Master toggle; exec notify-send "mute toggle"
-
-bindsym XF86AudioPlay        exec playerctl play-pause ; exec unmute ; exec notify-send "play/pause"
-bindsym XF86AudioNext        exec playerctl next       ; exec notify-send "next"
-bindsym XF86AudioPrev        exec playerctl previous   ; exec notify-send "previous"
 
 bar {
   status_command i3blocks

@@ -1,26 +1,41 @@
 #!/bin/zsh
 
+format_seconds(){
+  minutes=$(($1 / 60))
+  seconds=$(($1 % 60))
+  echo -n "${minutes}:${seconds}"
+}
+
 icon="⏹️"
+stopped="true"
 # is mpv running?
 if lsof "${MPV_SOCKET}" &>/dev/null ; then
-  paused=$(${HOME}/.scripts/mpvctl get_paused)
+  title=$(${HOME}/.scripts/mpvctl title) 
+  if [ "$title" != null ] ;then
+    stopped="false"
+  fi
+  paused=$(${HOME}/.scripts/mpvctl get-paused)
   if [ "${paused}" = "yes" ] ; then
     icon="⏸️"
   elif [ "${paused}" = "no" ] ; then
     icon="▶️"
   fi
-
-  title=$(${HOME}/.scripts/mpvctl title) 
-  if [ "$title" = null ] ;then
-    icon="⏹️"
-    title=""
-  fi
 fi
+if [ "${stopped}" = true ] ;then
+  echo "⏹️"
+  exit
+fi
+playlist_position="[$(mpvctl get-playlist-index)/$(mpvctl get-playlist-length)]"
 
-output="${icon} ${title}"
-echo ${output}
-# echo adds the newlines, and i don't want head to remove it
-echo $(echo ${output} |head -c 28)
+file_progress="$(format_seconds $(mpvctl get-progress-seconds))"
+file_length="$(format_seconds $(mpvctl get-duration-seconds))"
+file_position="(${file_progress}/${file_length})"
+
+#long text
+echo ${icon} ${title} ${playlist_position}${file_position}
+
+#short text
+echo ${icon} "$(echo -n ${title} | head -c 20)" ${playlist_position}
 
 # set a blueish color to show that the player is paused
 if [ "${paused}" = "yes" ] ; then
