@@ -39,17 +39,17 @@ set $ws8  "8: "
 set $ws9  "9: browser"
 set $ws10 "10: code"
 
-workspace $ws1 output HDMI3
-workspace $ws2 output HDMI3
-workspace $ws3 output HDMI3
-workspace $ws4 output HDMI3
-workspace $ws5 output HDMI3
+workspace $ws1 output primary
+workspace $ws2 output primary
+workspace $ws3 output primary
+workspace $ws4 output primary
+workspace $ws5 output primary
 
-workspace $ws6 output primary
-workspace $ws7 output primary
-workspace $ws8 output primary
-workspace $ws9 output primary
-workspace $ws10 output primary
+workspace $ws6 output  HDMI2
+workspace $ws7 output  HDMI2
+workspace $ws8 output  HDMI2
+workspace $ws9 output  HDMI2
+workspace $ws10 output HDMI2
 
 assign [class="VirtualBox.*"] $ws2
 assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] $ws5
