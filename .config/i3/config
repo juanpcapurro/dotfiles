@@ -100,10 +100,10 @@ bindsym $mod+x exec display_auto
 bindsym $mod+Shift+x exec display_standalone
 
 # change focus
-bindsym $mod+$left  [title="^i3_dropdown_.*$"] move scratchpad; focus left
-bindsym $mod+$down  [title="^i3_dropdown_.*$"] move scratchpad; focus down
-bindsym $mod+$up    [title="^i3_dropdown_.*$"] move scratchpad; focus up
-bindsym $mod+$right [title="^i3_dropdown_.*$"] move scratchpad; focus right
+bindsym $mod+$left  focus tiling; focus left
+bindsym $mod+$down  focus tiling; focus down
+bindsym $mod+$up    focus tiling; focus up
+bindsym $mod+$right focus tiling; focus right
 
 # move focused window
 bindsym $mod+Shift+$left  move left 38 px
