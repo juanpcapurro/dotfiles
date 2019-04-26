@@ -33,8 +33,8 @@ c.editor.command = ["st","-f", "SourceCodePro:pixelsize=17", "-t", "i3_dropdown_
 # Bindings for normal mode
 config.bind('e', 'open-editor')
 config.bind(';m', 'hint links userscript ~/.scripts/mpvappend')
+config.bind(';M', 'hint --rapid links userscript ~/.scripts/mpvappend')
 config.bind(';v', 'hint links userscript ~/.scripts/mpvideoappend')
 config.bind(';V', 'hint --rapid links userscript ~/.scripts/mpvideoappend')
-config.bind(';M', 'hint --rapid links userscript ~/.scripts/mpvappend')
 # Bindings for insert mode
 config.bind('<Ctrl-e>', 'open-editor','insert')
