@@ -19,6 +19,7 @@
 [submodule "src/keynav"]
 	path = src/keynav
 	url = https://github.com/jordansissel/keynav.git
-[submodule "src/vim-logbook"]
-	path = src/vim-logbook
-	url = git@github.com:juanpcapurro/vim-logbook.git
+[submodule "src/st"]
+	path = src/st
+	url = git@github.com:juanpcapurro/st.git
+
