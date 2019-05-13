@@ -252,6 +252,10 @@ mode $sound_control{
   bindsym BackSpace      mode "default"
   bindsym $mod+BackSpace mode "default"
 }
+bindsym XF86AudioPlay  exec "mpvctl play-pause"
+bindsym XF86AudioPause exec "mpvctl play-pause"
+bindsym XF86AudioNext  exec "mpvctl next"
+bindsym XF86AudioPrev  exec "mpvctl previous"
 
 set $headset_control "headset: [c]onnect, [d]isconnect, [a]2dp, [h]eadset, [f]xdaemon"
 bindsym $mod+Shift+BackSpace mode $headset_control
