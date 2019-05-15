@@ -85,6 +85,8 @@ elif [ "$1" = "get-paused" ] ; then
   mpvcommand 'get_property_string' 'pause'| jq -j ".data"
 elif [ "$1" = "get-playlist-index" ] ; then
   mpvcommand 'get_property_string' 'playlist-pos'| jq -j ".data"
+elif [ "$1" = "get-playlist-index-1" ] ; then
+  mpvcommand 'get_property_string' 'playlist-pos-1'| jq -j ".data"
 elif [ "$1" = "get-playlist-length" ] ; then
   mpvcommand 'get_property_string' 'playlist-count'| jq -j ".data"
 elif [ "$1" = "get-progress-seconds" ] ; then
