@@ -9,7 +9,7 @@ format_seconds(){
 icon="⏹️"
 stopped="true"
 # is mpv running?
-if lsof "${MPV_SOCKET}" &>/dev/null ; then
+if lsof "${MPV_SOCKET}" 2>&1 >/dev/null ; then
   title=$(${HOME}/.scripts/mpvctl title) 
   if [ "$title" != null ] ;then
     stopped="false"

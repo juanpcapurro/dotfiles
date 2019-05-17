@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # This script requires:
 # - that the directory $HOME/.mpv exist 
 # - that the program socat be installed
@@ -7,6 +7,10 @@
 #       alias mpv="mpv --input-unix-socket=$HOME/.mpv/socket"
 
 socket="$HOME/.mpv/socket"
+
+if [ -z "${MPV_SOCKET}" ] ; then
+  socket=${MPV_SOCKET}
+fi
 
 mpvcommand() {
     # JSON preamble.
@@ -30,7 +34,7 @@ if [ "$1" = "stop" ] ; then
 elif [ "$1" = "play-pause" ] ; then
   # toggle play-pause
   mpvcommand 'cycle' 'pause'
-  if [[ "$(mpvctl get-paused)" == "true" ]] ; then
+  if [ "$(mpvctl get-paused)" == "true" ] ; then
     notify-send "paused"
   else
     notify-send "paused"
