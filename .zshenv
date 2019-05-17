@@ -20,9 +20,3 @@ alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias ssh="TERM=xterm-256color ssh"
 alias minvim="nvim -u ~/.config/nvim/minimal.vim"
 alias feh="feh --magick-timeout 1"
-alias mpv="mpv --input-ipc-server=${MPV_SOCKET}"
-
-# functions
-launch(){
-  command $@ &>/dev/null & disown
-}

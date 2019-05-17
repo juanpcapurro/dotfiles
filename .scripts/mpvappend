@@ -4,17 +4,16 @@ URL=${QUTE_URL}
 SOCKET="${HOME}/.mpv/socket"
 
 if [ -n "${VIDEO}" ] ; then
-  # TODO: choose what to do with dmenu if there's an mpv instance running
-  xdotool search --class mpv || { { pkill '^mpv$' ;  mpv --idle --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" ; } & disown ; }
+  lsof "${SOCKET}" || launch mpvs --idle --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" 
 else
-  pgrep '^mpv$' || mpv --no-video --idle & disown
+  lsof "${SOCKET}" || launch mpvs --no-video --idle
 fi
 
 [ "$#" -eq 1 ] && URL="${1}"
 
 while ! lsof "${SOCKET}"
 do
-  echo "waiting for mpv to start"
+  echo "waiting for mpvs to start"
   sleep 1
 done
 
