@@ -1,0 +1,2 @@
+#!/bin/sh
+mpv --input-ipc-server=${HOME}/.mpv/socket $@ 
