@@ -1,2 +1,5 @@
 #!/bin/zsh
-setxkbmap -layout us -variant altgr-intl && xmodmap ~/.Xmodmap
+setxkbmap -layout us -variant altgr-intl \
+  && xmodmap ~/.Xmodmap\
+  && notify-send "keyboard remapped"\
+  || notify-send "something went wrong when remapping the keyboard"
