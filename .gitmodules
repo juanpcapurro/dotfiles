@@ -23,3 +23,6 @@
 	path = src/st
 	url = git@github.com:juanpcapurro/st.git
 
+[submodule "src/blog"]
+	path = src/blog
+	url = git@github.com:juanpcapurro/blog.git
