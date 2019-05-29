@@ -8,7 +8,7 @@
 
 socket="$HOME/.mpv/socket"
 
-if [ -z "${MPV_SOCKET}" ] ; then
+if [ -n "${MPV_SOCKET}" ] ; then
   socket=${MPV_SOCKET}
 fi
 
@@ -33,11 +33,11 @@ if [ "$1" = "stop" ] ; then
   notify-send "exiting mpv"
 elif [ "$1" = "play-pause" ] ; then
   # toggle play-pause
-  mpvcommand 'cycle' 'pause'
   if [ "$(mpvctl get-paused)" == "true" ] ; then
-    notify-send "paused"
+    notify-send "playing"
   else
     notify-send "paused"
+  mpvcommand 'cycle' 'pause'
   fi
 elif [ "$1" = "pause" ] ; then
   # stop playing
