@@ -1,6 +1,7 @@
 #exec --no-startup-id oneoffplayer ~/.assets/sounds/sega.mp3
 exec_always --no-startup-id remapkeyboard
 exec --no-startup-id nextcloud
+exec --no-startup-id dunst
 exec --no-startup-id keynav daemonize
 exec --no-startup-id nm-applet
 exec --no-startup-id display_auto

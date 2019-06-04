@@ -1,4 +1,5 @@
-#!/bin/zsh
+#!/bin/sh
+
 setxkbmap -layout us -variant altgr-intl \
   && xmodmap ~/.Xmodmap\
   && notify-send "keyboard remapped"\
