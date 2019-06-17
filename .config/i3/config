@@ -122,8 +122,7 @@ bindsym $mod+minus [title="^(?!i3_dropdown_).*$"]scratchpad show
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-# black out a screen
-bindsym $mod+Shift+f exec feh -F ~/.assets/images/pitchblack.png
+bindsym $mod+Shift+f fullscreen toggle global
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -180,7 +179,7 @@ bindsym $mod+b exec "mpvctl pause"; exec "i3lock -f -c  3f2f3f"
 bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
 bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip && notify-send $(xclip -o)"
 
-set $mode_launcher "Run: [q]utebrowser, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [r]etroarch, [m]ongo, [s]ql"
+set $mode_launcher "Run: [q]utebrowser, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [r]etroarch, [m]ongo, [s]ql, [b]lackout"
 bindsym $mod+backslash mode $mode_launcher
 
 mode $mode_launcher{
@@ -192,6 +191,7 @@ mode $mode_launcher{
   bindsym p       exec pavucontrol                      ; mode "default"
   bindsym m       exec nosqlbooster                     ; mode "default"
   bindsym v       exec code                             ; mode "default"
+  bindsym b       exec feh -F ~/.assets/images/pitchblack.png ; mode "default"
   bindsym r       exec retroarch                        ; mode "default"
   bindsym s       exec mysql-workbench                  ; mode "default"
 
