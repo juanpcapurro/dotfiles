@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+xrandr \
+  --output HDMI-1 --mode 1920x1080 --scale-from 1366x768 --same-as eDP-1 \
+  --output eDP-1 --mode 1366x768 --scale-from 1366x768
+
+xset s 0
+xset dpms 0 0 0
+xset dpms force on
+remapkeyboard
