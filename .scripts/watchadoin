@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# dependecies: dmenu
+
+LOGDIR=~/horas
+logfile="${LOGDIR}/$(date -I)"
+
+if [ ! -d "${LOGDIR}" ] ; then
+  mkdir "${LOGDIR}"
+fi
+
+files_to_read=""
+if [ -e "${logfile}" ] ; then
+  files_to_read="${files_to_read} ${logfile}"
+fi
+yesterdays_logfile="${LOGDIR}/$(date -I -d yesterday)"
+if [ -e "${yesterdays_logfile}" ] ; then
+  files_to_read="${files_to_read} ${yesterdays_logfile}"
+fi
+
+if [ -z "${files_to_read}" ] ; then
+  files_to_read=/dev/null
+fi
+
+tasks=$(cat ${files_to_read} \
+  | cut -d ' ' -f 2- \
+  | sort \
+  | uniq -c \
+  | sort -bnr\
+  | cut -b 9- \
+  | dmenu -p "watchadoin?" -l 20)
+if [ -n "${tasks}" ] ; then
+  echo "$(date "+%H:%M" ) ${tasks}" >> ${logfile}
+fi
