@@ -1,7 +1,9 @@
 # Disable javascript
 config.set('content.javascript.enabled', False)
 # javascript exceptions
-for site in [ 'qute://*/*', 'chrome://*/*', 'file://*', 'https://web.telegram.org/*', 'https://web.whatsapp.com/*']:
+for site in [ 'telegram.org', 'gitlab.com', 'whatsapp.com', 'atixlabs.com', 'myjetbrains.com','slack.com','youtube.com', 'duckduckgo.com', 'bitwarden.com']:
+    config.set('content.javascript.enabled', True, '*://*.'+site+'/*')
+for site in [ 'qute://*/*', 'chrome://*/*', 'file://*']:
     config.set('content.javascript.enabled', True, site)
 
 # force a different user agent to fix whatsapp web issue 
