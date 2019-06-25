@@ -2,7 +2,7 @@
 
 # dependecies: dmenu
 
-LOGDIR=~/horas
+LOGDIR=~/timelog
 logfile="${LOGDIR}/$(date -I)"
 
 if [ ! -d "${LOGDIR}" ] ; then
