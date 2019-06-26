@@ -64,9 +64,13 @@ elif [ "$1" = "move-backwards" ] ; then
   notify-send "-10s"
 elif [ "$1" = "add-to-playlist" ] ; then
   playlist_file="$(ls ~/playlists |dmenu -l 20)"
-  current_url="$(mpvctl get-path| jq -j '.data')"
+  current_url="$(mpvctl get-path)"
   echo "${current_url}"| tee -a "${HOME}/playlists/${playlist_file}"
   notify-send "saving $(mpvctl title) to playlist ${playlist_file}"
+elif [ "$1" = "resume-playlist" ] ; then
+  playlist_file="$(ls ~/playlists |dmenu -l 20)"
+  cat "${HOME}/playlists/${playlist_file}" | xargs mpvctl add
+  notify-send "resuming playlist: ${playlist_file}"
 
 # commands meant to be called from other scripts/programs
 elif [ "$1" = "add" ] ; then

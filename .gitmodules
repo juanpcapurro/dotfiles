@@ -26,3 +26,6 @@
 [submodule "src/blog"]
 	path = src/blog
 	url = git@github.com:juanpcapurro/blog.git
+[submodule "src/node_server"]
+	path = src/node_server
+	url = git@github.com:juanpcapurro/node_server.git
