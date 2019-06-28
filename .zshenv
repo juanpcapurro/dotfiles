@@ -3,7 +3,7 @@ export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin"
 export EDITOR="minvim"
 export VISUAL='nvim'
 export TERMINAL="st"
-export BROWSER="google-chrome-stable"
+export BROWSER="qutebrowser"
 export READER="zathura"
 
 export NVM_DIR="$HOME/.nvm"
