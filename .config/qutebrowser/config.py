@@ -1,21 +1,19 @@
 # Disable javascript
 config.set('content.javascript.enabled', False)
 # javascript exceptions
-for site in [ 'telegram.org', 'gitlab.com', 'whatsapp.com', 'atixlabs.com', 'myjetbrains.com','slack.com','youtube.com', 'duckduckgo.com', 'bitwarden.com']:
+for site in [ 'telegram.org', 'gitlab.com', 'whatsapp.com', 'atixlabs.com', 'myjetbrains.com','slack.com','youtube.com', 'duckduckgo.com', 'bitwarden.com', 'tinder.com', 'reddit.com']:
     config.set('content.javascript.enabled', True, '*://*.'+site+'/*')
 for site in [ 'qute://*/*', 'chrome://*/*', 'file://*']:
     config.set('content.javascript.enabled', True, site)
 
+# sites in which to allow tracking/ads
+for site in ['tinder.com']:
+    config.set('content.host_blocking.enabled', False, '*://*.'+site+'/*')
+
 # force a different user agent to fix whatsapp web issue 
 config.set('content.headers.user_agent', "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Safari/537.36", 'https://web.whatsapp.com/*')
 
-# Prompt the user for the download location. If set to false,
-# `downloads.location.directory` will be used.
-# Type: Bool
 c.downloads.location.prompt = False
-
-# Open new tabs (middleclick/ctrl+click) in the background.
-# Type: Bool
 c.tabs.background = True
 
 # editor setting
