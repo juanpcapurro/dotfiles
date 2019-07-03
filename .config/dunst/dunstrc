@@ -100,11 +100,12 @@
     # Shortcuts are specified as "[modifier+][modifier+]...key".
     # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
     # "mod3" and "mod4" (windows-key).
+    # update by capu: fuck you, i dont need this
 
-    close = ctrl+Escape
-    close_all = mod3+Escape
-    history = ctrl+grave
-    context = ctrl+space
+    # close = ctrl+Escape
+    # close_all = mod3+Escape
+    # history = ctrl+grave
+    # context = ctrl+space
 
 [urgency_low]
     background = "#222222"
