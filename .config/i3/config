@@ -1,9 +1,4 @@
-#exec --no-startup-id oneoffplayer ~/.assets/sounds/sega.mp3
 exec_always --no-startup-id remapkeyboard
-exec --no-startup-id nextcloud
-exec --no-startup-id dunst
-exec --no-startup-id keynav daemonize
-exec --no-startup-id nm-applet
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
@@ -179,6 +174,7 @@ bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 #block/suspend
 bindsym $mod+Shift+b exec "i3lock -f -c 3f2f3f && systemctl suspend"
 bindsym $mod+b exec "mpvctl pause"; exec "i3lock -f -c  3f2f3f"
+bindsym $mod+Ctrl+b exec "i3lock -f -c  3f2f3f"
 
 bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
 bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip && notify-send $(xclip -o)"
