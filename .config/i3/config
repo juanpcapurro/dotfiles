@@ -194,6 +194,7 @@ mode $mode_launcher{
   bindsym b       exec feh -F ~/.assets/images/pitchblack.png ; mode "default"
   bindsym r       exec retroarch                        ; mode "default"
   bindsym s       exec mysql-workbench                  ; mode "default"
+  bindsym e       exec dmenuunicode                     ; mode "default"
 
   bindsym Escape         mode "default"
   bindsym Return         mode "default"
