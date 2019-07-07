@@ -1,13 +1,17 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 unmute(){
   amixer -q set Headphone unmute ; amixer -q set Speaker unmute 
 }
 
 if [ "$1" = "volume-up" ] ; then
-  amixer -q set Master 5%+ unmute
+  amixer -q set Master 5%+ unmute ; unmute ; notify-send "vol++"
+elif [ "$1" = "volume-down" ] ; then
+  amixer -q set Master 5%- unmute ; unmute ; notify-send "vol--"
 elif [ "$1" = "unmute" ] ; then
   unmute
+elif [ "$1" = "mute-toggle" ] ; then
+  unmute ; amixer -q set Master toggle; notify-send "mute toggle"
 elif [ "$1" = "mute" ] ; then
   amixer -q set Headphone unmute ; amixer -q set Speaker unmute 
 else

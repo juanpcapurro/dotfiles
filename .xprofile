@@ -3,8 +3,6 @@
 # Tray programs. The most race-conditioney are launched first.
 nextcloud &
 dunst &
-blueman-applet &
 nm-applet &
-volumeicon &
 keynav daemonize &
-nm-applet &
+sxhkd &
