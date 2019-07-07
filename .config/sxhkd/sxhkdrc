@@ -5,8 +5,9 @@ super+b
 super+shift+b
   mpvctl pause; i3lock -f -c  3f2f3f ; systemctl suspend
 
+# race condition: sxhkd doesn't let go of the keyboard
 super+p
-  scrot -s ~/tmp_screenshot.png && xclip -selection clipboard -t image/png -i ~/tmp_screenshot.png
+  sleep 0.2 && scrot -s ~/tmp_screenshot.png && xclip -selection clipboard -t image/png -i ~/tmp_screenshot.png
 super+shift+p
   grabc | head --bytes=7 | xclip && notify-send $(xclip -o)
 
