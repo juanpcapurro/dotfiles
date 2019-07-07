@@ -54,14 +54,15 @@ elif [ "$1" = "next" ] ; then
 elif [ "$1" = "previous" ] ; then
   # play previous item in playlist
   mpvcommand 'playlist_prev'
+  notify-send "previous"
 elif [ "$1" = "move-forward" ] ; then
-  # play next item in playlist
+  # go forward 10s
   mpvcommand seek 10 relative
   notify-send "+10s"
 elif [ "$1" = "move-backwards" ] ; then
-  # play previous item in playlist
+  # go back 10s
   mpvcommand seek -10 relative
-  notify-send "-10s"
+  notify-send -- "-10s"
 elif [ "$1" = "add-to-playlist" ] ; then
   playlist_file="$(ls ~/playlists |dmenu -l 20)"
   current_url="$(mpvctl get-path)"
