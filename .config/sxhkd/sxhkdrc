@@ -19,12 +19,13 @@ super+control+x
 super+r
   remapkeyboard
 
-super+backslash ; {q, c, shift+c, n, p, m, v, b, r, s}
+super+backslash ; {q, c, shift+c, n, p, m, v, b, r, s, e}
   {\
     qutebrowser, google-chrome-stable, google-chrome-stable --incognito,\
     nautilus, pavucontrol, nosqlbooster, code,\
     feh -F ~/.assets/images/pitchblack.png,\
-    retroarch, mysql-workbench\
+    retroarch, mysql-workbench,\
+    dmenuunicode
   }
 
 super+equal ; {a, m, shift+m }
