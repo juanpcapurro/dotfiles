@@ -1,0 +1,42 @@
+IMAPStore capu-tech-remote
+Host mail.privateemail.com
+Port 993
+User hi@capu.tech
+PassCmd "secret-tool lookup hi@capu.tech password"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore capu-tech-local
+Path ~/mail/capu-tech/
+Inbox ~/mail/capu-tech/INBOX
+Subfolders Verbatim
+
+Channel capu-tech
+Master :capu-tech-remote:
+Slave :capu-tech-local:
+Create Both
+Expunge Both
+Patterns *
+SyncState *
+
+IMAPStore personal-gmail-remote
+Host imap.gmail.com
+Port 993
+User juanpcapurro@gmail.com
+PassCmd "secret-tool lookup juanpcapurro@gmail.com password"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore personal-gmail-local
+Path ~/mail/personal-gmail/
+Inbox ~/mail/personal-gmail/INBOX
+Subfolders Verbatim
+
+Channel personal-gmail
+Master :personal-gmail-remote:
+Slave :personal-gmail-local:
+Create Both
+Expunge Both
+Patterns *
+SyncState *
+
