@@ -7,6 +7,11 @@ separator_block_width=15
 markup=none
 
 [headset]
+command=${HOME}/.config/i3blocks/mail
+interval=90
+separator=true
+
+[headset]
 command=${HOME}/.config/i3blocks/headset_status
 interval=2
 separator=true

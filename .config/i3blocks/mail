@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mail_count=$(find mail -regex '.*/new/.*'|wc -l)
+
+echo "✉️: ${mail_count}"
+
