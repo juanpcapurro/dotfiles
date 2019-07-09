@@ -15,7 +15,7 @@ super+x
   display_auto
 super+shift+x
   displayselect
-super+control+x
+super+alt+x
   display_standalone
 super+r
   remapkeyboard
@@ -53,7 +53,7 @@ super+BackSpace ; {space, y, a, shift+a, m}
     volumectl mute-toggle\
   }
 
-super+{ bracketleft, bracketright, shift+bracketleft, shift+bracketright, control+bracketleft, control+bracketright }
+super+{ bracketleft, bracketright, shift+bracketleft, shift+bracketright, alt+bracketleft, alt+bracketright }
   {\
     volumectl volume-down, volumectl volume-up,\
     mpvctl previous, mpvctl next,\
