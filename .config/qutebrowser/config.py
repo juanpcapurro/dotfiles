@@ -1,7 +1,7 @@
 # Disable javascript
 config.set('content.javascript.enabled', False)
 # javascript exceptions
-for site in [ 'telegram.org', 'gitlab.com', 'whatsapp.com', 'atixlabs.com', 'myjetbrains.com','slack.com','youtube.com', 'duckduckgo.com', 'bitwarden.com', 'tinder.com', 'reddit.com', 'trello.com', 'twitter.com', 'github.com', 'gitlab.com']:
+for site in [ 'telegram.org', 'gitlab.com', 'whatsapp.com', 'atixlabs.com', 'myjetbrains.com','slack.com','youtube.com', 'duckduckgo.com', 'bitwarden.com', 'tinder.com', 'reddit.com', 'trello.com', 'twitter.com', 'github.com', 'gitlab.com', 'mercadopago.com']:
     config.set('content.javascript.enabled', True, '*://*.'+site+'/*')
 for site in [ 'qute://*/*', 'chrome://*/*', 'file://*']:
     config.set('content.javascript.enabled', True, site)
