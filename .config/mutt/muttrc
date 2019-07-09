@@ -5,6 +5,7 @@ folder-hook 'personal-gmail' 'source ~/.config/mutt/accounts/gmail'
 source ~/.config/mutt/accounts/personal-selfhost
 macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-selfhost<enter><change-folder>!<enter>'
 macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-gmail<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work-gmail<enter><change-folder>!<enter>'
 
 # This file contains all of mutt-wizard's default settings.
 # mutt-wizard will have this file sourced from your muttrc.

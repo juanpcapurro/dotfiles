@@ -40,3 +40,23 @@ Expunge Both
 Patterns *
 SyncState *
 
+IMAPStore work-gmail-remote
+Host imap.gmail.com
+Port 993
+User jpcapurro@atixlabs.com
+PassCmd "secret-tool lookup jpcapurro@atixlabs.com password"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore work-gmail-local
+Path ~/mail/work-gmail/
+Inbox ~/mail/work-gmail/INBOX
+Subfolders Verbatim
+
+Channel work-gmail
+Master :work-gmail-remote:
+Slave :work-gmail-local:
+Create Both
+Expunge Both
+Patterns *
+SyncState *
