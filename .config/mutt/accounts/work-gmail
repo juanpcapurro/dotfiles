@@ -1,0 +1,12 @@
+# vim: filetype=neomuttrc
+set folder = "~/mail/work-gmail/"
+set spoolfile = "+INBOX"
+set record = "+[Gmail]/Sent Mail"
+set trash = "+[Gmail]/Trash"
+set postponed = "+[Gmail]/Drafts"
+set from = "jpcapurro@atixlabs.com"
+set realname = "Juan Pablo Capurro"
+
+mailboxes +INBOX "+[Gmail]/All Mail" "+[Gmail]/Sent Mail" "+[Gmail]/Trash" "+[Gmail]/Drafts"  "+[Gmail]/Important"  "+[Gmail]/Starred" "+[Gmail]/Spam"
+
+color status brightyellow red
