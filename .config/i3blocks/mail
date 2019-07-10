@@ -1,0 +1,13 @@
+#!/bin/sh
+
+accounts=$(ls ~/mail)
+mail_count=""
+for account in $accounts;
+do
+  mail_count="${mail_count}$(find mail/${account} -regex '.*/new/.*'|wc -l)/"
+done
+#cut last / character
+mail_count=$(echo ${mail_count}|head --bytes=-2)
+
+echo "✉️: ${mail_count}"
+

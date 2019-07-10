@@ -1,0 +1,8 @@
+text/plain; $EDITOR %s ; needsterminal;
+# I hate myself so much for this
+text/html; mkdir -p ~/tmp/tmp && cp %s ~/tmp%s.html && qutebrowser ~/tmp%s.html && rm -fr ~/tmp/tmp;
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+image/*; sxiv %s ; copiousoutput
+video/*; mpvappend %s ; copiousoutput
+application/pdf; $READER %s ;
+application/pgp-encrypted; gpg -d '%s'; copiousoutput;

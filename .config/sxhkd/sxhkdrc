@@ -1,0 +1,64 @@
+super+ctrl+b
+  i3lock -f -c  3f2f3f
+super+b
+  mpvctl pause; i3lock -f -c  3f2f3f
+super+shift+b
+  mpvctl pause; i3lock -f -c  3f2f3f ; systemctl suspend
+
+# race condition: sxhkd doesn't let go of the keyboard
+super+p
+  sleep 0.2 && scrot -s ~/tmp_screenshot.png && xclip -selection clipboard -t image/png -i ~/tmp_screenshot.png
+super+shift+p
+  grabc | head --bytes=7 | xclip && notify-send $(xclip -o)
+
+super+x
+  display_auto
+super+shift+x
+  displayselect
+super+alt+x
+  display_standalone
+super+r
+  remapkeyboard
+
+super+backslash ; {q, c, shift+c, n, p, m, v, b, r, s, e}
+  {\
+    qutebrowser, google-chrome-stable, google-chrome-stable --incognito,\
+    nautilus, pavucontrol, nosqlbooster, code,\
+    feh -F ~/.assets/images/pitchblack.png,\
+    retroarch, mysql-workbench,\
+    dmenuunicode
+  }
+
+super+equal ; {a, m, shift+m }
+  oneoffplayer ~/.assets/sounds/{airhorn.mp3, maestruli_short.mp3, maestruli_long.mp3}
+
+super+shift+backslash ; {r, o, h, s}
+  { reboot, poweroff, systemctl hibernate, systemctl suspend }
+
+XF86AudioPlay 
+  mpvctl play-pause
+XF86AudioPause
+  mpvctl play-pause
+XF86AudioNext 
+  mpvctl next
+XF86AudioPrev 
+  mpvctl previous
+
+super+BackSpace ; {space, y, a, shift+a, m}
+  {\
+    mpvctl play-pause,\
+    mpvctl get-path |xclip -selection clipboard,\
+    mpvctl add-to-playlist,\
+    mpvctl add-all-to-playlist,\
+    volumectl mute-toggle\
+  }
+
+super+{ bracketleft, bracketright, shift+bracketleft, shift+bracketright, alt+bracketleft, alt+bracketright }
+  {\
+    volumectl volume-down, volumectl volume-up,\
+    mpvctl previous, mpvctl next,\
+    mpvctl move-backwards, mpvctl move-forward\
+  }
+
+super+shift+BackSpace ; {a, h, c, d, f}
+  headsetctl {a2dp, headset, connect, disconnect, fixdaemon}

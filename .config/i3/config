@@ -95,9 +95,6 @@ bindsym $mod+Shift+Return exec --no-startup-id $term
 bindsym $mod+q [con_id="__focused__" title="^(?!i3_dropdown_).*$"]kill
 bindsym $mod+d exec dmenu_run -l 20
 
-bindsym $mod+x exec display_auto
-bindsym $mod+Shift+x exec display_standalone
-
 # change focus
 bindsym $mod+$left  focus tiling; focus left
 bindsym $mod+$down  focus tiling; focus down
@@ -159,7 +156,6 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 bindsym $mod+Shift+r restart
-bindsym $mod+r exec remapkeyboard
 
 bindsym $mod+y resize shrink width 25 px or 6 ppt
 bindsym $mod+u resize grow height 25 px or 6 ppt
@@ -170,111 +166,6 @@ bindsym $mod+Shift+y resize shrink width 4 px or 1 ppt
 bindsym $mod+Shift+u resize grow height 4 px or 1 ppt
 bindsym $mod+Shift+i resize shrink height 4 px or 1 ppt
 bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
-
-#block/suspend
-bindsym $mod+Shift+b exec "i3lock -f -c 3f2f3f && systemctl suspend"
-bindsym $mod+b exec "mpvctl pause"; exec "i3lock -f -c  3f2f3f"
-bindsym $mod+Ctrl+b exec "i3lock -f -c  3f2f3f"
-
-bindsym --release $mod+p exec "scrot -s ~/tmp_screenshot.png && xclip -selection clip-board -t image/png -i ~/tmp_screenshot.png"
-bindsym --release $mod+Shift+p exec "grabc |head --bytes=7|xclip && notify-send $(xclip -o)"
-
-set $mode_launcher "Run: [q]utebrowser, [c]chome, [d]isplayselect, [n]autilus, [p]avucontrol, [v]scode, [r]etroarch, [m]ongo, [s]ql, [b]lackout"
-bindsym $mod+backslash mode $mode_launcher
-
-mode $mode_launcher{
-  bindsym q       exec qutebrowser                      ; mode "default"
-  bindsym c       exec google-chrome-stable             ; mode "default"
-  bindsym Shift+c exec google-chrome-stable --incognito ; mode "default"
-  bindsym d       exec displayselect                    ; mode "default"
-  bindsym n       exec nautilus                         ; mode "default"
-  bindsym p       exec pavucontrol                      ; mode "default"
-  bindsym m       exec nosqlbooster                     ; mode "default"
-  bindsym v       exec code                             ; mode "default"
-  bindsym b       exec feh -F ~/.assets/images/pitchblack.png ; mode "default"
-  bindsym r       exec retroarch                        ; mode "default"
-  bindsym s       exec mysql-workbench                  ; mode "default"
-  bindsym e       exec dmenuunicode                     ; mode "default"
-
-  bindsym Escape         mode "default"
-  bindsym Return         mode "default"
-  bindsym backslash      mode "default"
-  bindsym $mod+backslash mode "default"
-}
-
-set $mode_power_launcher "Run: [r]eboot, [o]ff, [h]ibernate"
-bindsym $mod+Shift+backslash mode $mode_power_launcher
-
-mode $mode_power_launcher{
-  bindsym r       exec reboot              ; mode "default"
-  bindsym o       exec poweroff            ; mode "default"
-  bindsym h       exec systemctl hibernate ; mode "default"
-  bindsym s       exec systemctl suspend   ; mode "default"
-
-  bindsym Escape               mode "default"
-  bindsym Return               mode "default"
-  bindsym backslash            mode "default"
-  bindsym $mod+backslash       mode "default"
-  bindsym $mod+Shift+backslash mode "default"
-}
-
-set $mode_sounds "Sound: [m]aestruli, [a]irhorn"
-bindsym $mod+equal mode $mode_sounds
-
-mode $mode_sounds{
-  bindsym a       exec oneoffplayer ~/.assets/sounds/airhorn.mp3         ; mode "default"
-  bindsym m       exec oneoffplayer ~/.assets/sounds/maestruli_short.mp3 ; mode "default"
-  bindsym Shift+m exec oneoffplayer ~/.assets/sounds/maestruli_long.mp3  ; mode "default"
-
-  bindsym Escape     mode "default"
-  bindsym Return     mode "default"
-  bindsym equal      mode "default"
-  bindsym $mod+equal mode "default"
-}
-
-set $sound_control "Soundctl: ]: V++, [: V--, [m]ute, [y]ankpath, [a]dd2playlist"
-bindsym $mod+BackSpace mode $sound_control
-
-mode $sound_control{
-  bindsym Shift+bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++"
-  bindsym Shift+bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--"
-  bindsym bracketright exec amixer -q set Master 5%+ unmute ; exec unmute ; exec notify-send "vol++" ; mode "default"
-  bindsym bracketleft  exec amixer -q set Master 5%- unmute ; exec unmute ; exec notify-send "vol--" ; mode "default"
-  bindsym m            exec unmute ; exec amixer -q set Master toggle; exec notify-send "mute toggle" ; mode "default"
-  bindsym space        exec "mpvctl play-pause"; mode "default"
-  bindsym period       exec "mpvctl next"; mode "default"
-  bindsym comma        exec "mpvctl previous"; mode "default"
-  bindsym Shift+period exec "mpvctl move-forward"
-  bindsym Shift+comma  exec "mpvctl move-backwards"
-  bindsym y            exec "mpvctl get-path |xclip -selection clipboard"; exec notify-send "yanked URI of $(mpvctl title) to clipboard" ; mode "default"
-  bindsym a            exec "mpvctl add-to-playlist" ; mode "default"
-
-  bindsym Escape         mode "default"
-  bindsym Return         mode "default"
-  bindsym BackSpace      mode "default"
-  bindsym $mod+BackSpace mode "default"
-}
-bindsym XF86AudioPlay  exec "mpvctl play-pause"
-bindsym XF86AudioPause exec "mpvctl play-pause"
-bindsym XF86AudioNext  exec "mpvctl next"
-bindsym XF86AudioPrev  exec "mpvctl previous"
-
-set $headset_control "headset: [c]onnect, [d]isconnect, [a]2dp, [h]eadset, [f]xdaemon"
-bindsym $mod+Shift+BackSpace mode $headset_control
-
-mode $headset_control{
-  bindsym a            exec "headsetctl a2dp" ; mode "default"
-  bindsym h            exec "headsetctl headset" ; mode "default"
-  bindsym c            exec "headsetctl connect" ; mode "default"
-  bindsym d            exec "headsetctl disconnect" ; mode "default"
-  bindsym f            exec "headsetctl fixdaemon" ; mode "default"
-
-  bindsym Escape         mode "default"
-  bindsym Return         mode "default"
-  bindsym BackSpace      mode "default"
-  bindsym $mod+BackSpace mode "default"
-  bindsym $mod+Shift+BackSpace mode "default"
-}
 
 bar {
   mode dock

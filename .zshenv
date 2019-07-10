@@ -1,6 +1,6 @@
 #variables
 export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin"
-export EDITOR="minvim"
+export EDITOR="nvim -u ~/.config/nvim/minimal.vim"
 export VISUAL='nvim'
 export TERMINAL="st"
 export BROWSER="qutebrowser"
