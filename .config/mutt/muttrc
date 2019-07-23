@@ -1,11 +1,17 @@
 # vim: filetype=neomuttrc
 set sendmail = "/usr/bin/msmtp"
 folder-hook 'capu-tech' 'source ~/.config/mutt/accounts/personal-selfhost'
-folder-hook 'personal-gmail' 'source ~/.config/mutt/accounts/gmail'
+folder-hook 'personal-gmail' 'source ~/.config/mutt/accounts/personal-gmail'
+folder-hook 'personal-yandex' 'source ~/.config/mutt/accounts/personal-yandex'
+folder-hook 'work-gmail' 'source ~/.config/mutt/accounts/work-gmail'
+
+# default account
 source ~/.config/mutt/accounts/personal-selfhost
+
 macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-selfhost<enter><change-folder>!<enter>'
-macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-gmail<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-yandex<enter><change-folder>!<enter>'
 macro index <f4> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work-gmail<enter><change-folder>!<enter>'
+macro index <f5> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-gmail<enter><change-folder>!<enter>'
 
 macro compose <Esc>M "| marked -o /tmp/neomutt-alternative.html<enter><attach-file>/tmp/neomutt-alternative.html<enter><tag-entry><previous-entry><tag-entry>" "Parse markdown and add it as an attachment"
 macro compose <Esc>m "| marked |w3m -T text/html <enter>" "Preview html render"
@@ -105,7 +111,7 @@ mono indicator reverse
 mono error bold
 color normal default default
 color indicator brightblack white
-color sidebar_highlight red default
+color sidebar_highlight brightblack red
 color sidebar_divider brightblack black
 color sidebar_flagged red black
 color sidebar_new green black

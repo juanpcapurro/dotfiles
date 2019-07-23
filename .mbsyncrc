@@ -30,6 +30,7 @@ CertificateFile /etc/ssl/certs/ca-certificates.crt
 MaildirStore personal-gmail-local
 Path ~/mail/personal-gmail/
 Inbox ~/mail/personal-gmail/INBOX
+MapInbox "[Gmail]/All Mail"
 Subfolders Verbatim
 
 Channel personal-gmail
@@ -37,7 +38,7 @@ Master :personal-gmail-remote:
 Slave :personal-gmail-local:
 Create Both
 Expunge Both
-Patterns *
+Patterns * "![Gmail]/All Mail" "![Gmail]/Starred" "![Gmail]/Important"
 SyncState *
 
 IMAPStore work-gmail-remote
@@ -51,6 +52,7 @@ CertificateFile /etc/ssl/certs/ca-certificates.crt
 MaildirStore work-gmail-local
 Path ~/mail/work-gmail/
 Inbox ~/mail/work-gmail/INBOX
+MapInbox "[Gmail]/All Mail"
 Subfolders Verbatim
 
 Channel work-gmail
@@ -58,5 +60,27 @@ Master :work-gmail-remote:
 Slave :work-gmail-local:
 Create Both
 Expunge Both
+Patterns * "![Gmail]/All Mail" "![Gmail]/Starred" "![Gmail]/Important"
+SyncState *
+
+IMAPStore personal-yandex-remote
+Host imap.yandex.com
+Port 993
+User vasectomio
+PassCmd "secret-tool lookup vasectomio@yandex.ru password"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore personal-yandex-local
+Path ~/mail/personal-yandex/
+Inbox ~/mail/personal-yandex/INBOX
+Subfolders Verbatim
+
+Channel personal-yandex
+Master :personal-yandex-remote:
+Slave :personal-yandex-local:
+Create Both
+Expunge Both
 Patterns *
 SyncState *
+
