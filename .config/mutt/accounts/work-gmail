@@ -7,6 +7,6 @@ set postponed = "+[Gmail]/Drafts"
 set from = "jpcapurro@atixlabs.com"
 set realname = "Juan Pablo Capurro"
 
-mailboxes +INBOX "+[Gmail]/All Mail" "+[Gmail]/Sent Mail" "+[Gmail]/Trash" "+[Gmail]/Drafts"  "+[Gmail]/Important"  "+[Gmail]/Starred" "+[Gmail]/Spam"
+mailboxes +INBOX "+[Gmail]/Sent Mail" "+[Gmail]/Trash" "+[Gmail]/Drafts" "+[Gmail]/Spam"
 
 color status brightyellow red

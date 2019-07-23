@@ -1,12 +1,12 @@
 # vim: filetype=neomuttrc
-set folder = "~/mail/capu-tech/"
+set folder = "~/mail/personal-yandex/"
 set spoolfile = "+INBOX"
 set record = "+Sent"
 set trash = "+Trash"
 set postponed = "+Drafts"
-set from = "hi@capu.tech"
+set from = "vasectomio@yandex.ru"
 set realname = "Juan Pablo Capurro"
 
 mailboxes =INBOX =Sent =Drafts =Spam =Trash
 
-color status brightyellow black
+color status brightyellow color57
