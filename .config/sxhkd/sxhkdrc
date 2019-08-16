@@ -44,10 +44,11 @@ XF86AudioNext
 XF86AudioPrev 
   mpvctl previous
 
-super+BackSpace ; {space, y, a, shift+a, m}
+super+BackSpace ; {space, y, c, a, shift+a, m}
   {\
     mpvctl play-pause,\
     mpvctl get-path |xclip -selection clipboard,\
+    QUTE_URL=$(xclip -selection clipboard) mpvideoappend,\
     mpvctl add-to-playlist,\
     mpvctl add-all-to-playlist,\
     volumectl mute-toggle\
@@ -62,3 +63,4 @@ super+{ bracketleft, bracketright, shift+bracketleft, shift+bracketright, alt+br
 
 super+shift+BackSpace ; {a, h, c, d, f}
   headsetctl {a2dp, headset, connect, disconnect, fixdaemon}
+
