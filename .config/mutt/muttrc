@@ -6,7 +6,7 @@ folder-hook 'personal-yandex' 'source ~/.config/mutt/accounts/personal-yandex'
 folder-hook 'work-gmail' 'source ~/.config/mutt/accounts/work-gmail'
 
 # default account
-source ~/.config/mutt/accounts/personal-selfhost
+source ~/.config/mutt/accounts/work-gmail
 
 macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-selfhost<enter><change-folder>!<enter>'
 macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-yandex<enter><change-folder>!<enter>'
