@@ -50,11 +50,11 @@ set $ws8  "8: dbg"
 set $ws9  "9: browser"
 set $ws10 "10: code"
 
-workspace $ws1 output eDP-1
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output eDP-1
+workspace $ws1 output primary
+workspace $ws2 output primary
+workspace $ws3 output primary
+workspace $ws4 output primary
+workspace $ws5 output primary
 
 workspace $ws6 output HDMI-1
 workspace $ws7 output HDMI-1
