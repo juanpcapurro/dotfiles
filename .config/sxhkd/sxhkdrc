@@ -5,6 +5,10 @@ super+b
 super+shift+b
   mpvctl pause; i3lock -f -c  3f2f3f ; systemctl suspend
 
+# time tracking
+super+m
+  watchadoin
+
 # race condition: sxhkd doesn't let go of the keyboard
 super+p
   sleep 0.2 && scrot -s ~/tmp_screenshot.png && xclip -selection clipboard -t image/png -i ~/tmp_screenshot.png
@@ -20,9 +24,10 @@ super+alt+x
 super+r
   remapkeyboard
 
-super+backslash ; {q, c, shift+c, n, p, m, v, b, r, s, e}
+super+backslash ; {q, shift+q, c, shift+c, n, p, m, v, b, r, s, e}
   {\
-    qutebrowser, google-chrome-stable, google-chrome-stable --incognito,\
+    qutebrowser -r default , qutebrowser -r chats, \
+    google-chrome-stable, google-chrome-stable --incognito,\
     nautilus, pavucontrol, nosqlbooster, code,\
     feh -F ~/.assets/images/pitchblack.png,\
     retroarch, mysql-workbench,\
@@ -52,7 +57,7 @@ super+BackSpace ; {space, y, c, a, shift+a, m}
   {\
     mpvctl play-pause,\
     mpvctl get-path | xclip -selection clipboard && notify-send "yanked url of $(mpvctl title) to clipboard",\
-    QUTE_URL=$(xclip -selection clipboard) mpvideoappend,\
+    QUTE_URL=$(xclip -o -selection clipboard) mpvideoappend,\
     mpvctl add-to-playlist,\
     mpvctl add-all-to-playlist,\
     volumectl mute-toggle\
