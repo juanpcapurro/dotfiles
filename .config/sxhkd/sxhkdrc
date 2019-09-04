@@ -48,11 +48,15 @@ XF86AudioNext
   mpvctl next
 XF86AudioPrev 
   mpvctl previous
+XF86AudioLowerVolume
+  volumectl volume-up
+XF86AudioRaiseVolume
+  volumectl volume-down
 
 super+BackSpace ; {space, y, c, a, shift+a, m}
   {\
     mpvctl play-pause,\
-    mpvctl get-path |xclip -selection clipboard,\
+    mpvctl get-path | xclip -selection clipboard && notify-send "yanked url of $(mpvctl title) to clipboard",\
     QUTE_URL=$(xclip -o -selection clipboard) mpvideoappend,\
     mpvctl add-to-playlist,\
     mpvctl add-all-to-playlist,\

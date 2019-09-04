@@ -4,10 +4,14 @@ unmute(){
   amixer -q set Headphone unmute ; amixer -q set Speaker unmute 
 }
 
+setvolume(){
+  amixer set $1 $2| grep -o '\[.*%]'
+}
+
 if [ "$1" = "volume-up" ] ; then
-  amixer -q set Master 5%+ unmute ; unmute ; notify-send "vol++"
+  unmute ; notify-send -- "++vol $(setvolume "Master" "5%+")"
 elif [ "$1" = "volume-down" ] ; then
-  amixer -q set Master 5%- unmute ; unmute ; notify-send "vol--"
+  unmute ; notify-send -- "--vol $(setvolume "Master" "5%-")"
 elif [ "$1" = "unmute" ] ; then
   unmute
 elif [ "$1" = "mute-toggle" ] ; then
