@@ -47,6 +47,18 @@ make(){
   command make $@ ; notify-send "Build terminada. Deja de pedorrear"
 }
 
+hex2dec (){
+  echo -n $((16#${1}))
+}
+
+dec2hex (){
+  printf '%x' ${1}
+}
+
+contractsize(){
+  [ -f "${1}" ] && echo "$(cat "${1}"|jq -r '.bytecode' |wc -c)/2" |bc
+}
+
 echo ">^.^<"
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
