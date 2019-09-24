@@ -14,9 +14,6 @@ bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3-tmux-dropdown i3_dr
   [title="i3_dropdown_(?!notes)"] move scratchpad;\
   [title="i3_dropdown_notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
-# time tracking
-bindsym $mod+m exec --no-startup-id watchadoin
-
 # dropdown terminal
 bindsym $mod+semicolon exec --no-startup-id i3-tmux-dropdown i3_dropdown_terminal;\
   [title="i3_dropdown_(?!terminal)"] move scratchpad;\
@@ -27,10 +24,10 @@ bindsym $mod+slash exec --no-startup-id i3-tmux-dropdown i3_dropdown_terminal;\
   [title="i3_dropdown_(?!quteditor)"] move scratchpad;\
   [title="i3_dropdown_quteditor"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
-set $ws1  "1: browser"
+set $ws1  "1: chats"
 set $ws2  "2: term"
-set $ws3  "3: "
-set $ws4  "4: "
+set $ws3  "3: misc"
+set $ws4  "4: app"
 set $ws5  "5: code"
 set $ws6  "6: misc"
 set $ws7  "7: "

@@ -18,7 +18,7 @@ Return warp,doubleclick 1,end
 ctrl+space warp, click 1
 ctrl+Return warp, doubleclick 1
 semicolon warp,end
-d drag
+d drag 1
 w warp
 t windowzoom
 c cursorzoom 300 300
