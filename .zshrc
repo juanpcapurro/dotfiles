@@ -59,6 +59,10 @@ contractsize(){
   [ -f "${1}" ] && echo "$(cat "${1}"|jq -r '.bytecode' |wc -c)/2" |bc
 }
 
+man(){
+  command man $@ || $1 --help 2>&1 |less
+}
+
 echo ">^.^<"
 #syntax highlight (wraps widgets)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
