@@ -98,6 +98,11 @@ bindsym $mod+$down  focus tiling; focus down
 bindsym $mod+$up    focus tiling; focus up
 bindsym $mod+$right focus tiling; focus right
 
+bindsym $mod+Mod1+$left  focus output left
+bindsym $mod+Mod1+$down  focus output down
+bindsym $mod+Mod1+$up    focus output up
+bindsym $mod+Mod1+$right focus output right
+
 # move focused window
 bindsym $mod+Shift+$left  move left 38 px
 bindsym $mod+Shift+$down  move down 38 px

@@ -11,7 +11,7 @@ super+m
 
 # race condition: sxhkd doesn't let go of the keyboard
 super+p
-  sleep 0.2 && scrot -s ~/tmp_screenshot.png && xclip -selection clipboard -t image/png -i ~/tmp_screenshot.png
+  sleep 0.2 && rm ~/tmp_screenshot.png ; scrot -s ~/tmp_screenshot.png && xclip -selection clipboard -t image/png -i ~/tmp_screenshot.png
 super+shift+p
   grabc | head --bytes=7 | xclip && notify-send $(xclip -o)
 

@@ -6,19 +6,20 @@ command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-[headset]
-command=${HOME}/.config/i3blocks/mail
-interval=90
-separator=true
-
-[headset]
-command=${HOME}/.config/i3blocks/headset_status
+[micmute]
+command=${HOME}/.config/i3blocks/micmute
+label=🎤
 interval=2
 separator=true
 
 [mpv]
 command=${HOME}/.config/i3blocks/mpvstatus
 interval=2
+separator=true
+
+[mail]
+command=${HOME}/.config/i3blocks/mail
+interval=90
 separator=true
 
 [load_average]

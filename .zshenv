@@ -25,6 +25,6 @@ export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 #aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias ssh="TERM=xterm-256color ssh"
-alias minvim="nvim -u ~/.config/nvim/minimal.vim"
+alias fatvim="nvim -u ~/.config/nvim/fat.vim"
 alias feh="feh --magick-timeout 1"
-alias xclipc="xclip - selection clipboard"
+alias xclipc="xclip -selection clipboard"

@@ -1,8 +1,7 @@
 #!/bin/sh
 
-# Tray programs. The most race-conditioney are launched first.
 nextcloud &
-dunst &
 nm-applet &
+
 keynav daemonize &
 sxhkd &
