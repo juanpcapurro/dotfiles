@@ -1,5 +1,7 @@
 #!/bin/sh
 
+pgrep compton || compton &
+
 nextcloud &
 nm-applet &
 
