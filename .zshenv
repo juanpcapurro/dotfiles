@@ -1,7 +1,7 @@
 #variables
 export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin"
-export EDITOR="nvim -u ~/.config/nvim/minimal.vim"
-export VISUAL='nvim'
+export EDITOR="nvim"
+export VISUAL='nvim -u ~/.config/nvim/fat.vim'
 export TERMINAL="st"
 export BROWSER="qutebrowser"
 export READER="zathura"
@@ -20,7 +20,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 export GRADLE_HOME=/opt/gradle/gradle-2.13
 export PATH=$PATH:/opt/gradle/gradle-2.13/bin
 export ANDROID_HOME=/home/capurro/Android/Sdk
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.cargo/bin:$PATH"
 
 #aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
