@@ -1,5 +1,5 @@
 #variables
-export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin"
+export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin:/usr/sbin:/sbin"
 export EDITOR="nvim -u ~/.config/nvim/minimal.vim"
 export VISUAL='nvim'
 export TERMINAL="st"
