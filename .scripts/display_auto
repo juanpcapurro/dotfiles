@@ -1,12 +1,12 @@
 #!/bin/sh
 # TODO: make this work for things other than home dock or no screens
-docked_displaycount=$(xrandr |grep -e 'HDMI2 connected' -e 'HDMI3 connected'|wc -l)
+docked_displaycount=$(xrandr |grep -e 'HDMI-2 connected' -e 'HDMI-3 connected'|wc -l)
 
-projector_displaycount=$(xrandr |grep -e 'VGA1 connected' |wc -l)
+projector_displaycount=$(xrandr |grep -e 'VGA-1 connected' |wc -l)
 
-work_displaycount=$(xrandr |grep -e 'HDMI1 connected' |wc -l)
+work_displaycount=$(xrandr |grep -e 'HDMI-1 connected' |wc -l)
 
-# xrandr |grep 'HDMI2 connected' && display_home_dock || display_standalone
+# xrandr |grep 'HDMI-2 connected' && display_home_dock || display_standalone
 
 if [ $projector_displaycount = 1 ] ; then
   display_comfy_projector

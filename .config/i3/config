@@ -2,7 +2,7 @@ exec_always --no-startup-id remapkeyboard
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
-set $term st -f SourceCodePro:pixelsize=17
+set $term st
 
 #Default borders
 for_window [class=".*"] border pixel 2
@@ -41,11 +41,11 @@ workspace $ws3 output primary
 workspace $ws4 output primary
 workspace $ws5 output primary
 
-workspace $ws6 output  HDMI2
-workspace $ws7 output  HDMI2
-workspace $ws8 output  HDMI2
-workspace $ws9 output  HDMI2
-workspace $ws10 output HDMI2
+workspace $ws6 output  HDMI-2
+workspace $ws7 output  HDMI-2
+workspace $ws8 output  HDMI-2
+workspace $ws9 output  HDMI-2
+workspace $ws10 output HDMI-2
 
 assign [class="VirtualBox.*"] $ws2
 assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] $ws5
@@ -169,8 +169,8 @@ bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 bar {
   status_command i3blocks
   position bottom
-  output HDMI2
-  output HDMI3
+  output HDMI-2
+  output HDMI-3
   font pango:Hack Regular 11
   tray_output primary
   colors {

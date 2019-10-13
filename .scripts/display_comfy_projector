@@ -1,14 +1,14 @@
 #!/bin/sh
 
 xrandr \
-  --output VGA1 --mode 1024x768 --same-as LVDS1\
-  --output LVDS1 --mode 1024x768 --primary \
+  --output VGA-1 --mode 1024x768 --same-as LVDS-1\
+  --output LVDS-1 --mode 1024x768 --primary \
   --output DP3 --off \
-  --output DP2 --off \
-  --output DP1 --off \
-  --output HDMI1 --off \
-  --output HDMI2 --off \
-  --output HDMI3 --off \
+  --output DP-2 --off \
+  --output DP-1 --off \
+  --output HDMI-1 --off \
+  --output HDMI-2 --off \
+  --output HDMI-3 --off \
   && notify-send "Using projector!" || notify-send "Unable to use projector :("
 
 xset s 0

@@ -3,14 +3,14 @@
 # idk, sometimes the ultrawide monitor wants to be a 1980i display
 # and list a vga output ¿¿?? so i'll always disable it first
 xrandr \
-  --output DP2 --off \
-  --output DP1 --off \
-  --output DP3 --off \
-  --output HDMI1 --off \
-  --output HDMI2 --mode 1920x1080 --rotate normal \
-  --output HDMI3 --primary --mode 1920x1080 --rotate normal --left-of HDMI2 \
-  --output LVDS1 --off \
-  --output VGA1 --off \
+  --output DP-2 --off \
+  --output DP-1 --off \
+  --output DP-3 --off \
+  --output HDMI-1 --off \
+  --output HDMI-2 --mode 1920x1080 --rotate normal \
+  --output HDMI-3 --primary --mode 1920x1080 --rotate normal --left-of HDMI-2 \
+  --output LVDS-1 --off \
+  --output VGA-1 --off \
   && notify-send "Docked!"|| notify-send "Unable to dock :("
 
 xset s 0
