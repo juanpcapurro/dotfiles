@@ -8,6 +8,6 @@ WORKING_DIR=${WORKING_DIR:-${HOME}}
 SESSION_NAME="$1"
 
 if ! xdotool search --name "${SESSION_NAME}";then
-   st -f SourceCodePro:pixelsize=17 -t "$SESSION_NAME" -e tmux new-session -A -s "$1" -c "${WORKING_DIR}" ${COMMAND} &
+   st -t "$SESSION_NAME" -e tmux new-session -A -s "$1" -c "${WORKING_DIR}" ${COMMAND} &
    notify-send "Creating dropdown: ${SESSION_NAME}"
 fi
