@@ -2,7 +2,8 @@ exec_always --no-startup-id remapkeyboard
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
-assign [instance="electron"] $ws4
+assign [instance="electron" window_role="browser-window"] $ws4
+assign [instance="electron" window_role="devtools"] $ws8
 assign [class="libreoffice.*"] $ws3
 assign [class="VirtualBox.*"] $ws2
 assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] $ws5
