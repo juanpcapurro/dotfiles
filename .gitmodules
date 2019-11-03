@@ -16,6 +16,9 @@
 [submodule ".nvm"]
 	path = .nvm
 	url = https://github.com/creationix/nvm.git
+[submodule "src/st"]
+	path = src/st
+	url = git@github.com:juanpcapurro/st.git
 [submodule "src/keynav"]
 	path = src/keynav
 	url = https://github.com/jordansissel/keynav.git
