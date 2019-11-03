@@ -4,14 +4,16 @@ folder-hook 'capu-tech' 'source ~/.config/mutt/accounts/personal-selfhost'
 folder-hook 'personal-gmail' 'source ~/.config/mutt/accounts/personal-gmail'
 folder-hook 'personal-yandex' 'source ~/.config/mutt/accounts/personal-yandex'
 folder-hook 'work-gmail' 'source ~/.config/mutt/accounts/work-gmail'
+folder-hook 'iohk-gmail' 'source ~/.config/mutt/accounts/iohk'
 
 # default account
-source ~/.config/mutt/accounts/personal-selfhost
+source ~/.config/mutt/accounts/work-gmail
 
 macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-selfhost<enter><change-folder>!<enter>'
 macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-yandex<enter><change-folder>!<enter>'
 macro index <f4> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work-gmail<enter><change-folder>!<enter>'
 macro index <f5> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-gmail<enter><change-folder>!<enter>'
+macro index <f6> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/iohk-gmail<enter><change-folder>!<enter>'
 
 macro compose <Esc>M "| marked -o /tmp/neomutt-alternative.html<enter><attach-file>/tmp/neomutt-alternative.html<enter><tag-entry><previous-entry><tag-entry>" "Parse markdown and add it as an attachment"
 macro compose <Esc>m "| marked |w3m -T text/html <enter>" "Preview html render"
