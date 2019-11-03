@@ -4,6 +4,7 @@ pgrep compton || compton &
 
 nextcloud &
 nm-applet &
+dunst &
 
 keynav daemonize &
 sxhkd &
