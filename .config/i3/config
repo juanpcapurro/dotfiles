@@ -38,9 +38,9 @@ bindsym $mod+slash exec --no-startup-id i3-tmux-dropdown i3_dropdown_terminal;\
   [title="i3_dropdown_(?!quteditor)"] move scratchpad;\
   [title="i3_dropdown_quteditor"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
-set $ws1  "1: chats"
+set $ws1  "1: browser"
 set $ws2  "2: term"
-set $ws3  "3: misc"
+set $ws3  "3: chats"
 set $ws4  "4: app"
 set $ws5  "5: db"
 set $ws6  "6: misc"

@@ -22,6 +22,8 @@ export PATH=$PATH:/opt/gradle/gradle-2.13/bin
 export ANDROID_HOME=/home/capurro/Android/Sdk
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.cargo/bin:$PATH"
 
+export JORMUNGANDR_RESTAPI_URL="http://127.0.0.1:8443/api"
+
 #aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias ssh="TERM=xterm-256color ssh"
