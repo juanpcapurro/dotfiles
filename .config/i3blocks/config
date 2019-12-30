@@ -12,6 +12,11 @@ label=🎤
 interval=2
 separator=true
 
+[usd2ars]
+label=U$:
+command=w3m preciodolarblue.com.ar | grep Compra -A 1 |tail -n 1|cut -f 1 -d ' '
+interval=600
+
 [mpv]
 command=${HOME}/.config/i3blocks/mpvstatus
 interval=2
