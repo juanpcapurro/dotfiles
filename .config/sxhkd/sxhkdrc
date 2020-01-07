@@ -26,7 +26,8 @@ super+r
 
 super+backslash ; {q, shift+q, c, shift+c, n, p, m, v, b, r, s, e}
   {\
-    qutebrowser -r default , qutebrowser -r chats, \
+    qutebrowser -r default,\
+    qutechat,\
     google-chrome-stable, google-chrome-stable --incognito,\
     nautilus, pavucontrol, nosqlbooster, code,\
     feh -F ~/.assets/images/pitchblack.png,\
