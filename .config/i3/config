@@ -201,7 +201,7 @@ bar {
   modifier $mod
   status_command i3blocks
   position bottom
-  output LVDS1
+  output LVDS-1
   tray_output primary
   font pango:Hack Regular 11
 
