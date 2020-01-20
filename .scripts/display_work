@@ -9,4 +9,4 @@ xrandr \
 xset s 0
 xset dpms 0 0 0
 xset dpms force on
-remapkeyboard
+i3-msg restart
