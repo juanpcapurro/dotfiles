@@ -32,3 +32,6 @@
 [submodule "src/node_server"]
 	path = src/node_server
 	url = git@github.com:juanpcapurro/node_server.git
+[submodule "src/hire"]
+	path = src/hire
+	url = git@github.com:juanpcapurro/hire.git
