@@ -4,16 +4,16 @@ URL=${QUTE_URL}
 SOCKET="${HOME}/.mpv/socket"
 
 if [ -n "${VIDEO}" ] ; then
-  lsof "${SOCKET}" || launch mpvs --idle --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" 
+  lsof "${SOCKET}" || launch mpv --idle --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" 
 else
-  lsof "${SOCKET}" || launch mpvs --no-video --idle
+  lsof "${SOCKET}" || launch mpv --no-video --idle
 fi
 
 [ "$#" -eq 1 ] && URL="${1}"
 
 while ! lsof "${SOCKET}"
 do
-  echo "waiting for mpvs to start"
+  echo "waiting for mpv to start"
   sleep 1
 done
 
