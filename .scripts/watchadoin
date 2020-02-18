@@ -5,6 +5,12 @@
 LOGDIR=~/timelog
 logfile="${LOGDIR}/$(date -I)"
 
+if [ "$1" = "i3blocks" ] ; then
+  tail "$logfile" -n 1
+  tail "$logfile" -n 1 | cut -d ' ' -f 1,2|head -c 14
+  exit
+fi
+
 if [ ! -d "${LOGDIR}" ] ; then
   mkdir "${LOGDIR}"
 fi
@@ -32,3 +38,5 @@ tasks=$(cat ${files_to_read} \
 if [ -n "${tasks}" ] ; then
   echo "$(date "+%H:%M" ) ${tasks}" >> ${logfile}
 fi
+
+pkill -SIGRTMIN+10 i3blocks
