@@ -20,7 +20,7 @@ super+r
 
 super+backslash ; {q, shift+q, f, shift+f, n, p, m, v, b, r, w, e, s, shift+s}
   {\
-    qutebrowser -r default,\
+    qutebrowser,\
     qutechat,\
     firefox, firefox --private-window,\
     nautilus, pavucontrol, nosqlbooster, code,\
