@@ -51,6 +51,7 @@ bind index \Cf noop
 bind attach <return> view-attach
 bind attach l view-attach
 bind attach m view-mailcap
+macro attach w "| w3m -T text/html\n" "view in w3m"
 bind editor <space> noop
 bind index G last-entry
 bind index gg first-entry
