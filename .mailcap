@@ -30,8 +30,6 @@ image/gif; mpv '%s' --loop=inf; test=test -n "$DISPLAY"
 image/*; feh --scale-down '%s'; test=test -n "$DISPLAY"
 
 # Youtube videos are assigned a custom mime-type, which can be streamed with
-# vlc or youtube-dl.
-video/x-youtube; vlc '%s' --width 640 --height 480; test=test -n "$DISPLAY"
 video/x-youtube; mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" '%s' ; test=test -n "$DISPLAY"
 
 # Mpv is a simple and effective video streamer
