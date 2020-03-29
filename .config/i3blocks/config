@@ -6,11 +6,17 @@ command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-[micmute]
-command=${HOME}/.config/i3blocks/micmute
-label=🎤
-interval=2
-separator=true
+# [micmute]
+# command=${HOME}/.config/i3blocks/micmute
+# label=🎤
+# interval=2
+# separator=true
+
+[whatchadoin]
+label=⏰
+command=watchadoin i3blocks
+interval=60
+signal=10
 
 [usd2ars]
 label=U$:
@@ -21,11 +27,13 @@ interval=600
 command=${HOME}/.config/i3blocks/mpvstatus
 interval=2
 separator=true
+signal=11
 
 [mail]
 command=${HOME}/.config/i3blocks/mail
 interval=90
 separator=true
+signal=12
 
 [load_average]
 interval=5

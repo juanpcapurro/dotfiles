@@ -105,3 +105,5 @@ elif [ "$1" = "get-duration-seconds" ] ; then
 else
   exit 1
 fi
+
+pkill -SIGRTMIN+11 i3blocks
