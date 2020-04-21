@@ -22,8 +22,7 @@ if lsof "${MPV_SOCKET}" &>/dev/null ; then
   fi
 fi
 if [ "${stopped}" = true ] ;then
-  echo "⏹️"
-  exit
+  exit 0
 fi
 playlist_position="[$(mpvctl get-playlist-index-1)/$(mpvctl get-playlist-length)]"
 
