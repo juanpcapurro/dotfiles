@@ -95,7 +95,7 @@ CertificateFile /etc/ssl/certs/ca-certificates.crt
 MaildirStore fiuba-gmail-local
 Path ~/mail/fiuba-gmail/
 Inbox ~/mail/fiuba-gmail/INBOX
-MapInbox "[Gmail]/All Mail"
+MapInbox "[Gmail]/Todos"
 Subfolders Verbatim
 
 Channel fiuba-gmail
@@ -103,5 +103,5 @@ Master :fiuba-gmail-remote:
 Slave :fiuba-gmail-local:
 Create Both
 Expunge Both
-Patterns * "![Gmail]/All Mail" "![Gmail]/Starred" "![Gmail]/Important"
+Patterns * "![Gmail]/Todos" "![Gmail]/Destacados" "![Gmail]/Importantes"
 SyncState *
