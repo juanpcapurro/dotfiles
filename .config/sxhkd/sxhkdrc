@@ -18,7 +18,7 @@ super+alt+x
 super+r
   remapkeyboard
 
-super+backslash ; {q, shift+q, f, shift+f, n, p, m, v, b, r, w, e, s, shift+s}
+super+backslash ; {q, shift+q, f, shift+f, n, p, m, v, b, r, w, e, s, shift+s, t}
   {\
     qutebrowser,\
     qutechat,\
@@ -28,7 +28,8 @@ super+backslash ; {q, shift+q, f, shift+f, n, p, m, v, b, r, w, e, s, shift+s}
     retroarch, mysql-workbench,\
     dmenuunicode,\
     sleep 0.2 && rm ~/tmp_screenshot.png ; scrot -s ~/tmp_screenshot.png && xclip -selection clipboard -t image/png -i ~/tmp_screenshot.png,\
-    grabc | head --bytes=7 | xclip && notify-send $(xclip -o)\
+    grabc | head --bytes=7 | xclip && notify-send $(xclip -o),\
+    telegram-desktop
   }
 
 super+equal ; {a, m, shift+m }
