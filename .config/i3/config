@@ -4,14 +4,14 @@ exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
 assign [instance="electron" window_role="browser-window"] $ws4
 assign [instance="electron" window_role="devtools"] $ws8
-assign [class="Firefox" instance="Navigator" ] $ws4
-assign [class="Firefox" instance="Devtools"] $ws8
+assign [class="Firefox"] $ws4
 assign [class="libreoffice.*"] $ws3
 assign [class="VirtualBox.*"] $ws2
 assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] $ws5
 assign [class="NoSQLBooster for MongoDB"] $ws5
 assign [title="Oracle SQL Developer.*"] $ws5
 assign [class="Zathura"] $ws6
+assign [class="TelegramDesktop"] $ws6
 assign [title="Eclipse.*"] $ws10
 assign [class="jetbrains-idea"] $ws10
 assign [class="^mpv$"] $ws6
