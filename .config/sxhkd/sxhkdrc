@@ -18,18 +18,31 @@ super+alt+x
 super+r
   remapkeyboard
 
-super+backslash ; {q, shift+q, f, shift+f, n, p, m, v, b, r, w, e, s, shift+s, t}
+# launch regular programs
+super+backslash ; {q, shift+q, f, shift+f, n, p, m, v, r, w, e, t}
   {\
     qutebrowser -r default,\
     qutechat,\
-    firefox, firefox --private-window,\
-    nautilus, pavucontrol, nosqlbooster, code,\
-    feh -F ~/.assets/images/pitchblack.png ,\
-    retroarch, mysql-workbench,\
+    firefox,\
+    firefox --private-window,\
+    nautilus,\
+    pavucontrol,\
+    nosqlbooster,\
+    code,\
+    retroarch,\
+    mysql-workbench,\
     dmenuunicode,\
+    telegram-desktop\
+  }
+
+# launch memetic scripts
+super+backslash ; {b, s, shift+s, ctrl+s, c}
+  {\
+    feh -F ~/.assets/images/pitchblack.png ,\
     sleep 0.2 && rm ~/tmp_screenshot.png ; scrot -s ~/tmp_screenshot.png && xclip -selection clipboard -t image/png -i ~/tmp_screenshot.png,\
+    sleep 0.2 && rm ~/tmp_screenshot.png ; scrot -s ~/tmp_screenshot.png && tesseract ~/tmp_screenshot.png stdout |xclip -selection clipboard ,\
     grabc | head --bytes=7 | xclip && notify-send $(xclip -o),\
-    telegram-desktop
+    sleep $(echo "60*$(dmenu -p 'how many minutes?' </dev/null|| echo '0')"|bc) ; notify-send -u critical "TIMER DONE"\
   }
 
 super+equal ; {a, m, shift+m }
