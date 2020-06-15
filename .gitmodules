@@ -35,3 +35,6 @@
 [submodule "src/hire"]
 	path = src/hire
 	url = git@github.com:juanpcapurro/hire.git
+[submodule "src/voidrice"]
+	path = src/voidrice
+	url = git@github.com:LukeSmithxyz/voidrice.git
