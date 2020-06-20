@@ -9,6 +9,10 @@ super+shift+b
 super+m
   watchadoin
 
+# push to talk
+super+d
+  push2talk toggle
+
 super+x
   display_auto
 super+shift+x
