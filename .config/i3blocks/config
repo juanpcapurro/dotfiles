@@ -6,11 +6,12 @@ command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-# [micmute]
-# command=${HOME}/.config/i3blocks/micmute
-# label=🎤
-# interval=2
-# separator=true
+[micmute]
+command=push2talk i3blocks
+label=🎙
+interval=60
+signal=11
+separator=true
 
 [whatchadoin]
 label=⏰

@@ -1,0 +1,31 @@
+#!/bin/sh
+
+MIC_NAME='Capture'
+
+getmute(){
+  amixer sget $MIC_NAME|tail -n 1|grep -o '\[[^]]*]$'
+}
+
+if [ "$1" = "i3blocks" ] ; then
+  if [ $(getmute) = "[on]" ] ; then
+    echo ON
+    exit 33
+  elif [ $(getmute) = "[off]" ] ;then
+    echo OFF
+    exit
+  else
+    echo "broken status"
+  fi
+else
+  pgrep push2talk | grep -v $$ && echo "another instance is running" && exit
+  if [ "$1" = "mute" ] ; then
+    amixer -q set ${MIC_NAME} nocap; notify-send "mic: $(getmute)"
+  elif [ "$1" = "toggle" ] ; then
+    amixer -q set ${MIC_NAME} toggle; notify-send "mic: $(getmute)"
+  elif [ "$1" = "unmute" ] ; then
+    amixer -q set ${MIC_NAME} cap; notify-send "mic: $(getmute)"
+  else
+    exit 1
+  fi
+  pkill -SIGRTMIN+11 i3blocks
+fi
