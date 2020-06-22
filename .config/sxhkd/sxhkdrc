@@ -1,13 +1,17 @@
 super+ctrl+b
   i3lock -f -c  3f2f3f
 super+b
-  mpvctl pause; i3lock -f -c  3f2f3f
+  cmus-remote -s ; i3lock -f -c  3f2f3f
 super+shift+b
-  mpvctl pause; i3lock -f -c  3f2f3f ; systemctl suspend
+  cmus-remote -s ; i3lock -f -c  3f2f3f ; systemctl suspend
 
 # time tracking
 super+m
   watchadoin
+
+# push to talk
+super+d
+  push2talk toggle
 
 super+x
   display_auto
@@ -52,9 +56,9 @@ super+shift+backslash ; {r, o, h, s}
   { reboot, poweroff, systemctl hibernate, systemctl suspend }
 
 XF86AudioPlay 
-  mpvctl play-pause
+  cmus-remote -u
 XF86AudioPause
-  mpvctl play-pause
+  cmus-remote -u
 XF86AudioNext 
   mpvctl next
 XF86AudioPrev 
@@ -64,9 +68,13 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
   volumectl volume-down
 
+# TODO:
+# - cmus playlists
+# - cmus delete file
+
 super+BackSpace ; {space, y, c, a, shift+a, m}
   {\
-    mpvctl play-pause,\
+    cmus-remote -u,\
     mpvctl get-path | xclip -selection clipboard && notify-send "yanked url of $(mpvctl title) to clipboard",\
     QUTE_URL=$(xclip -o -selection clipboard) mpvideoappend,\
     mpvctl add-to-playlist,\
@@ -77,8 +85,8 @@ super+BackSpace ; {space, y, c, a, shift+a, m}
 super+{ bracketleft, bracketright, shift+bracketleft, shift+bracketright, alt+bracketleft, alt+bracketright }
   {\
     volumectl volume-down, volumectl volume-up,\
-    mpvctl previous, mpvctl next,\
-    mpvctl move-backwards, mpvctl move-forward\
+    cmus-remote -r, cmus-remote -n,\
+    cmus-remote -k -10, cmus-remote -k 10\
   }
 
 super+shift+BackSpace ; {a, h, c, d, f}

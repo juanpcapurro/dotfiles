@@ -2,10 +2,7 @@ exec_always --no-startup-id remapkeyboard
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
-assign [instance="electron" window_role="browser-window"] $ws4
-assign [instance="electron" window_role="devtools"] $ws8
 assign [class="Firefox"] $ws4
-assign [class="libreoffice.*"] $ws3
 assign [class="VirtualBox.*"] $ws2
 assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] $ws5
 assign [class="NoSQLBooster for MongoDB"] $ws5
@@ -94,7 +91,7 @@ bindsym $mod+Return exec --no-startup-id $term -e tmux
 bindsym $mod+Shift+Return exec --no-startup-id $term
 # kill focused window. Don't ever kill the dropdowns, you moron.
 bindsym $mod+q [con_id="__focused__" title="^(?!i3_dropdown_).*$"]kill
-bindsym $mod+d exec dmenu_run -l 20
+bindsym $mod+p exec dmenu_run -l 20
 
 # change focus
 bindsym $mod+$left  focus tiling; focus left

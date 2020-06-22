@@ -4,7 +4,7 @@ URL=${QUTE_URL}
 SOCKET="${HOME}/.mpv/socket"
 
 if [ -n "${VIDEO}" ] ; then
-  lsof "${SOCKET}" || launch mpv --idle --ytdl-format="bestvideo[height<=?720]+bestaudio/best" 
+  lsof "${SOCKET}" || launch mpv --idle --ytdl-format="bestvideo[height<=?720]+bestaudio/best[height<=?720]"
 else
   lsof "${SOCKET}" || launch mpv --no-video --idle
 fi
