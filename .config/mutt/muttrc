@@ -26,7 +26,8 @@ macro compose <Esc>m "| marked |w3m -T text/html <enter>" "Preview html render"
 # If you want to override any settings, set those in your muttrc.
 set date_format="%y/%m/%d %I:%M%p"
 set index_format="%2C %Z %?X?A& ? %D %-15.15F %s %K(%-4.4c) %zc"
-set sort = 'reverse-date'
+set sort = 'threads'
+set sort_aux = 'reverse-date'
 set smtp_authenticators = 'gssapi:login'
 set query_command = "abook --mutt-query '%s'"
 set rfc2047_parameters = yes
