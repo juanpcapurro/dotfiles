@@ -55,14 +55,14 @@ super+equal ; {a, m, shift+m }
 super+shift+backslash ; {r, o, h, s}
   { reboot, poweroff, systemctl hibernate, systemctl suspend }
 
-XF86AudioPlay 
+XF86AudioPlay
   cmus-remote -u
 XF86AudioPause
   cmus-remote -u
-XF86AudioNext 
-  mpvctl next
-XF86AudioPrev 
-  mpvctl previous
+XF86AudioNext
+  cmus-remote -r
+XF86AudioPrev
+  cmus-remote -n
 XF86AudioLowerVolume
   volumectl volume-up
 XF86AudioRaiseVolume
@@ -72,13 +72,9 @@ XF86AudioRaiseVolume
 # - cmus playlists
 # - cmus delete file
 
-super+BackSpace ; {space, y, c, a, shift+a, m}
+super+BackSpace ; {space, m}
   {\
     cmus-remote -u,\
-    mpvctl get-path | xclip -selection clipboard && notify-send "yanked url of $(mpvctl title) to clipboard",\
-    QUTE_URL=$(xclip -o -selection clipboard) mpvideoappend,\
-    mpvctl add-to-playlist,\
-    mpvctl add-all-to-playlist,\
     volumectl mute-toggle\
   }
 
@@ -86,9 +82,8 @@ super+{ bracketleft, bracketright, shift+bracketleft, shift+bracketright, alt+br
   {\
     volumectl volume-down, volumectl volume-up,\
     cmus-remote -r, cmus-remote -n,\
-    cmus-remote -k -10, cmus-remote -k 10\
+    cmus-remote -k -10, cmus-remote -k +10\
   }
 
 super+shift+BackSpace ; {a, h, c, d, f}
   headsetctl {a2dp, headset, connect, disconnect, fixdaemon}
-
