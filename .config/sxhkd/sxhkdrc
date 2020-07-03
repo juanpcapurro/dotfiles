@@ -12,6 +12,8 @@ super+m
 # push to talk
 super+d
   push2talk toggle
+super+shift+d
+  xdotool search --name meet key ctrl+d ; notify-send "toggled meet mute"
 
 super+x
   display_auto
