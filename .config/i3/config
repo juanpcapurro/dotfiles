@@ -7,11 +7,10 @@ assign [class="VirtualBox.*"] $ws2
 assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] $ws5
 assign [class="NoSQLBooster for MongoDB"] $ws5
 assign [title="Oracle SQL Developer.*"] $ws5
-assign [class="Zathura"] $ws6
-assign [class="TelegramDesktop"] $ws6
+assign [class="TelegramDesktop"] $ws3
+assign [class="Ripcord"] $ws3
 assign [title="Eclipse.*"] $ws10
 assign [class="jetbrains-idea"] $ws10
-assign [class="^mpv$"] $ws3
 
 focus_on_window_activation urgent
 # todo: set font
