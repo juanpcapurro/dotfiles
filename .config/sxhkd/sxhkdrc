@@ -25,17 +25,16 @@ super+r
   remapkeyboard
 
 # launch regular programs
-super+backslash ; {q, shift+q, f, shift+f, n, p, m, v, r, w, e, t}
+super+backslash ; {q, f, shift+f, n, p, m, v, r, w, e, t}
   {\
-    qutebrowser -r default,\
-    qutechat,\
+    qutebrowser,\
     firefox,\
     firefox --private-window,\
     nautilus,\
     pavucontrol,\
     nosqlbooster,\
     code,\
-    retroarch,\
+    ripcord,\
     mysql-workbench,\
     dmenuunicode,\
     telegram-desktop\

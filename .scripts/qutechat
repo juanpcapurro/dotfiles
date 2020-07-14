@@ -1,4 +1,0 @@
-#!/bin/sh
-
-qutebrowser --target window -R "https://web.telegram.org" &
-qutebrowser --target tab-bg-silent -R "https://web.whatsapp.com" "https://app.slack.com/client/T26ST0KHN" "https://app.slack.com/client/T0BRERDU5" "https://app.slack.com/client/T02536FCX"
