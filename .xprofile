@@ -2,7 +2,6 @@
 
 pgrep compton || compton &
 redshift &
-which syncthing && syncthing &
 which qtox && qtox &
 
 nextcloud &
