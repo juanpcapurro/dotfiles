@@ -1,0 +1,7 @@
+#!/bin/sh
+
+URL_FILE=~/.config/newsboat/urls
+
+DATE_AFTER=20200501
+
+grep -o 'channel_id=[^ ]*\b' "${URL_FILE}" |cut -b 12-| xargs -I meme youtube-archive  https://www.youtube.com/channel/meme --dateafter "${DATE_AFTER}" $@

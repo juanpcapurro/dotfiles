@@ -15,5 +15,6 @@ config.bind(';M', 'hint --rapid links userscript ~/.scripts/mpvappend')
 config.bind(';v', 'hint links userscript ~/.scripts/mpvideoappend')
 config.bind(';V', 'hint --rapid links userscript ~/.scripts/mpvideoappend')
 config.bind(';r', 'hint links userscript ~/.scripts/rssadd')
+config.bind(';a', 'hint links userscript ~/.scripts/youtube-archive')
 # Bindings for insert mode
 config.bind('<Ctrl-f>', 'open-editor','insert')
