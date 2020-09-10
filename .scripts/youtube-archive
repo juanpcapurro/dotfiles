@@ -20,8 +20,11 @@ if [ -e "${VIDEOS_DESTINATION}/cookies.txt" ] ; then
   FLAGS="${FLAGS} --cookies ${VIDEOS_DESTINATION}/cookies.txt"
 fi
 
+# if [ -n "${LONG}" ] ; then
+#   FLAGS="${FLAGS} --match-filter \"duration < 3600\""
+# fi
+
 youtube-dl ${FLAGS} -f "${FORMAT}" \
-  --match-filter "duration < 3600"\
   -o "${VIDEOS_DESTINATION}/%(uploader)s/%(upload_date)s-%(title)s"\
   "${URL}"\
   "${@}"
