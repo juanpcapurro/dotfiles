@@ -2,13 +2,7 @@ exec_always --no-startup-id remapkeyboard
 exec --no-startup-id display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
-assign [class="Firefox"] $ws4
 assign [class="VirtualBox.*"] $ws2
-assign [class="oracle-ide-osgi-boot-OracleIdeLauncher"] $ws5
-assign [class="NoSQLBooster for MongoDB"] $ws5
-assign [title="Oracle SQL Developer.*"] $ws5
-assign [class="TelegramDesktop"] $ws3
-assign [class="Ripcord"] $ws3
 assign [title="Eclipse.*"] $ws10
 
 set $term st
@@ -22,6 +16,11 @@ for_window [title="^i3_dropdown_.*"] move scratchpad, scratchpad show, resize se
 bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3-tmux-dropdown i3_dropdown_notes nvim;\
   [title="i3_dropdown_(?!notes)"] move scratchpad;\
   [title="i3_dropdown_notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
+
+# dropdown cmus
+bindsym $mod+c exec --no-startup-id ~/.scripts/i3-tmux-dropdown i3_dropdown_cmus cmus;\
+  [title="i3_dropdown_(?!cmus)"] move scratchpad;\
+  [title="i3_dropdown_cmus"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
 # dropdown terminal
 bindsym $mod+semicolon exec --no-startup-id i3-tmux-dropdown i3_dropdown_terminal;\
