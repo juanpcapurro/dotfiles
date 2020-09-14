@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# accounts="capu-tech personal-yandex fiuba-gmail work-gmail"
-accounts="capu-tech personal-yandex fiuba-gmail"
+accounts="capu-tech personal-yandex fiuba-gmail work-gmail"
 mail_count=""
 for account in $accounts;
 do
