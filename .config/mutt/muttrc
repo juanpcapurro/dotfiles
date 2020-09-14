@@ -12,7 +12,6 @@ source ~/.config/mutt/accounts/personal-selfhost
 macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-selfhost<enter><change-folder>!<enter>'
 macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-yandex<enter><change-folder>!<enter>'
 macro index <f4> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work-gmail<enter><change-folder>!<enter>'
-macro index <f6> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/iohk-gmail<enter><change-folder>!<enter>'
 macro index <f7> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/fiuba-gmail<enter><change-folder>!<enter>'
 
 macro compose <Esc>M "| marked -o /tmp/neomutt-alternative.html<enter><attach-file>/tmp/neomutt-alternative.html<enter><tag-entry><previous-entry><tag-entry>" "Parse markdown and add it as an attachment"
