@@ -22,8 +22,8 @@ SyncState *
 IMAPStore work-gmail-remote
 Host imap.gmail.com
 Port 993
-User jpcapurro@atixlabs.com
-PassCmd "secret-tool lookup jpcapurro@atixlabs.com password"
+User juan.pablo.capurro@altoros.com
+PassCmd "secret-tool lookup juan.pablo.capurro@altoros.com password"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
