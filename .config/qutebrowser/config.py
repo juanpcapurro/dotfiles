@@ -1,5 +1,6 @@
 # force a different user agent to fix whatsapp web issue 
 config.set('content.headers.user_agent', "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Safari/537.36", 'https://web.whatsapp.com/*')
+config.set('content.headers.user_agent', "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0", 'https://app.slack.com/*')
 
 c.downloads.location.prompt = False
 c.tabs.background = True
