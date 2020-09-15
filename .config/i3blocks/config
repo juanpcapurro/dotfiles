@@ -15,7 +15,7 @@ separator=true
 
 [whatchadoin]
 label=⏰
-command=watchadoin i3blocks
+command=~/.scripts/watchadoin i3blocks
 interval=60
 signal=10
 

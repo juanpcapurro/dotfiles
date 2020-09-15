@@ -6,8 +6,19 @@ LOGDIR=~/timelog
 logfile="${LOGDIR}/$(date -I)"
 
 if [ "$1" = "i3blocks" ] ; then
-  tail "$logfile" -n 1
-  tail "$logfile" -n 1 | cut -d ' ' -f 1,2|head -c 14
+  if [ -e "$logfile" ] ; then
+    line="$(tail "$logfile" -n 1)"
+    #long format
+    echo "$line"
+    # sort format: two words, but 14 characters at most
+    echo "$(echo "$line"| cut -d ' ' -f 1,2|head -c 14)"
+    last_time=$(echo "$line" | cut -d ' ' -f 1)
+    # in minutes
+    time_diff=$((($(date +%s) - $(date -d "$last_time"  +%s))/60))
+    if [ "$time_diff" -gt 45 ] ; then
+      exit 33
+    fi
+  fi
   exit
 fi
 
@@ -34,7 +45,7 @@ tasks=$(cat ${files_to_read} \
   | uniq -c \
   | sort -bnr\
   | cut -b 9- \
-  | dmenu -p "watchadoin?" -l 20)
+  | dmenu -i -p "watchadoin?" -l 20)
 if [ -n "${tasks}" ] ; then
   echo "$(date "+%H:%M" ) ${tasks}" >> ${logfile}
 fi
