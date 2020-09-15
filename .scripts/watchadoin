@@ -40,7 +40,7 @@ if [ -z "${files_to_read}" ] ; then
   files_to_read=/dev/null
 fi
 
-tasks=$(cat "${files_to_read}" \
+tasks=$(cat ${files_to_read} \
   | cut -d ' ' -f 2- \
   | sort \
   | uniq -c \
