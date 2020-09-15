@@ -18,13 +18,7 @@ bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook ~/.scripts/i3-tmux-dro
 
 # dropdown cmus
 bindsym $mod+c exec --no-startup-id ~/.scripts/i3-tmux-dropdown i3_dropdown_cmus cmus;\
-  [title="i3_dropdown_(?!cmus)"] move scratchpad;\
-  [title="i3_dropdown_cmus"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
-
-# dropdown cmus
-bindsym $mod+c exec --no-startup-id ~/.scripts/i3-tmux-dropdown i3_dropdown_cmus cmus;\
-  [title="i3_dropdown_(?!cmus)"] move scratchpad;\
-  [title="i3_dropdown_cmus"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
+  [title="i3_dropdown_cmus"] scratchpad show, resize set 1250 740, border pixel 6, move position center
 
 # dropdown terminal
 bindsym $mod+semicolon exec --no-startup-id ~/.scripts/i3-tmux-dropdown i3_dropdown_terminal;\
