@@ -7,7 +7,7 @@ separator_block_width=15
 markup=none
 
 [micmute]
-command=push2talk i3blocks
+command=~/.scripts/push2talk i3blocks
 label=🎙
 interval=60
 signal=11

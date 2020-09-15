@@ -1,5 +1,5 @@
-exec_always --no-startup-id remapkeyboard
-exec --no-startup-id display_auto
+exec_always --no-startup-id ~/.scripts/remapkeyboard
+exec --no-startup-id ~/.scripts/display_auto
 exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
 assign [class="VirtualBox.*"] $ws2
@@ -10,12 +10,16 @@ set $term st
 #Default borders
 for_window [class=".*"] border pixel 2
 
-for_window [title="^i3_dropdown_.*"] move scratchpad, scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
+for_window [title="^i3_dropdown_.*"] move scratchpad, scratchpad show, resize set 1250 740, border pixel 6, move position center
 
 # dropdown notes
-bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook i3-tmux-dropdown i3_dropdown_notes nvim;\
-  [title="i3_dropdown_(?!notes)"] move scratchpad;\
-  [title="i3_dropdown_notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
+bindsym $mod+n exec --no-startup-id WORKING_DIR=~/logbook ~/.scripts/i3-tmux-dropdown i3_dropdown_notes nvim;\
+  [title="i3_dropdown_notes"] scratchpad show, resize set 1250 740, border pixel 6, move position center
+
+# dropdown cmus
+bindsym $mod+c exec --no-startup-id ~/.scripts/i3-tmux-dropdown i3_dropdown_cmus cmus;\
+  [title="i3_dropdown_(?!cmus)"] move scratchpad;\
+  [title="i3_dropdown_cmus"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
 # dropdown cmus
 bindsym $mod+c exec --no-startup-id ~/.scripts/i3-tmux-dropdown i3_dropdown_cmus cmus;\
@@ -23,14 +27,12 @@ bindsym $mod+c exec --no-startup-id ~/.scripts/i3-tmux-dropdown i3_dropdown_cmus
   [title="i3_dropdown_cmus"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
 
 # dropdown terminal
-bindsym $mod+semicolon exec --no-startup-id i3-tmux-dropdown i3_dropdown_terminal;\
-  [title="i3_dropdown_(?!terminal)"] move scratchpad;\
-  [title="i3_dropdown_terminal"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
+bindsym $mod+semicolon exec --no-startup-id ~/.scripts/i3-tmux-dropdown i3_dropdown_terminal;\
+  [title="i3_dropdown_terminal"] scratchpad show, resize set 1250 740, border pixel 6, move position center
 
 # qutebrowser's editor
-bindsym $mod+slash exec --no-startup-id i3-tmux-dropdown i3_dropdown_terminal;\
-  [title="i3_dropdown_(?!quteditor)"] move scratchpad;\
-  [title="i3_dropdown_quteditor"] scratchpad show, resize set 1250 740, border pixel 6, move position center, sticky enable
+bindsym $mod+slash exec --no-startup-id ~/.scripts/i3-tmux-dropdown i3_dropdown_terminal;\
+  [title="i3_dropdown_quteditor"] scratchpad show, resize set 1250 740, border pixel 6, move position center
 
 set $ws1  "1: chats"
 set $ws2  "2: term"
