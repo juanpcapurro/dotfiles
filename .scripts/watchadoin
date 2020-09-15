@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# dependecies: dmenu
+# dependecies: dmenu. a slack token in ~/.secrets if you want to sync your status
+# use [SlackPirate](https://github.com/emtunc/SlackPirate) to extract your token
 
 LOGDIR=~/timelog
 logfile="${LOGDIR}/$(date -I)"
@@ -39,7 +40,7 @@ if [ -z "${files_to_read}" ] ; then
   files_to_read=/dev/null
 fi
 
-tasks=$(cat ${files_to_read} \
+tasks=$(cat "${files_to_read}" \
   | cut -d ' ' -f 2- \
   | sort \
   | uniq -c \
@@ -47,7 +48,29 @@ tasks=$(cat ${files_to_read} \
   | cut -b 9- \
   | dmenu -i -p "watchadoin?" -l 20)
 if [ -n "${tasks}" ] ; then
-  echo "$(date "+%H:%M" ) ${tasks}" >> ${logfile}
+  echo "$(date "+%H:%M" ) ${tasks}" >> "${logfile}"
+  if [ -e ~/.secrets ]; then
+    . ~/.secrets
+    time_dow=$(date +%w)
+    time_hour=$(date +%H)
+    if [ -n "$SLACK_TOKEN" ] \
+       && [ "$time_hour" -ge 9 ] && [ "$time_hour" -lt 18 ] \
+       && [ "$time_dow" -ge 1 ] && [ "$time_dow" -lt 6 ] ; then
+      status_text=$(echo "$tasks" | tr -dc "[:alnum:][:blank:]" |head -c 90)
+      # oh no I'm doxing my employer!
+      curl 'https://altoros.slack.com/api/users.profile.set' \
+      -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0' \
+      -H 'Accept: */*' \
+      -H 'Content-Type: application/json; charset=utf-8' \
+      -H "Authorization: Bearer ${SLACK_TOKEN}" \
+      -H 'Origin: https://app.slack.com' \
+      --data "{\"profile\":{\"status_text\":\"${status_text}\",\"status_emoji\":\":clock1:\"}}" \
+      && notify-send "set ${status_text} as slack status"\
+      || notify-send "couldnt set slack status"
+    else
+      notify-send "not setting slack status"
+    fi
+  fi
 fi
 
 pkill -SIGRTMIN+10 i3blocks
