@@ -13,6 +13,12 @@ interval=60
 signal=11
 separator=true
 
+[cmus]
+command=~/.config/i3blocks/cmus-status
+interval=10
+signal=14
+separator=true
+
 [whatchadoin]
 label=⏰
 command=~/.scripts/watchadoin i3blocks

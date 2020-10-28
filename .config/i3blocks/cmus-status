@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+icon="⏹️"
+# is cmus running?
+if cmus-remote -Q &>/dev/null ; then
+  playerstatus="$(cmus-remote -Q|head -n 1 |cut -d ' ' -f 2)" 
+  title="$(cmus-remote -Q |grep 'tag title\b' | cut -f 3- -d ' ')"
+  artist="$(cmus-remote -Q |grep 'tag artist\b' | cut -f 3- -d ' ')"
+  if [ "${playerstatus}" = "paused" ] ; then
+    icon="⏸️"
+  elif [ "${playerstatus}" = "playing" ] ; then
+    icon="▶️"
+  fi
+  #long text
+  echo ${icon} ${title}-${artist}
+
+  #short text
+  echo ${icon} "$(echo -n ${title} | head -c 20)"
+
+  # set a blueish color to show that the player is paused
+  if [ "${playerstatus}" != "playing" ] ; then
+    echo '#2458a1'
+  fi
+fi

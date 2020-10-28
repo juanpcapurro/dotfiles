@@ -57,13 +57,13 @@ super+shift+backslash ; {r, o, h, s}
   { reboot, poweroff, systemctl hibernate, systemctl suspend }
 
 XF86AudioPlay
-  cmus-remote -u
+  cmus-remote -u ; pkill -SIGRTMIN+14 i3blocks
 XF86AudioPause
-  cmus-remote -u
+  cmus-remote -u ; pkill -SIGRTMIN+14 i3blocks
 XF86AudioNext
-  cmus-remote -r
+  cmus-remote -n ; pkill -SIGRTMIN+14 i3blocks
 XF86AudioPrev
-  cmus-remote -n
+  cmus-remote -r ; pkill -SIGRTMIN+14 i3blocks
 XF86AudioLowerVolume
   volumectl volume-up
 XF86AudioRaiseVolume
@@ -73,16 +73,17 @@ XF86AudioRaiseVolume
 # - cmus playlists
 # - cmus delete file
 
-super+BackSpace ; {space, m}
+super+BackSpace ; {space, m, d}
   {\
-    cmus-remote -u,\
-    volumectl mute-toggle\
+    cmus-remote -u ; pkill -SIGRTMIN+14 i3blocks ,\
+    volumectl mute-toggle,\
+    echo "yes\nno"|dmenu -p "delete $(cmus-remote  -Q |grep file |cut -d ' ' -f 2-) ?" |grep "yes" && rm "$(cmus-remote  -Q |grep file |cut -d ' ' -f 2-)" && cmus-remote -n\
   }
 
 super+{ bracketleft, bracketright, shift+bracketleft, shift+bracketright, alt+bracketleft, alt+bracketright }
   {\
     volumectl volume-down, volumectl volume-up,\
-    cmus-remote -r, cmus-remote -n,\
+    cmus-remote -r ; pkill -SIGRTMIN+14 i3blocks, cmus-remote -n ; pkill -SIGRTMIN+14 i3blocks,\
     cmus-remote -k -10, cmus-remote -k +10\
   }
 
