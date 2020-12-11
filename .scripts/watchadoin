@@ -6,9 +6,30 @@
 LOGDIR=~/timelog
 logfile="${LOGDIR}/$(date -I)"
 
+set_slack_status() {
+  status_text="$1"
+  status_emoji="$2"
+  # oh no I'm doxing my employer!
+  curl 'https://altoros.slack.com/api/users.profile.set' \
+  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0' \
+  -H 'Accept: */*' \
+  -H 'Content-Type: application/json; charset=utf-8' \
+  -H "Authorization: Bearer ${SLACK_TOKEN}" \
+  -H 'Origin: https://app.slack.com' \
+  --data "{\"profile\":{\"status_text\":\"${status_text}\",\"status_emoji\":\"${status_emoji}\"}}" \
+  && notify-send "set ${status_text} as slack status"\
+  || notify-send "couldnt set slack status"
+}
+
+
 if [ "$1" = "i3blocks" ] ; then
   if [ -e "$logfile" ] ; then
     line="$(tail "$logfile" -n 1)"
+    if echo "$line" | grep -- "--$" >/dev/null ; then
+      echo "off"
+      echo "off"
+      exit
+    fi
     #long format
     echo "$line"
     # sort format: two words, but 14 characters at most
@@ -16,7 +37,7 @@ if [ "$1" = "i3blocks" ] ; then
     last_time=$(echo "$line" | cut -d ' ' -f 1)
     # in minutes
     time_diff=$((($(date +%s) - $(date -d "$last_time"  +%s))/60))
-    if [ "$time_diff" -gt 45 ] ; then
+    if [ "$time_diff" -gt 100 ] ; then
       exit 33
     fi
   fi
@@ -57,18 +78,9 @@ if [ -n "${tasks}" ] ; then
        && [ "$time_hour" -ge 9 ] && [ "$time_hour" -lt 18 ] \
        && [ "$time_dow" -ge 1 ] && [ "$time_dow" -lt 6 ] ; then
       status_text=$(echo "$tasks" | tr -dc "[:alnum:][:blank:]" |head -c 90)
-      # oh no I'm doxing my employer!
-      curl 'https://altoros.slack.com/api/users.profile.set' \
-      -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0' \
-      -H 'Accept: */*' \
-      -H 'Content-Type: application/json; charset=utf-8' \
-      -H "Authorization: Bearer ${SLACK_TOKEN}" \
-      -H 'Origin: https://app.slack.com' \
-      --data "{\"profile\":{\"status_text\":\"${status_text}\",\"status_emoji\":\":clock1:\"}}" \
-      && notify-send "set ${status_text} as slack status"\
-      || notify-send "couldnt set slack status"
+      set_slack_status "${status_text}" ":desktop_computer:"
     else
-      notify-send "not setting slack status"
+      set_slack_status "its 6pm my dudes" ":frog:"
     fi
   fi
 fi
