@@ -4,7 +4,6 @@ pgrep compton || compton &
 redshift &
 which qtox && qtox &
 
-nextcloud &
 nm-applet &
 dunst &
 

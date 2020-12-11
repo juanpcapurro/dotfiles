@@ -1,7 +1,7 @@
 #variables
 export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin:/usr/sbin:/sbin:$HOME/.cargo/bin"
 export EDITOR="nvim"
-export VISUAL='nvim -u ~/.config/nvim/fat.vim'
+export VISUAL='nvim'
 export TERMINAL="st"
 export BROWSER="qutebrowser"
 export READER="zathura"

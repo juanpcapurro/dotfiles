@@ -42,6 +42,7 @@ bindkey "^u" autosuggest-accept
 
 #aliases
 unalias rm
+unalias t
 
 #functions
 make(){
