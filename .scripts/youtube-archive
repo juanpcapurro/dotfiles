@@ -12,7 +12,7 @@ if [ -z "$URL" ] ; then
 fi
 
 
-FORMAT="bestvideo[height<=?720]+bestaudio/best[height<=?720]"
+FORMAT="best[height<=?720]"
 FLAGS="--add-metadata -ic --restrict-filenames"
 VIDEOS_DESTINATION="${HOME}/youtube"
 

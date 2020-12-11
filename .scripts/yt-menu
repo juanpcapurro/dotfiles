@@ -1,2 +1,2 @@
 #!/bin/sh
-find ~/youtube -type f |sort -t / -k 6 -r |dmenu -i -l 30|xargs -n 1 mpvideoappend
+find ~/youtube -type f $@|sort -t / -k 6 -r |dmenu -i -l 30|xargs -n 1 mpvideoappend

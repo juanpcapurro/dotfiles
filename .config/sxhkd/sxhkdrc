@@ -77,7 +77,7 @@ super+BackSpace ; {space, m, d}
   {\
     cmus-remote -u ; pkill -SIGRTMIN+14 i3blocks ,\
     volumectl mute-toggle,\
-    echo "yes\nno"|dmenu -p "delete $(cmus-remote  -Q |grep file |cut -d ' ' -f 2-) ?" |grep "yes" && rm "$(cmus-remote  -Q |grep file |cut -d ' ' -f 2-)" && cmus-remote -n\
+    echo "yes\nno"|dmenu -p "delete $(cmus-remote  -Q |grep file |cut -d ' ' -f 2-) ?" |grep "yes" && rm "$(cmus-remote  -Q |grep file |cut -d ' ' -f 2-)" && cmus-remote -n && pkill -SIGRTMIN+14 i3blocks\
   }
 
 super+{ bracketleft, bracketright, shift+bracketleft, shift+bracketright, alt+bracketleft, alt+bracketright }
