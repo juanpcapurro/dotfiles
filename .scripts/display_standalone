@@ -12,4 +12,3 @@ xrandr --output VIRTUAL-1 --off \
 xset s 90
 xset dpms 90 90 90
 xset dpms force on
-remapkeyboard

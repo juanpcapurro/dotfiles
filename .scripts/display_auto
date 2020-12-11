@@ -9,11 +9,11 @@ work_displaycount=$(xrandr |grep -e 'HDMI-1 connected' |wc -l)
 # xrandr |grep 'HDMI-2 connected' && display_home_dock || display_standalone
 
 if [ $projector_displaycount = 1 ] ; then
-  display_comfy_projector
+  ~/.scripts/display_comfy_projector
 elif [ $work_displaycount = 1 ] ; then
-  display_work
+  ~/.scripts/display_work
 elif [ $docked_displaycount = 2 ] ; then
-  display_home_dock
+  ~/.scripts/display_home_dock
 else
-  display_standalone
+  ~/.scripts/display_standalone
 fi
