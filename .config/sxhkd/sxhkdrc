@@ -41,8 +41,10 @@ super+backslash ; {q, f, shift+f, n, p, m, v, r, w, e, t}
   }
 
 # launch memetic scripts
-super+backslash ; {b, s, shift+s, ctrl+s, c}
+super+backslash ; {k, shift+k, b, s, shift+s, ctrl+s, c}
   {\
+    ~/.scripts/dmenu-keepassxc password,\
+    ~/.scripts/dmenu-keepassxc,\
     feh -F ~/.assets/images/pitchblack.png ,\
     sleep 0.2 && rm ~/tmp_screenshot.png ; scrot -s ~/tmp_screenshot.png && xclip -selection clipboard -t image/png -i ~/tmp_screenshot.png,\
     sleep 0.2 && rm ~/tmp_screenshot.png ; scrot -s ~/tmp_screenshot.png && tesseract ~/tmp_screenshot.png stdout |xclip -selection clipboard ,\
