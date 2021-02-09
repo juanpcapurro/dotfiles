@@ -21,6 +21,10 @@ super+shift+x
   displayselect
 super+alt+x
   display_standalone
+alt+shift+x
+  display_standalone
+alt+shift+r
+  remapkeyboard
 super+r
   remapkeyboard
 
