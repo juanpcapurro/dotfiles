@@ -25,6 +25,11 @@ command=~/.scripts/watchadoin i3blocks
 interval=60
 signal=10
 
+[btc2usd]
+label=BTC:
+command=curl -s http://api.coindesk.com/v1/bpi/currentprice.json |jq -r ".bpi.USD.rate" |grep -o '^[^.]*'
+interval=600
+
 [usd2ars]
 label=U$:
 command=w3m preciodolarblue.com.ar | grep Compra -A 1 |tail -n 1|cut -f 1 -d ' '
@@ -55,5 +60,5 @@ interval=5
 interval=30
 
 [time]
-command=date +'%m-%d %R'
+command=date +'%d/%m %R'
 interval=60

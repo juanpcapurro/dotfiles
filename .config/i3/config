@@ -27,16 +27,16 @@ bindsym $mod+semicolon exec --no-startup-id ~/.scripts/i3-tmux-dropdown i3_dropd
 bindsym $mod+slash exec --no-startup-id ~/.scripts/i3-tmux-dropdown i3_dropdown_terminal;\
   [title="i3_dropdown_quteditor"] scratchpad show, resize set 1250 740, border pixel 6, move position center
 
-set $ws1  "1: chats"
-set $ws2  "2: term"
-set $ws3  "3: misc"
-set $ws4  "4: app"
-set $ws5  "5: code"
-set $ws6  "6: misc"
-set $ws7  "7: "
-set $ws8  "8: "
-set $ws9  "9: browser"
-set $ws10 "10: code"
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
 
 workspace $ws1 output primary
 workspace $ws2 output primary
