@@ -78,7 +78,11 @@ if [ -n "${tasks}" ] ; then
        && [ "$time_hour" -ge 9 ] && [ "$time_hour" -lt 18 ] \
        && [ "$time_dow" -ge 1 ] && [ "$time_dow" -lt 6 ] ; then
       status_text=$(echo "$tasks" | tr -dc "[:alnum:][:blank:]" |head -c 90)
-      set_slack_status "${status_text}" ":desktop_computer:"
+      status_emoji=":desktop_computer:"
+      if echo "${status_text}" | grep "comiendo" ; then 
+        status_emoji=":pizza:"
+      fi
+      set_slack_status "${status_text}" "${status_emoji}"
     else
       set_slack_status "its 6pm my dudes" ":frog:"
     fi
