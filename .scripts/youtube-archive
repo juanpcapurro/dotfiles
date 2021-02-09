@@ -12,7 +12,7 @@ if [ -z "$URL" ] ; then
 fi
 
 
-FORMAT="best[height<=?720]"
+FORMAT="best[height<=?768]"
 FLAGS="--add-metadata -ic --restrict-filenames"
 VIDEOS_DESTINATION="${HOME}/youtube"
 
@@ -24,9 +24,7 @@ fi
 #   FLAGS="${FLAGS} --match-filter \"duration < 3600\""
 # fi
 
-youtube-dl ${FLAGS} -f "${FORMAT}" \
+tsp youtube-dl ${FLAGS} -f "${FORMAT}" \
   -o "${VIDEOS_DESTINATION}/%(uploader)s/%(upload_date)s-%(title)s"\
   "${URL}"\
   "${@}"
-
-

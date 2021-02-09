@@ -32,7 +32,7 @@ color article white default bold
 browser qutebrowser
 macro , open-in-browser
 macro t set browser "qndl"; open-in-browser ; set browser qutebrowser
-macro a set browser "tsp youtube-archive"; open-in-browser ; set browser qutebrowser
+macro a set browser "youtube-archive"; open-in-browser ; set browser qutebrowser
 macro v set browser "mpvappend"; open-in-browser ; set browser qutebrowser
 macro w set browser "w3m"; open-in-browser ; set browser qutebrowser
 macro c set browser "xsel -b <<<" ; open-in-browser ; set browser qutebrowser
