@@ -4,6 +4,7 @@
 # For enabling automatic profile switching from A2DP to HSP when a recording stream appears without any role set, you can append auto_switch=2 to load-module module-bluetooth-policy in /etc/pulse/default.pa
 # ^ would make the last two commands kinda useless
 # update, i don't like how auto_switch works
+HEADSET_ADDR="94:DB:56:F0:11:D5"
 
 HEADSET_CARD_INDEX=$(pactl list short cards \
   | grep $(echo ${HEADSET_ADDR}| sed s/:/_/g) \

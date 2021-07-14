@@ -2,6 +2,7 @@
 
 pgrep compton || compton &
 redshift &
+blueman-applet &
 which qtox && qtox &
 
 nm-applet &

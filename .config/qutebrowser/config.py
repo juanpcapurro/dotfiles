@@ -18,3 +18,4 @@ config.bind(';r', 'hint links userscript ~/.scripts/rssadd')
 config.bind(';a', 'hint links userscript ~/.scripts/youtube-archive')
 # Bindings for insert mode
 config.bind('<Ctrl-f>', 'open-editor','insert')
+config.load_autoconfig(False)

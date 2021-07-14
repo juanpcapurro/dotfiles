@@ -75,12 +75,15 @@ if [ -n "${tasks}" ] ; then
     time_dow=$(date +%w)
     time_hour=$(date +%H)
     if [ -n "$SLACK_TOKEN" ] \
-       && [ "$time_hour" -ge 9 ] && [ "$time_hour" -lt 18 ] \
+       && [ "$time_hour" -ge 8 ] && [ "$time_hour" -lt 19 ] \
        && [ "$time_dow" -ge 1 ] && [ "$time_dow" -lt 6 ] ; then
       status_text=$(echo "$tasks" | tr -dc "[:alnum:][:blank:]" |head -c 90)
       status_emoji=":desktop_computer:"
-      if echo "${status_text}" | grep "comiendo" ; then 
+      if echo "${status_text}" | grep "lunch" ; then 
         status_emoji=":pizza:"
+      fi
+      if echo "${status_text}" | grep "^afk$" ; then 
+        status_emoji=":bicyclist:"
       fi
       set_slack_status "${status_text}" "${status_emoji}"
     else
