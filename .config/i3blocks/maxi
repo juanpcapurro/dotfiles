@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if curl -s 'https://kkkk.gear.host/api.php?tipo=R&suc=306&numero=10995' 2>/dev/null|grep recibido >/dev/null ; then
-  echo "maxi no fue"
+if curl -s 'https://kkkk.gear.host/api.php?tipo=R&suc=306&numero=15612' 2>/dev/null|grep -i 'sin enviar\|en viaje\|centro de distribucion' >/dev/null ; then
+  echo ""
 else
-  echo "maxi lo retiro"
+  echo "📫"
   exit 33
 fi

@@ -11,3 +11,4 @@ mail_count=$(echo ${mail_count}|head --bytes=-2)
 
 echo "✉️: ${mail_count}"
 
+echo "✉️:$(echo "${mail_count}"|tr '/' '+'|bc)"

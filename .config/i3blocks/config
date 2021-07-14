@@ -29,21 +29,19 @@ signal=10
 label=BTC:
 command=curl -s http://api.coindesk.com/v1/bpi/currentprice.json |jq -r ".bpi.USD.rate" |grep -o '^[^.]*'
 interval=600
+separator=false
 
 [usd2ars]
 label=U$:
 command=w3m preciodolarblue.com.ar | grep Compra -A 1 |tail -n 1|cut -f 1 -d ' '
 interval=600
+separator=false
 
 [mail]
 command=${HOME}/.config/i3blocks/mail
 interval=90
 separator=true
 signal=12
-
-[load_average]
-interval=5
-separator=false
 
 [temperature]
 interval=5

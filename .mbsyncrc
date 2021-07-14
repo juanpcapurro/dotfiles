@@ -25,6 +25,7 @@ Port 993
 User juan.pablo.capurro@altoros.com
 PassCmd "secret-tool lookup juan.pablo.capurro@altoros.com password"
 SSLType IMAPS
+AuthMechs PLAIN
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 MaildirStore work-gmail-local
@@ -69,6 +70,7 @@ User jpcapurro@fi.uba.ar
 PassCmd "secret-tool lookup jpcapurro@fi.uba.ar password"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
+AuthMechs PLAIN
 
 MaildirStore fiuba-gmail-local
 Path ~/mail/fiuba-gmail/
