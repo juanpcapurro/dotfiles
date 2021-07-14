@@ -4,10 +4,10 @@ xrandr \
   --output DP-2 --off \
   --output DP-1 --off \
   --output DP-3 --off \
-  --output HDMI-1 --off \
-  --output HDMI-2 --mode 1920x1080 --rotate normal \
-  --output HDMI-3 --primary --mode 1920x1080 --rotate normal --left-of HDMI-2 \
-  --output LVDS-1 --off \
+  --output HDMI-1 --primary --mode 1920x1080 --rotate normal --above LVDS-1 \
+  --output HDMI-2 --off \
+  --output HDMI-3 --off \
+  --output LVDS-1 --mode 1366x768 \
   --output VGA-1 --off \
   && notify-send "Docked!"|| notify-send "Unable to dock :("
 

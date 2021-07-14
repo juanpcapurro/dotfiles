@@ -1,5 +1,4 @@
 exec --no-startup-id ~/.scripts/display_auto
-exec --no-startup-id feh --bg-fill ~/.laptop_bg.jpg
 
 assign [class="VirtualBox.*"] $ws2
 assign [title="Eclipse.*"] $ws10
@@ -171,8 +170,13 @@ bindsym $mod+Shift+o resize grow width 4 px or 1 ppt
 bar {
   status_command i3blocks
   position bottom
+  output HDMI-1
   output HDMI-2
   output HDMI-3
+  output DP-1
+  output DP-2
+  output DP-3
+  output VGA-1
   font pango:Hack Regular 11
   tray_output primary
   colors {
