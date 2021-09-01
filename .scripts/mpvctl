@@ -8,10 +8,6 @@
 
 socket="$HOME/.mpv/socket"
 
-if [ -n "${MPV_SOCKET}" ] ; then
-  socket=${MPV_SOCKET}
-fi
-
 mpvcommand() {
     # JSON preamble.
     local tosend='{ "command": ['
@@ -63,15 +59,6 @@ elif [ "$1" = "move-backwards" ] ; then
   # go back 10s
   mpvcommand seek -10 relative
   notify-send -- "-10s"
-elif [ "$1" = "add-to-playlist" ] ; then
-  playlist_file="$(ls ~/playlists |dmenu -l 20)"
-  current_url="$(mpvctl get-path)"
-  echo "${current_url}"| tee -a "${HOME}/playlists/${playlist_file}"
-  notify-send "saving $(mpvctl title) to playlist ${playlist_file}"
-elif [ "$1" = "resume-playlist" ] ; then
-  playlist_file="$(ls ~/playlists |dmenu -l 20)"
-  cat "${HOME}/playlists/${playlist_file}" | xargs mpvctl add
-  notify-send "resuming playlist: ${playlist_file}"
 
 # commands meant to be called from other scripts/programs
 elif [ "$1" = "add" ] ; then
@@ -92,12 +79,6 @@ elif [ "$1" = "get-path" ] ; then
 elif [ "$1" = "get-paused" ] ; then
   # true if the media is paused
   mpvcommand 'get_property_string' 'pause'| jq -j ".data"
-elif [ "$1" = "get-playlist-index" ] ; then
-  mpvcommand 'get_property_string' 'playlist-pos'| jq -j ".data"
-elif [ "$1" = "get-playlist-index-1" ] ; then
-  mpvcommand 'get_property_string' 'playlist-pos-1'| jq -j ".data"
-elif [ "$1" = "get-playlist-length" ] ; then
-  mpvcommand 'get_property_string' 'playlist-count'| jq -j ".data"
 elif [ "$1" = "get-progress-seconds" ] ; then
   mpvcommand get_property_string time-pos |jq -j ".data"|sed 's/\..*$//g'
 elif [ "$1" = "get-duration-seconds" ] ; then
