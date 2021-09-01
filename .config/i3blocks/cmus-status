@@ -3,7 +3,7 @@
 icon="⏹️"
 playerstatus=""
 title=""
-if xdotool search --name mpv &>/dev/null ; then
+if xdotool search --class mpv &>/dev/null ; then
   title="$(mpvctl title | sed  's/^[[:digit:]]*//')"
   if [ "$(mpvctl get-paused)" = "yes" ] ; then
     playerstatus="paused"
@@ -14,7 +14,7 @@ elif cmus-remote -Q &>/dev/null ; then
   playerstatus="$(cmus-remote -Q|head -n 1 |cut -d ' ' -f 2)" 
   title="$(cmus-remote -Q |grep 'tag title\b' | cut -f 3- -d ' ')"
 else
-  exit
+  exit 0
 fi
 if [ "${playerstatus}" = "paused" ] ; then
   icon="⏸️"
