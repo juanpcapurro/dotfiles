@@ -30,12 +30,12 @@ color info red black bold
 color article white default bold
 
 browser qutebrowser
-macro , open-in-browser
-macro t set browser "qndl"; open-in-browser ; set browser qutebrowser
-macro a set browser "youtube-archive"; open-in-browser ; set browser qutebrowser
-macro v set browser "mpvappend"; open-in-browser ; set browser qutebrowser
-macro w set browser "w3m"; open-in-browser ; set browser qutebrowser
-macro c set browser "xsel -b <<<" ; open-in-browser ; set browser qutebrowser
+macro , open-in-browser-and-mark-read
+macro t set browser "qndl"; open-in-browser-and-mark-read ; set browser qutebrowser
+macro a set browser "youtube-archive"; open-in-browser-and-mark-read ; set browser qutebrowser
+macro v set browser "mpvappend"; open-in-browser-and-mark-read ; set browser qutebrowser
+macro w set browser "w3m"; open-in-browser-and-mark-read ; set browser qutebrowser
+macro c set browser "xsel -b <<<" ; open-in-browser-and-mark-read ; set browser qutebrowser
 
 highlight all "---.*---" yellow
 highlight feedlist ".*(0/0))" black
