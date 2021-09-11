@@ -10,10 +10,8 @@ c.editor.command = ["st", "-t", "i3_dropdown_quteditor","nvim", "-f", "{file}", 
 
 # Bindings for normal mode
 config.bind('e', 'open-editor')
-config.bind(';m', 'hint links userscript ~/.scripts/mpvappend')
-config.bind(';M', 'hint --rapid links userscript ~/.scripts/mpvappend')
-config.bind(';v', 'hint links userscript ~/.scripts/mpvideoappend')
-config.bind(';V', 'hint --rapid links userscript ~/.scripts/mpvideoappend')
+config.bind(';v', 'hint links userscript ~/.scripts/mpvappend')
+config.bind(';V', 'hint --rapid links userscript ~/.scripts/mpvappend')
 config.bind(';r', 'hint links userscript ~/.scripts/rssadd')
 config.bind(';a', 'hint links userscript ~/.scripts/youtube-archive')
 # Bindings for insert mode
