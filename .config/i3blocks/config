@@ -19,6 +19,12 @@ interval=10
 signal=14
 separator=true
 
+[ethgas]
+label=GAS:
+command=w3m https://ethgasstation.info/  |grep standard -B 1 |head -n 1
+interval=600
+separator=false
+
 [whatchadoin]
 label=⏰
 command=~/.scripts/watchadoin i3blocks
