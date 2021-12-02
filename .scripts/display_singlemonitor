@@ -1,11 +1,18 @@
 #!/bin/sh
 
+display_output=1
+display_off=2
+if xrandr |grep -e 'HDMI-2 connected' ; then
+  display_output=2
+  display_off=1
+fi
+
 xrandr \
   --output DP-2 --off \
   --output DP-1 --off \
   --output DP-3 --off \
-  --output HDMI-1 --primary --mode 1920x1080 --rotate normal --above LVDS-1 \
-  --output HDMI-2 --off \
+  --output "HDMI-${display_output}" --primary --mode 1920x1080 --rotate normal --above LVDS-1 \
+  --output "HDMI-${display_off}" --off \
   --output HDMI-3 --off \
   --output LVDS-1 --mode 1366x768 \
   --output VGA-1 --off \
