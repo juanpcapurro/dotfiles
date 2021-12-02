@@ -22,8 +22,8 @@ SyncState *
 IMAPStore work-gmail-remote
 Host imap.gmail.com
 Port 993
-User juan.pablo.capurro@altoros.com
-PassCmd "secret-tool lookup juan.pablo.capurro@altoros.com password"
+User capu@exactly.finance
+PassCmd "secret-tool lookup capu@exactly.finance password"
 SSLType IMAPS
 AuthMechs PLAIN
 CertificateFile /etc/ssl/certs/ca-certificates.crt
@@ -48,6 +48,7 @@ Port 993
 User vasectomio
 PassCmd "secret-tool lookup vasectomio@yandex.ru password"
 SSLType IMAPS
+AuthMechs PLAIN
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 MaildirStore personal-yandex-local
@@ -61,27 +62,4 @@ Slave :personal-yandex-local:
 Create Both
 Expunge Both
 Patterns *
-SyncState *
-
-IMAPStore fiuba-gmail-remote
-Host imap.gmail.com
-Port 993
-User jpcapurro@fi.uba.ar
-PassCmd "secret-tool lookup jpcapurro@fi.uba.ar password"
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-AuthMechs PLAIN
-
-MaildirStore fiuba-gmail-local
-Path ~/mail/fiuba-gmail/
-Inbox ~/mail/fiuba-gmail/INBOX
-MapInbox "[Gmail]/Todos"
-Subfolders Verbatim
-
-Channel fiuba-gmail
-Master :fiuba-gmail-remote:
-Slave :fiuba-gmail-local:
-Create Both
-Expunge Both
-Patterns * "![Gmail]/Todos" "![Gmail]/Destacados" "![Gmail]/Importantes"
 SyncState *

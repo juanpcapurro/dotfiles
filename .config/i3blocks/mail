@@ -1,6 +1,6 @@
 #!/bin/sh
 
-accounts="capu-tech personal-yandex"
+accounts="capu-tech personal-yandex work-gmail"
 mail_count=""
 for account in $accounts;
 do

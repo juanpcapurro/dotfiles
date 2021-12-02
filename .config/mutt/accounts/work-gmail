@@ -4,8 +4,8 @@ set spoolfile = "+INBOX"
 set record = "+[Gmail]/Sent Mail"
 set trash = "+[Gmail]/Trash"
 set postponed = "+[Gmail]/Drafts"
-set from = "juan.pablo.capurro@altoros.com"
-set realname = "Juan Pablo Capurro"
+set from = "capu@exactly.finance"
+set realname = "capu"
 
 mailboxes +INBOX "+[Gmail]/Sent Mail" "+[Gmail]/Trash" "+[Gmail]/Drafts" "+[Gmail]/Spam"
 
