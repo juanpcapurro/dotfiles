@@ -20,8 +20,7 @@ signal=14
 separator=true
 
 [ethgas]
-label=GAS:
-command=w3m https://ethgasstation.info/  |grep standard -B 1 |head -n 1
+command=~/.config/i3blocks/gas
 interval=600
 separator=false
 

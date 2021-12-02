@@ -1,0 +1,8 @@
+#!/bin/sh
+
+response=$(curl 'https://api.ethgasstation.info/api/fee-estimate')
+baseFee=$(echo ${response} |jq ".baseFee") 
+bribe=$(echo ${response} |jq ".priorityFee.standard") 
+
+echo "Ξ: ${baseFee}+${bribe}"
+
