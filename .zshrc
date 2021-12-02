@@ -57,6 +57,17 @@ dec2hex (){
   printf '%x' ${1}
 }
 
+# params: gasAmount (in gas), gasPrice (in gwei), ethPrice (in usd)
+# assumes eth price of 4200usd if none is provided
+gas2usd (){
+  if [ -z "$3" ] ; then
+    ethPrice=4200
+  else
+    ethPrice=$3
+  fi
+  echo "$ethPrice * $1 * $2 *10^9 / 10^18" | bc -l
+}
+
 contractsize(){
   [ -f "${1}" ] && echo "$(cat "${1}"|jq -r '.bytecode' |wc -c)/2" |bc
 }
