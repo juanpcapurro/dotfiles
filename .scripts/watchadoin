@@ -1,26 +1,9 @@
 #!/bin/sh
 
-# dependecies: dmenu. a slack token in ~/.secrets if you want to sync your status
-# use [SlackPirate](https://github.com/emtunc/SlackPirate) to extract your token
+# dependecies: dmenu.
 
 LOGDIR=~/timelog
 logfile="${LOGDIR}/$(date -I)"
-
-set_slack_status() {
-  status_text="$1"
-  status_emoji="$2"
-  # oh no I'm doxing my employer!
-  curl 'https://altoros.slack.com/api/users.profile.set' \
-  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0' \
-  -H 'Accept: */*' \
-  -H 'Content-Type: application/json; charset=utf-8' \
-  -H "Authorization: Bearer ${SLACK_TOKEN}" \
-  -H 'Origin: https://app.slack.com' \
-  --data "{\"profile\":{\"status_text\":\"${status_text}\",\"status_emoji\":\"${status_emoji}\"}}" \
-  && notify-send "set ${status_text} as slack status"\
-  || notify-send "couldnt set slack status"
-}
-
 
 if [ "$1" = "i3blocks" ] ; then
   if [ -e "$logfile" ] ; then
@@ -70,26 +53,6 @@ tasks=$(cat ${files_to_read} \
   | dmenu -i -p "watchadoin?" -l 20)
 if [ -n "${tasks}" ] ; then
   echo "$(date "+%H:%M" ) ${tasks}" >> "${logfile}"
-  if [ -e ~/.secrets ]; then
-    . ~/.secrets
-    time_dow=$(date +%w)
-    time_hour=$(date +%H)
-    if [ -n "$SLACK_TOKEN" ] \
-       && [ "$time_hour" -ge 8 ] && [ "$time_hour" -lt 19 ] \
-       && [ "$time_dow" -ge 1 ] && [ "$time_dow" -lt 6 ] ; then
-      status_text=$(echo "$tasks" | tr -dc "[:alnum:][:blank:]" |head -c 90)
-      status_emoji=":desktop_computer:"
-      if echo "${status_text}" | grep "lunch" ; then 
-        status_emoji=":pizza:"
-      fi
-      if echo "${status_text}" | grep "^afk$" ; then 
-        status_emoji=":bicyclist:"
-      fi
-      set_slack_status "${status_text}" "${status_emoji}"
-    else
-      set_slack_status "its 6pm my dudes" ":frog:"
-    fi
-  fi
 fi
 
 pkill -SIGRTMIN+10 i3blocks
