@@ -9,5 +9,8 @@ dbus-update-activation-environment --systemd DISPLAY
 [ -f ~/.Xresources ] && xrdb ~/.Xresources
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-exec i3 >i3logs 2>&1
+# exec i3 >i3logs 2>&1
+while :; do
+  ssh-agent dwm >> dwmlogs
+done
 # exec dwm > dwmlogs 2>&1

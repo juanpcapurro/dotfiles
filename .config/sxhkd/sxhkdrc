@@ -5,10 +5,6 @@ super+b
 super+shift+b
   cmus-remote -s ; i3lock -f -c  3f2f3f ; systemctl suspend
 
-# time tracking
-super+m
-  watchadoin
-
 # push to talk
 super+d
   push2talk toggle
@@ -29,7 +25,7 @@ super+r
   remapkeyboard
 
 # launch regular programs
-super+backslash ; {q, f, shift+f, n, p, m, v, r, w, e, t}
+super+backslash ; {q, f, shift+f, n, p, m, v, r, w, e, t, c}
   {\
     qutebrowser,\
     firefox,\
@@ -41,7 +37,8 @@ super+backslash ; {q, f, shift+f, n, p, m, v, r, w, e, t}
     ripcord,\
     mysql-workbench,\
     dmenuunicode,\
-    telegram-desktop\
+    telegram-desktop,\
+    st -c st-cmus -e cmus\
   }
 
 # launch memetic scripts

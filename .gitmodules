@@ -35,3 +35,9 @@
 [submodule "src/voidrice"]
 	path = src/voidrice
 	url = git@github.com:LukeSmithxyz/voidrice.git
+[submodule "src/dwmblocks"]
+	path = src/dwmblocks
+	url = git@github.com:juanpcapurro/dwmblocks.git
+[submodule "src/dwm"]
+	path = src/dwm
+	url = git@github.com:juanpcapurro/dwm.git

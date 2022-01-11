@@ -10,3 +10,4 @@ dunst &
 
 keynav daemonize &
 sxhkd &
+which dwmblocks && dwmblocks &
