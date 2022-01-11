@@ -40,6 +40,12 @@ separator=false
 label=U$:
 command=w3m preciodolarblue.com.ar | grep Compra -A 1 |tail -n 1|cut -f 1 -d ' '
 interval=600
+separator=true
+
+[instagram]
+label=
+command=~/.config/i3blocks/instagram
+interval=600
 separator=false
 
 [mail]

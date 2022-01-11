@@ -1,5 +1,5 @@
 config.set('content.javascript.enabled', False)
-js_enabled_sites=['windguru.cz', 'twitter.com', 'mercadolibre.com.ar', 'instagram.com', 'etherscan.io', 'github.com', 'gitlab.com', 'paypal.com', 'youtube.com', 'edensa.com.ar']
+js_enabled_sites=['windguru.cz', 'twitter.com', 'mercadolibre.com.ar', 'instagram.com', 'etherscan.io', 'github.com', 'gitlab.com', 'paypal.com', 'youtube.com', 'edensa.com.ar', 'airbnb.com', 'openstreetmap.org', 'duckduckgo.com', 'thingiverse.com']
 for site in js_enabled_sites :
     config.set('content.javascript.enabled', True, '*://*.'+site+'/*')
 
