@@ -1,0 +1,8 @@
+#!/bin/sh
+
+MIRRORS_DIR=~/mirrors
+
+for i in $1 $(ls $MIRRORS_DIR |shuf) ; do
+  wget --mirror -Ep --no-parent -P "$MIRRORS_DIR" "$i"
+done
+
