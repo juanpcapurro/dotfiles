@@ -61,13 +61,13 @@ super+shift+backslash ; {r, o, h, s}
   { reboot, poweroff, systemctl hibernate, systemctl suspend }
 
 XF86AudioPlay
-  cmus-remote -u ; pkill -SIGRTMIN+14 i3blocks
+  cmus-remote -u ; pkill -SIGRTMIN+14 dwmblocks
 XF86AudioPause
-  cmus-remote -u ; pkill -SIGRTMIN+14 i3blocks
+  cmus-remote -u ; pkill -SIGRTMIN+14 dwmblocks
 XF86AudioNext
-  cmus-remote -n ; pkill -SIGRTMIN+14 i3blocks
+  cmus-remote -n ; pkill -SIGRTMIN+14 dwmblocks
 XF86AudioPrev
-  cmus-remote -r ; pkill -SIGRTMIN+14 i3blocks
+  cmus-remote -r ; pkill -SIGRTMIN+14 dwmblocks
 XF86AudioLowerVolume
   volumectl volume-up
 XF86AudioRaiseVolume
@@ -79,15 +79,15 @@ XF86AudioRaiseVolume
 
 super+BackSpace ; {space, m, d}
   {\
-    cmus-remote -u ; pkill -SIGRTMIN+14 i3blocks ,\
+    cmus-remote -u ; pkill -SIGRTMIN+14 dwmblocks ,\
     volumectl mute-toggle,\
-    echo "yes\nno"|dmenu -p "delete $(cmus-remote  -Q |grep file |cut -d ' ' -f 2-) ?" |grep "yes" && rm "$(cmus-remote  -Q |grep file |cut -d ' ' -f 2-)" && cmus-remote -n && pkill -SIGRTMIN+14 i3blocks\
+    echo "yes\nno"|dmenu -p "delete $(cmus-remote  -Q |grep file |cut -d ' ' -f 2-) ?" |grep "yes" && rm "$(cmus-remote  -Q |grep file |cut -d ' ' -f 2-)" && cmus-remote -n && pkill -SIGRTMIN+14 dwmblocks\
   }
 
 super+{ bracketleft, bracketright, shift+bracketleft, shift+bracketright, alt+bracketleft, alt+bracketright }
   {\
     volumectl volume-down, volumectl volume-up,\
-    cmus-remote -r ; pkill -SIGRTMIN+14 i3blocks, cmus-remote -n ; pkill -SIGRTMIN+14 i3blocks,\
+    cmus-remote -r ; pkill -SIGRTMIN+14 dwmblocks, cmus-remote -n ; pkill -SIGRTMIN+14 dwmblocks,\
     cmus-remote -k -10, cmus-remote -k +10\
   }
 
