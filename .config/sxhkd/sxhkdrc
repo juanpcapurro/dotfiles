@@ -25,17 +25,13 @@ super+r
   remapkeyboard
 
 # launch regular programs
-super+backslash ; {q, f, shift+f, n, p, m, v, r, w, e, t, c}
+super+backslash ; {q, f, shift+f, n, p, e, t, c}
   {\
     qutebrowser,\
     firefox,\
     firefox --private-window,\
-    nautilus,\
+    st -c st-nvim -e nvim -u ~/.config/nvim/fat.vim,\
     pavucontrol,\
-    nosqlbooster,\
-    code,\
-    ripcord,\
-    mysql-workbench,\
     dmenuunicode,\
     telegram-desktop,\
     st -c st-cmus -e cmus\
