@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -eu
+
+usdprice=$(w3m preciodolarblue.com.ar | grep Compra -A 1 |tail -n 1|cut -f 1 -d ' ')
+
+btcprice=$(curl -s http://api.coindesk.com/v1/bpi/currentprice.json |jq -r ".bpi.USD.rate" |grep -o '^[^.]*')
+
+baseFee=$(curl 'https://api.ethgasstation.info/api/fee-estimate'|jq ".baseFee") 
+
+echo "Ξ ${baseFee}| BTC ${btcprice}| USD ${usdprice}" > ~/.config/i3blocks/asyncblocks
+
+pkill -SIGRTMIN+12 dwmblocks
