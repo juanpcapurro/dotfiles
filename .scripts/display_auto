@@ -1,7 +1,7 @@
 #!/bin/sh
 docked_displaycount=$(xrandr |grep -e 'HDMI-2 connected' -e 'HDMI-3 connected'|wc -l)
 
-singlemonitor_displaycount=$(xrandr |grep -e 'HDMI-2 connected\|HDMI-1 connected' |wc -l)
+singlemonitor_displaycount=$(xrandr |grep -e 'HDMI-1 connected' |wc -l)
 
 # xrandr |grep 'HDMI-2 connected' && display_home_dock || display_standalone
 
