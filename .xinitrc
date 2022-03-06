@@ -11,6 +11,6 @@ dbus-update-activation-environment --systemd DISPLAY
 
 # exec i3 >i3logs 2>&1
 while :; do
-  ssh-agent dwm >> dwmlogs
+  ssh-agent dwm > dwmlogs 2>&1
 done
 # exec dwm > dwmlogs 2>&1
