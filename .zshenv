@@ -10,6 +10,8 @@ export NVM_DIR="$HOME/.nvm"
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export SAL_USE_VCLPLUGIN=qt5
+export SAL_VCL_QT5_USE_CAIRO=1
 
 # for i3 thingies
 export HEADSET_ADDR="94:DB:56:F0:11:D5"
