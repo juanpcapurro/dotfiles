@@ -1,9 +1,9 @@
 super+ctrl+b
   i3lock -f -c  3f2f3f
 super+b
-  cmus-remote -s ; i3lock -f -c  3f2f3f
+  cmus-remote -U ; i3lock -f -c  3f2f3f
 super+shift+b
-  cmus-remote -s ; i3lock -f -c  3f2f3f ; systemctl suspend
+  cmus-remote -U ; i3lock -f -c  3f2f3f ; systemctl suspend
 
 # push to talk
 super+d
