@@ -1,5 +1,6 @@
 #variables
-export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin:/usr/sbin:/sbin:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.scripts:${HOME}/.local/bin:/usr/sbin:/sbin:$HOME/.cargo/bin:$HOME/.foundry/bin"
+
 export EDITOR="nvim"
 export VISUAL='nvim'
 export TERMINAL="st"

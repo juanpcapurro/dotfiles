@@ -11,6 +11,7 @@ setopt hist_ignore_all_dups
 export HISTSIZE=10000
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
+fpath+=~/.zfunc
 
 autoload -U is-at-least
 autoload -Uz compinit
@@ -31,7 +32,6 @@ FZF_PATH=/usr/share/doc/fzf/examples
 [ -e "$FZF_PATH" ] && source "${FZF_PATH}/key-bindings.zsh"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.secrets ] && source ~/.secrets
 
