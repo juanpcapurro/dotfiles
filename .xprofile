@@ -1,7 +1,9 @@
 #!/bin/sh
 
+display-auto &
+remapkeyboard &
+
 pgrep compton || compton &
-redshift &
 blueman-applet &
 which qtox && qtox &
 

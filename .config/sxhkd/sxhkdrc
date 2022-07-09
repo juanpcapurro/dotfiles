@@ -5,6 +5,8 @@ super+b
 super+shift+b
   cmus-remote -U ; i3lock -f -c  3f2f3f ; systemctl suspend
 
+super+w
+  watchadoin
 # push to talk
 super+d
   push2talk toggle
