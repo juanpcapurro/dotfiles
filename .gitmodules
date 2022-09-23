@@ -16,9 +16,6 @@
 [submodule "src/st"]
 	path = src/st
 	url = git@github.com:juanpcapurro/st.git
-[submodule "src/keynav"]
-	path = src/keynav
-	url = https://github.com/jordansissel/keynav.git
 [submodule "src/st"]
 	path = src/st
 	url = git@github.com:juanpcapurro/st.git
@@ -26,9 +23,6 @@
 [submodule "src/blog"]
 	path = src/blog
 	url = git@github.com:juanpcapurro/blog.git
-[submodule "src/node_server"]
-	path = src/node_server
-	url = git@github.com:juanpcapurro/node_server.git
 [submodule "src/hire"]
 	path = src/hire
 	url = git@github.com:juanpcapurro/hire.git
