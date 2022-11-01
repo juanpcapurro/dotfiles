@@ -11,20 +11,12 @@ setopt hist_ignore_all_dups
 export HISTSIZE=10000
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
-fpath+=~/.zfunc
 
 autoload -U is-at-least
 autoload -Uz compinit
 compinit
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/prompt.sh
-source ~/.zsh/fixls.zsh
 source /usr/share/autojump/autojump.zsh
-source ~/.zsh/oh-my-zsh/lib/*.zsh
-source ~/.zsh/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
-source ~/.zsh/oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh
-source ~/.zsh/oh-my-zsh/plugins/git/git.plugin.zsh
-source ~/.zsh/oh-my-zsh/plugins/lol/lol.plugin.zsh
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
 # shell-based programs
@@ -34,15 +26,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.secrets ] && source ~/.secrets
-
-#keybindings
-bindkey "^y" autosuggest-execute
-bindkey "^ " vi-forward-word
-bindkey "^u" autosuggest-accept
-
-#aliases
-unalias rm
-unalias t
 
 #functions
 make(){
@@ -73,5 +56,3 @@ contractsize(){
 }
 
 echo ">^.^<"
-#syntax highlight (wraps widgets)
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
