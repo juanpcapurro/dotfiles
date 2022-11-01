@@ -13,4 +13,3 @@ dbus-update-activation-environment --systemd DISPLAY
 while :; do
   ssh-agent dwm > dwmlogs 2>&1
 done
-# exec dwm > dwmlogs 2>&1
