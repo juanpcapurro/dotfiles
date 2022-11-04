@@ -11,6 +11,11 @@ if status is-interactive
     abbr gco git checkout
     abbr gc git commit
     abbr g git
+
+    function prompt_login --description 'display user name for the prompt'
+        echo -n -s (set_color $fish_color_user) "$USER" (set_color normal) 
+    end
+
 end
 
 export EDITOR=nvim
