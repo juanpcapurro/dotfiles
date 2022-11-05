@@ -1,9 +1,9 @@
 super+ctrl+b
-  i3lock -f -c  3f2f3f
+  dm-tool lock
 super+b
-  cmus-remote -U ; i3lock -f -c  3f2f3f
+  cmus-remote -U ; dm-tool lock
 super+shift+b
-  cmus-remote -U ; i3lock -f -c  3f2f3f ; systemctl suspend
+  cmus-remote -U ; dm-tool lock; systemctl suspend
 
 super+w
   watchadoin
