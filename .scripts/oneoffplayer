@@ -1,1 +1,2 @@
+#!/bin/sh
 unmute; amixer -q set Master 90% unmute ; mpv --no-video "$1"
