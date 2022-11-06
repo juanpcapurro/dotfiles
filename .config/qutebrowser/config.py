@@ -8,7 +8,7 @@ c.tabs.background = True
 c.auto_save.session = True
 
 # config.set('content.proxy', 'socks://localhost:9050')
-config.set('content.user_stylesheets', '~/.config/qutebrowser/styles.css')
+config.set('content.user_stylesheets', ['~/.config/qutebrowser/styles.css'])
 
 # editor setting
 c.editor.command = ["st", "-t", "i3_dropdown_quteditor","nvim", "-f", "{file}", "-c", "normal {line}G{column0}1"]
