@@ -3,7 +3,7 @@ super+ctrl+b
 super+b
   cmus-remote -U ; dm-tool lock
 super+shift+b
-  cmus-remote -U ; dm-tool lock; systemctl suspend
+  cmus-remote -U ; dm-tool lock; loginctl suspend
 
 super+w
   watchadoin
@@ -60,7 +60,7 @@ super+equal ; {a, m, shift+m }
   }
 
 super+shift+backslash ; {r, o, h, s}
-  { reboot, poweroff, systemctl hibernate, systemctl suspend }
+  { reboot, poweroff, loginctl hibernate, loginctl suspend }
 
 XF86AudioPlay
   cmus-remote -u ; pkill -SIGRTMIN+14 dwmblocks

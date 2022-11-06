@@ -8,3 +8,7 @@ TZ='America/Argentina/Buenos_Aires'; export TZ
 xinput set-prop 12 188 0
 
 exec dwm > dwmlogs 2>&1
+# while true;
+# do
+#   ssh-agent dwm > dwmlogs 2>&1
+# done
