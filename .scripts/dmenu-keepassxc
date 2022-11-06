@@ -18,11 +18,10 @@ entry=$(dmenu -l 20 -p "Secret for:"< "$entries")
 
 if [ -z "$1" ] ; then
   field="$(echo "$dbpass" |keepassxc-cli show "$db" "$entry"|dmenu -l 20 -p "Field:" |grep -o '^[^:]*')"
-  echo "$dbpass"|keepassxc-cli clip -a "$field" "$db" "$entry"|xargs -0 notify-send
-elif [ "$1" = "TOPT" ] ; then 
-  echo "$dbpass"|keepassxc-cli clip -t "$db" "$entry"|xargs -0 notify-send
+  echo "$dbpass"|keepassxc-cli clip -a "$field" "$db" "$entry" 30 |xargs -0 notify-send
 else
   echo "$dbpass"|keepassxc-cli clip -a "$1" "$db" "$entry"|xargs -0 notify-send
+  echo "$dbpass"|keepassxc-cli show -t "$db" "$entry"|xclip && notify-send "TOPT copied to primary"
 fi
 
 rm -r "$CACHE"
