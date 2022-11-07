@@ -13,3 +13,6 @@ dunst &
 keynav daemonize &
 sxhkd &
 which dwmblocks && dwmblocks &
+
+# put in crontab if you fancy
+ls ~/.assets/images/wallpapers/ |shuf -n 1 | xargs -I{} feh --bg-scale ~/.assets/images/wallpapers/{} &
