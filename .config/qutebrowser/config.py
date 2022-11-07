@@ -1,5 +1,5 @@
 config.set('content.javascript.enabled', False)
-js_enabled_sites=['windguru.cz', 'twitter.com', 'mercadolibre.com.ar', 'instagram.com', 'etherscan.io', 'github.com', 'gitlab.com', 'paypal.com', 'youtube.com', 'edensa.com.ar', 'airbnb.com', 'openstreetmap.org', 'duckduckgo.com', 'thingiverse.com', 'afip.gob.ar', 'old.reddit.com', 'piped.kavin.rocks', 'mercadopago.com.ar']
+js_enabled_sites=['windguru.cz', 'twitter.com', 'mercadolibre.com.ar', 'instagram.com', 'etherscan.io', 'github.com', 'gitlab.com', 'paypal.com','edensa.com.ar', 'airbnb.com', 'openstreetmap.org', 'duckduckgo.com', 'thingiverse.com', 'old.reddit.com', 'www.reddit.com', 'mercadopago.com.ar', 'polygonscan.com']
 for site in js_enabled_sites :
     config.set('content.javascript.enabled', True, '*://*.'+site+'/*')
 
@@ -22,10 +22,10 @@ config.set('url.searchengines', {
     'ens': 'https://etherscan.io/enslookup-search?search={}'
 })
 
-config.bind('peam', 'open -- https://etherscan.io/address/{clipboard}')
-config.bind('Peam', 'open -- https://etherscan.io/address/{primary}')
-config.bind('petm', 'open -- https://etherscan.io/tx/{clipboard}')
-config.bind('Petm', 'open -- https://etherscan.io/tx/{primary}')
+config.bind('peaM', 'open -- https://etherscan.io/address/{clipboard}')
+config.bind('PeaM', 'open -- https://etherscan.io/address/{primary}')
+config.bind('petM', 'open -- https://etherscan.io/tx/{clipboard}')
+config.bind('PetM', 'open -- https://etherscan.io/tx/{primary}')
 
 config.bind('peak', 'open -- https://kovan.etherscan.io/address/{clipboard}')
 config.bind('Peak', 'open -- https://kovan.etherscan.io/address/{primary}')
@@ -41,6 +41,11 @@ config.bind('peap', 'open -- https://polygonscan.com/address/{clipboard}')
 config.bind('Peap', 'open -- https://polygonscan.com/address/{primary}')
 config.bind('petp', 'open -- https://polygonscan.com/tx/{clipboard}')
 config.bind('Petp', 'open -- https://polygonscan.com/tx/{primary}')
+
+config.bind('peam', 'open -- https://mumbai.polygonscan.com/address/{clipboard}')
+config.bind('Peam', 'open -- https://mumbai.polygonscan.com/address/{primary}')
+config.bind('petm', 'open -- https://mumbai.polygonscan.com/tx/{clipboard}')
+config.bind('Petm', 'open -- https://mumbai.polygonscan.com/tx/{primary}')
 
 # Bindings for normal mode
 config.bind('e', 'open-editor')
