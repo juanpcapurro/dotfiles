@@ -1,17 +1,17 @@
-super+ctrl+b
+super+alt+b
   dm-tool lock
+super+ctrl+b
+  i3lock -i ~/.assets/images/bluescreen.png -t -u
 super+b
-  cmus-remote -U ; dm-tool lock
+  cmus-remote -U ; i3lock -i ~/.assets/images/bluescreen.png -t -u
 super+shift+b
-  cmus-remote -U ; dm-tool lock; loginctl suspend
+  cmus-remote -U ; i3lock -i ~/.assets/images/bluescreen.png -t -u; loginctl suspend
 
 super+w
   watchadoin
 # push to talk
 super+d
   push2talk toggle
-super+shift+d
-  xdotool search --name meet key ctrl+d ; notify-send "toggled meet mute"
 
 super+x
   display_home_dock
@@ -75,7 +75,6 @@ XF86AudioRaiseVolume
 
 # TODO:
 # - cmus playlists
-# - cmus delete file
 
 super+BackSpace ; {space, m, d}
   {\
