@@ -14,9 +14,7 @@ super+shift+d
   xdotool search --name meet key ctrl+d ; notify-send "toggled meet mute"
 
 super+x
-  display_auto
-super+shift+x
-  displayselect
+  display_home_dock
 super+alt+x
   display_standalone
 alt+shift+x
@@ -59,8 +57,8 @@ super+equal ; {a, m, shift+m }
     oneoffplayer ~/.assets/sounds/maestruli_long.mp3\
   }
 
-super+shift+backslash ; {r, o, h, s}
-  { reboot, poweroff, loginctl hibernate, loginctl suspend }
+super+shift+backslash ; {h, s}
+  { loginctl hibernate, loginctl suspend }
 
 XF86AudioPlay
   cmus-remote -u ; pkill -SIGRTMIN+14 dwmblocks
