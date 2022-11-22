@@ -4,6 +4,7 @@ display-auto &
 remapkeyboard &
 
 pgrep compton || compton &
+pgrep pulseaudio || pulseaudio -D
 blueman-applet &
 which qtox && qtox &
 
