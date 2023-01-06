@@ -13,7 +13,7 @@ fi
 
 
 FORMAT="best[height<=?768]"
-FLAGS="--all-subs -ic --restrict-filenames"
+FLAGS="--all-subs -ic --restrict-filenames --no-mtime"
 VIDEOS_DESTINATION="${HOME}/youtube"
 
 if [ -e "${VIDEOS_DESTINATION}/cookies.txt" ] ; then

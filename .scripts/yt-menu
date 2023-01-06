@@ -4,4 +4,4 @@ if [ -z "$videopath" ] ; then
   videopath=~/youtube
 fi
 
-find $videopath -type f $@ |grep -v -e '\.part$' -e '\.vtt'|sort -t / -k 6 -r |dmenu -i -l 30|xargs -n 1 mpvappend
+find $videopath -type f $@ |grep -v -e '\.part$' -e '\.vtt'| xargs ls -ct |dmenu -i -l 30|xargs -n 1 mpvappend
