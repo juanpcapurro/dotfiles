@@ -17,6 +17,7 @@ config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'yt': 'https://invidious.weblibre.org/search?q={}',
     'lgf': 'https://libgen.is/fiction/?q={}',
+    'lga': 'https://libgen.is/search.php?req={}',
     'tv': 'https://www.thingiverse.com/search?q={}&type=things&sort=popular&page=1',
     'ml': 'https://listado.mercadolibre.com.ar/{}',
     'ens': 'https://etherscan.io/enslookup-search?search={}'

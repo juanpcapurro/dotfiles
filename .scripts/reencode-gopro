@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -eu
+
+source_dir=/mnt/gopro/DCIM/100GOPRO
+raw_dir=~/gopro/raw-videos
+reencoded_dir=~/gopro/reencoded-videos
+
+if [ -e "$source_dir" ] ; then
+  cp $source_dir/*.MP4 $raw_dir/
+fi
+
+for i in $(ls $raw_dir)
+do
+  ffmpeg -n -i "$raw_dir/$i" -vf scale=hd1080 -c:v libx264 -crf 40 "$reencoded_dir/${i}" && rm "$raw_dir/$i"
+done
