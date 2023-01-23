@@ -20,6 +20,7 @@ config.set('url.searchengines', {
     'lga': 'https://libgen.is/search.php?req={}',
     'tv': 'https://www.thingiverse.com/search?q={}&type=things&sort=popular&page=1',
     'ml': 'https://listado.mercadolibre.com.ar/{}',
+    'npm': 'https://www.npmjs.com/search?q={}',
     'ens': 'https://etherscan.io/enslookup-search?search={}'
 })
 
