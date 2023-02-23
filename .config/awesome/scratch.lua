@@ -14,7 +14,7 @@ local function turn_on(c)
     for k,tag in pairs(c:tags()) do
         if tag ~= current_tag then table.insert(ctags, tag) end
     end
-    c.screen = awful.screen.focused()
+    c.screen = focused_screen
     c:tags(ctags)
     c:raise()
     client.focus = c

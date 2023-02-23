@@ -1,6 +1,5 @@
 #!/bin/sh
 
-display-auto &
 remapkeyboard &
 
 pgrep compton || compton &
@@ -13,7 +12,4 @@ dunst &
 
 keynav daemonize &
 sxhkd &
-which dwmblocks && dwmblocks &
-
-# put in crontab if you fancy
-ls ~/.assets/images/wallpapers/ |shuf -n 1 | xargs -I{} feh --bg-scale ~/.assets/images/wallpapers/{} &
+xdg-settings set default-web-browser org.qutebrowser.qutebrowser.desktop

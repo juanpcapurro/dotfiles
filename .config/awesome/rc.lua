@@ -6,6 +6,7 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
+require("awful.remote")
 -- Widget and layout library
 local wibox = require("wibox")
 -- Theme handling library
@@ -68,27 +69,36 @@ awful.layout.layouts = {
 }
 -- }}}
 
--- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
+-- {{{ Wibar
+
+local battery_bar = wibox.widget.progressbar({direction="east"})
+local battery_text = wibox.widget{widget = wibox.widget.textbox, align="center"}
+
+-- Create wibox with batwidget
+local batbox = wibox.widget {
+    {
+        {
+            {
+                max_value = 1, widget =  battery_bar,
+                border_width = 1, border_color = "#000000",
+                color = { type = "linear",
+                    from = { 0, 0 },
+                    to = { 0, 60 },
+                stops = { { 0, "#83c23b" }, { 1, "#FF5656" } } },
+            },
+            layout=wibox.container.rotate,
+            direction="south"
+        },
+        battery_text,
+        layout=wibox.layout.stack
+    },
+    layout=wibox.container.margin, forced_width=60,
+    top=2, bottom=2, left=3, right=3
 }
 
-local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
-local menu_terminal = { "open terminal", terminal }
--- }}}
-
--- {{{ Wibar
--- Create a textclock widget
-
-batwidget = wibox.widget.textbox()
-
 -- Register battery widget
-vicious.register(batwidget, vicious.widgets.bat, " $1($2)-$3 ", 61, "BAT0")
+vicious.register( battery_bar, vicious.widgets.bat, "$2", 61, "BAT0")
+vicious.register( battery_text, vicious.widgets.bat, "<span foreground=\"black\" weight=\"bold\">$1$3</span>", 61, "BAT0")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -143,9 +153,32 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+local displays = {
+    left= "eDP-1",
+    aux= "eDP-1",
+    right= "eDP-1",
+}
+
+local configureDisplays = function()
+    if screen:instances() == 3 then
+        displays.left= "DP-1-1"
+        displays.aux= "eDP-1"
+        displays.right= "DP-1-3"
+    elseif screen:instances() == 2 then
+        displays.left= "HDMI-1"
+        displays.aux= "eDP-1"
+        displays.right= "HDMI-1"
+    else
+        displays.left= "eDP-1"
+        displays.aux= "eDP-1"
+        displays.right= "eDP-1"
+    end
+end
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
+    configureDisplays()
 
     -- Each screen has its own tag table.
     awful.tag({ "1: WEB", "2: TERM", "3: PLAY", "4: APP", "5", "6: IM", "7: VIM", "8", "9: WEB" }, s, awful.layout.layouts[1])
@@ -177,7 +210,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            batwidget,
+            batbox,
             wibox.widget.systray(),
         },
     }
@@ -212,7 +245,13 @@ globalkeys = gears.table.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey,           }, ".", function () awful.screen.focus_bydirection("right") end,
+    awful.key({ modkey,           }, ".",
+        function ()
+            if awful.client.focused then
+                awful.client.focused:emit_signal("unfocus")
+            end
+            awful.screen.focus_bydirection("right")
+        end,
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey,           }, ",", function () awful.screen.focus_bydirection("left") end,
               {description = "focus the previous screen", group = "screen"}),
@@ -223,6 +262,14 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
+    awful.key({ modkey, "Shift"   }, "r",
+            function()
+                awesome.restart()
+                for _, c in ipairs(client.get()) do
+                    awful.rules.apply(c)
+                end
+            end,
+              {description = "reapply rules", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -233,13 +280,8 @@ globalkeys = gears.table.join(
               {description = "increase the number of master clients", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
               {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-              {description = "increase the number of columns", group = "layout"}),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-              {description = "decrease the number of columns", group = "layout"}),
     awful.key({ modkey,           }, "n",     function () scratch.toggle("st -c st-logbook -e nvim ~/logbook", {class= "st-logbook"})    end,
-              {description = "decrease the number of columns", group = "layout"}),
-
+              {description = "toggle logbook scratchpad", group = "layout"}),
     -- Prompt
     awful.key({ modkey },            "p",     function () awful.spawn("dmenu_run -l 20") end,
               {description = "run good ol dmenu", group = "launcher"})
@@ -271,7 +313,13 @@ clientkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, ",", function (c) move_to_screen(c, "left") end,
             {description = "move to screen  --", group = "client"}),
     awful.key({ modkey, "Shift"   }, ".",  function (c) move_to_screen(c, "right") end,
-            {description = "move to screen  ++", group = "client"})
+            {description = "move to screen  ++", group = "client"}),
+    awful.key({ modkey,           }, "m",
+        function (c)
+            c.maximized = not c.maximized
+            c:raise()
+        end ,
+        {description = "(un)maximize", group = "client"})
 )
 
 -- Bind all key numbers to tags.
@@ -365,10 +413,12 @@ awful.rules.rules = {
         height = 864,
         placement = awful.placement.centered
     }},
-    { rule = { class = "Firefox-esr" }, properties = { tag = "4: APP" } },
-    { rule_any = { name = {"Telegram"}, class = {"qTox"} }, properties = { tag = "6: IM" } },
-    { rule = { class = "nvim-qt" }, properties = { tag = "7: VIM" } },
-    { rule = { class = "qutebrowser" }, properties = { tag = "9: WEB" } },
+    { rule = { class = "Firefox-esr" }, properties = { tag = "4: APP", screen = displays.left} },
+    { rule_any = { name = {"Telegram"}, class = {"qTox"} }, properties = { tag = "6: IM", screen = displays.right } },
+    { rule = { class = "nvim-qt" }, properties = { tag = "7: VIM", screen = displays.right} },
+    { rule = { class = "qutebrowser" }, properties = { tag = "9: WEB", screen = displays.left } },
+    { rule = { class = "st-256color", instance="st-256color" }, properties = { tag = "2: TERM", screen = displays.left} },
+    { rule = { class = "st-cmus" }, properties = { tag = "3: PLAY", screen = displays.aux} },
     { rule_any = { class = { "mpv", "vlc" } }, properties = { tag = "3: PLAY" } },
 }
 -- }}}
@@ -388,6 +438,10 @@ client.connect_signal("manage", function (c)
     end
 end)
 
+-- Enable sloppy focus, so that focus follows mouse.
+client.connect_signal("mouse::enter", function(c)
+    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
