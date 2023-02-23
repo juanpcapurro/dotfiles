@@ -4,7 +4,7 @@ tweetfile=~/notes/tweetlater.md
 
 tweet="$(head -n 1 ${tweetfile})"
 
-if /usr/local/bin/t update  "${tweet}" ; then
+if twitter set  "${tweet}" ; then
   echo "tweeted ${tweet} successfully"
   sed -i '1 d ' "${tweetfile}"
 else

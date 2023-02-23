@@ -12,5 +12,5 @@ fi
 
 for i in $(ls $raw_dir)
 do
-  ffmpeg -n -i "$raw_dir/$i" -vf scale=hd1080 -c:v libx264 -crf 40 "$reencoded_dir/${i}" && rm "$raw_dir/$i"
+  ffmpeg -n -i "$raw_dir/$i" -vf scale=hd1080 -c:v libx264 -crf 40 "$reencoded_dir/${i}" && echo would rm "$raw_dir/$i"
 done

@@ -6,13 +6,13 @@ reencode() {
   done
 } 
 
-adb pull /sdcard/Pictures ~/phone
+adb pull /sdcard/DCIM ~/phone
 adb pull /sdcard/OpenCamera ~/phone
 adb pull /sdcard/Notes ~/phone
 adb pull /sdcard/Recordings ~/phone
 adb pull /sdcard/Movies ~/phone
 
-adb shell rm -rf /sdcard/Pictures
+adb shell rm -rf /sdcard/DCIM
 adb shell rm -rf /sdcard/OpenCamera
 adb shell rm -rf /sdcard/Movies
 
