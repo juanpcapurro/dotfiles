@@ -24,7 +24,7 @@ fi
 #   FLAGS="${FLAGS} --match-filter \"duration < 3600\""
 # fi
 
-tsp youtube-dl ${FLAGS} -f "${FORMAT}" \
+tsp yt-dlp ${FLAGS} -f "${FORMAT}" \
   -o "${VIDEOS_DESTINATION}/%(uploader)s/%(upload_date)s-%(title)s"\
   "${URL}"\
   "${@}"
