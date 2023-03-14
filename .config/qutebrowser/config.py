@@ -11,7 +11,7 @@ c.auto_save.session = True
 config.set('content.user_stylesheets', ['~/.config/qutebrowser/styles.css'])
 
 # editor setting
-c.editor.command = ["st", "-c", "qutebrowser-ditor","nvim", "-f", "{file}", "-c", "normal {line}G{column0}1"]
+c.editor.command = ["urxvt", "-name", "qutebrowser-editor","nvim", "-f", "{file}", "-c", "normal {line}G{column0}1"]
 
 config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',

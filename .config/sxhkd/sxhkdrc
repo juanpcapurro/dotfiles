@@ -25,16 +25,15 @@ super+r
   remapkeyboard
 
 # launch regular programs
-super+backslash ; {q, f, shift+f, n, p, e, t, c}
+super+backslash ; {q, f, shift+f, p, e, t, c}
   {\
     qutebrowser,\
     firefox,\
     firefox --private-window,\
-    st -c st-nvim -e nvim -u ~/.config/nvim/fat.vim,\
     pavucontrol,\
     dmenuunicode,\
     telegram-desktop,\
-    st -c st-cmus -e cmus\
+    urxvt -name urxvt-cmus -e cmus\
   }
 
 # launch memetic scripts

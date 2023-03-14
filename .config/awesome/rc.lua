@@ -52,7 +52,7 @@ end
 beautiful.init(gears.filesystem.get_xdg_config_home() .. "awesome/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "st -e tmux"
+terminal = "urxvt -e tmux"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -280,7 +280,7 @@ globalkeys = gears.table.join(
               {description = "increase the number of master clients", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
               {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey,           }, "n",     function () scratch.toggle("st -c st-logbook -e nvim ~/logbook", {class= "st-logbook"})    end,
+    awful.key({ modkey,           }, "n",     function () scratch.toggle("urxvt -name urxvt-logbook -e nvim ~/logbook", {instance= "urxvt-logbook"})    end,
               {description = "toggle logbook scratchpad", group = "layout"}),
     -- Prompt
     awful.key({ modkey },            "p",     function () awful.spawn("dmenu_run -l 20") end,
@@ -405,7 +405,7 @@ awful.rules.rules = {
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
-    { rule = { class = "st-logbook" }, properties = {
+    { rule = { instance = "urxvt-logbook" }, properties = {
         floating = true,
         x = 192, -- not enough lua-fu nor awesome-fu to not hardcode this simple rule
         y = 108,
@@ -417,8 +417,8 @@ awful.rules.rules = {
     { rule_any = { name = {"Telegram"}, class = {"qTox"} }, properties = { tag = "6: IM", screen = displays.right } },
     { rule = { class = "nvim-qt" }, properties = { tag = "7: VIM", screen = displays.right} },
     { rule = { class = "qutebrowser" }, properties = { tag = "9: WEB", screen = displays.left } },
-    { rule = { class = "st-256color", instance="st-256color" }, properties = { tag = "2: TERM", screen = displays.left} },
-    { rule = { class = "st-cmus" }, properties = { tag = "3: PLAY", screen = displays.aux} },
+    { rule = { instance="urxvt" }, properties = { tag = "2: TERM", screen = displays.left} },
+    { rule = { instance = "urxvt-cmus" }, properties = { tag = "3: PLAY", screen = displays.aux} },
     { rule_any = { class = { "mpv", "vlc" } }, properties = { tag = "3: PLAY" } },
 }
 -- }}}
