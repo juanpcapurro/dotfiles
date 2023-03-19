@@ -12,15 +12,6 @@ super+w
 # push to talk
 super+d
   push2talk toggle
-
-super+x
-  display_home_dock
-super+alt+x
-  display_standalone
-alt+shift+x
-  display_standalone
-alt+shift+r
-  remapkeyboard
 super+r
   remapkeyboard
 

@@ -218,6 +218,13 @@ end)
 -- }}}
 
 -- {{{ Key bindings
+--
+local reapply_rules = function()
+    awesome.restart()
+    for _, c in ipairs(client.get()) do
+        awful.rules.apply(c)
+    end
+end
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -262,13 +269,7 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "r",
-            function()
-                awesome.restart()
-                for _, c in ipairs(client.get()) do
-                    awful.rules.apply(c)
-                end
-            end,
+    awful.key({ modkey, "Shift"   }, "r", reapply_rules,
               {description = "reapply rules", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
@@ -283,6 +284,17 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "n",     function () scratch.toggle("urxvt -name urxvt-logbook -e nvim ~/logbook", {instance= "urxvt-logbook"})    end,
               {description = "toggle logbook scratchpad", group = "layout"}),
     -- Prompt
+    awful.key({ modkey },   "x",
+        function ()
+            awful.spawn.easy_async_with_shell("display_home_dock ; sleep 0.5", reapply_rules)
+            awful.spawn("remapkeyboard")
+        end,
+              {description = "dock", group = "display management"}),
+    awful.key({ modkey, "Shift" },            "x",
+        function ()
+            awful.spawn.easy_async_with_shell("display_standalone ; sleep 0.5", reapply_rules)
+        end,
+              {description = "undock", group = "display management"}),
     awful.key({ modkey },            "p",     function () awful.spawn("dmenu_run -l 20") end,
               {description = "run good ol dmenu", group = "launcher"})
 )
