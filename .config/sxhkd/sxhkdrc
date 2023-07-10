@@ -1,11 +1,11 @@
 super+alt+b
   dm-tool lock
 super+ctrl+b
-  i3lock -i ~/.assets/images/bluescreen.png -t -u
+  i3lock -i ~/.assets/images/plug.png -t -u ; xset dpms force off
 super+b
-  cmus-remote -U ; i3lock -i ~/.assets/images/bluescreen.png -t -u
+  cmus-remote -U ; i3lock -i ~/.assets/images/plug.png -t -u ; xset dpms force off
 super+shift+b
-  cmus-remote -U ; i3lock -i ~/.assets/images/bluescreen.png -t -u; loginctl suspend
+  cmus-remote -U ; i3lock -i ~/.assets/images/plug.png -t -u; loginctl suspend
 
 super+w
   watchadoin
@@ -16,7 +16,7 @@ super+r
   remapkeyboard
 
 # launch regular programs
-super+backslash ; {q, f, shift+f, p, e, t, c}
+super+backslash ; {q, f, shift+f, p, e, t, c, i}
   {\
     qutebrowser,\
     firefox,\
@@ -24,7 +24,8 @@ super+backslash ; {q, f, shift+f, p, e, t, c}
     pavucontrol,\
     dmenuunicode,\
     telegram-desktop,\
-    urxvt -name urxvt-cmus -e cmus\
+    urxvt -name urxvt-cmus -e cmus,\
+    urxvt -name urxvt-irssi -e irssi\
   }
 
 # launch memetic scripts

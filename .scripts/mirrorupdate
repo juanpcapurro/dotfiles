@@ -1,8 +1,8 @@
 #!/bin/sh
 
-MIRRORS_DIR=~/mirrors
+MIRRORS_DIR=/var/www/html/mirrors
 
 for i in $1 $(ls $MIRRORS_DIR |shuf) ; do
-  wget --mirror -Epk --no-parent -P "$MIRRORS_DIR" "$i"
+  wget --recursive  --level inf --adjust-extension --convert-link --page-requisites --no-parent -P "$MIRRORS_DIR" "$i"
 done
 

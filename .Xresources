@@ -1,6 +1,6 @@
 URxvt.scrollBar: false
 
-URxvt.keysym.C-M-f: command:\033]50;xft:inconsolata:pixelsize=17\007
+URxvt.keysym.C-M-f: command:\033]50;xft:inconsolata:pixelsize=18\007
 URxvt.keysym.C-M-g: command:\033]50;xft:inconsolata:pixelsize=28\007
 URxvt.keysym.C-M-d: command:\033]10;#f2f2f2\007\033]11;#2e2e2d\007
 URxvt.keysym.C-M-l: command:\033]10;#3c3c3b\007\033]11;#eeeeee\007

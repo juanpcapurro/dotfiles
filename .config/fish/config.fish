@@ -12,6 +12,9 @@ if status is-interactive
     abbr -a -g gc git commit
     abbr -a -g g git
 
+    source /usr/share/autojump/autojump.fish
+    nvm use 18
+
     function prompt_login --description 'display user name for the prompt'
         echo -n -s (set_color $fish_color_user) "$USER" (set_color normal) 
     end
@@ -21,4 +24,4 @@ end
 fish_vi_key_bindings
 
 export EDITOR=nvim
-export PATH="$PATH:/home/capu/.foundry/bin"
+export PATH="$PATH:/home/capu/.foundry/bin:/home/capu/go/bin"

@@ -1,5 +1,5 @@
 config.set('content.javascript.enabled', False)
-js_enabled_sites=['windguru.cz', 'twitter.com', 'mercadolibre.com.ar', 'instagram.com', 'etherscan.io', 'github.com', 'gitlab.com', 'paypal.com','edensa.com.ar', 'airbnb.com', 'openstreetmap.org', 'duckduckgo.com', 'thingiverse.com', 'old.reddit.com', 'www.reddit.com', 'mercadopago.com.ar', 'polygonscan.com']
+js_enabled_sites=['windguru.cz', 'twitter.com', 'mercadolibre.com.ar', 'instagram.com', 'etherscan.io', 'github.com', 'gitlab.com', 'paypal.com','edensa.com.ar', 'airbnb.com', 'openstreetmap.org', 'duckduckgo.com', 'thingiverse.com', 'old.reddit.com', 'www.reddit.com', 'mercadopago.com.ar', 'polygonscan.com', 'trello.com', 'npmjs.com']
 for site in js_enabled_sites :
     config.set('content.javascript.enabled', True, '*://*.'+site+'/*')
 
@@ -11,11 +11,11 @@ c.auto_save.session = True
 config.set('content.user_stylesheets', ['~/.config/qutebrowser/styles.css'])
 
 # editor setting
-c.editor.command = ["urxvt", "-name", "qutebrowser-editor","nvim", "-f", "{file}", "-c", "normal {line}G{column0}1"]
+c.editor.command = ["urxvt", "-name", "qutebrowser-editor", "-e", "nvim", "-f", "{file}", "-c", "normal {line}G{column0}1"]
 
 config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
-    'yt': 'https://invidious.weblibre.org/search?q={}',
+    'yt': 'https://invidious.privacydev.net/search?q={}',
     'lgf': 'https://libgen.is/fiction/?q={}',
     'lga': 'https://libgen.is/search.php?req={}',
     'tv': 'https://www.thingiverse.com/search?q={}&type=things&sort=popular&page=1',

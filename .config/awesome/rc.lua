@@ -283,18 +283,19 @@ globalkeys = gears.table.join(
               {description = "decrease the number of master clients", group = "layout"}),
     awful.key({ modkey,           }, "n",     function () scratch.toggle("urxvt -name urxvt-logbook -e nvim ~/logbook", {instance= "urxvt-logbook"})    end,
               {description = "toggle logbook scratchpad", group = "layout"}),
-    -- Prompt
+    -- display managin'
+    awful.key({ modkey, "Control" },            "x",
+        function ()
+            awful.spawn.easy_async_with_shell("display_standalone ; sleep 0.5", reapply_rules)
+        end,
+              {description = "undock", group = "display management"}),
     awful.key({ modkey },   "x",
         function ()
             awful.spawn.easy_async_with_shell("display_home_dock ; sleep 0.5", reapply_rules)
             awful.spawn("remapkeyboard")
         end,
+    -- Prompt
               {description = "dock", group = "display management"}),
-    awful.key({ modkey, "Shift" },            "x",
-        function ()
-            awful.spawn.easy_async_with_shell("display_standalone ; sleep 0.5", reapply_rules)
-        end,
-              {description = "undock", group = "display management"}),
     awful.key({ modkey },            "p",     function () awful.spawn("dmenu_run -l 20") end,
               {description = "run good ol dmenu", group = "launcher"})
 )
@@ -431,6 +432,7 @@ awful.rules.rules = {
     { rule = { class = "qutebrowser" }, properties = { tag = "9: WEB", screen = displays.left } },
     { rule = { instance="urxvt" }, properties = { tag = "2: TERM", screen = displays.left} },
     { rule = { instance = "urxvt-cmus" }, properties = { tag = "3: PLAY", screen = displays.aux} },
+    { rule = { instance = "urxvt-irssi" }, properties = { tag = "6: IM", screen = displays.aux} },
     { rule_any = { class = { "mpv", "vlc" } }, properties = { tag = "3: PLAY" } },
 }
 -- }}}

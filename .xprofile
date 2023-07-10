@@ -10,6 +10,6 @@ which qtox && qtox &
 nm-applet &
 dunst &
 
-keynav daemonize &
+keynav daemonize
 sxhkd &
 xdg-settings set default-web-browser org.qutebrowser.qutebrowser.desktop
