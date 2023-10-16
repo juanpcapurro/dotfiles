@@ -9,4 +9,4 @@
 // @run-at         document-start
 // ==/UserScript==
 
-location.href=location.href.replace("www.youtube.com","invidious.kavin.rocks");
+location.href=location.href.replace("www.youtube.com","invidious.no-logs.com");

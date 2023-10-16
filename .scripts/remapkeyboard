@@ -1,15 +1,4 @@
 #!/bin/sh
 
-setxkbmap -layout us -option
-sleep 1
-if ! setxkbmap -layout us -variant altgr-intl ;then
-  if ! xmodmap ~/.Xmodmap ; then
-    notify-send "keyboard remapped"
-  else
-    notify-send "keymap set, but mods not mapped"
-  fi
-else 
-  notify-send "couldnt set keymap, retrying..."
-  pkill setxkbmap
-  setxkbmap -layout us -option && sleep 3 && setxkbmap -layout us -variant altgr-intl && xmodmap ~/.Xmodmap && notify-send "keyboard remapped" || notify-send "shit broke"
-fi
+setxkbmap us altgr-intl
+xmodmap ~/.Xmodmap 

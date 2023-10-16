@@ -24,4 +24,5 @@ end
 fish_vi_key_bindings
 
 export EDITOR=nvim
-export PATH="$PATH:/home/capu/.foundry/bin:/home/capu/go/bin"
+export PATH="$PATH:$HOME/.foundry/bin:$HOME/go/bin:$HOME/.cargo/bin/"
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring

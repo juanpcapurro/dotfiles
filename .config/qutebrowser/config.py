@@ -1,5 +1,5 @@
 config.set('content.javascript.enabled', False)
-js_enabled_sites=['windguru.cz', 'twitter.com', 'mercadolibre.com.ar', 'instagram.com', 'etherscan.io', 'github.com', 'gitlab.com', 'paypal.com','edensa.com.ar', 'airbnb.com', 'openstreetmap.org', 'duckduckgo.com', 'thingiverse.com', 'old.reddit.com', 'www.reddit.com', 'mercadopago.com.ar', 'polygonscan.com', 'trello.com', 'npmjs.com']
+js_enabled_sites=['windguru.cz', 'twitter.com', 'mercadolibre.com.ar', 'instagram.com', 'etherscan.io', 'github.com', 'gitlab.com', 'paypal.com','edensa.com.ar', 'airbnb.com', 'openstreetmap.org', 'duckduckgo.com', 'thingiverse.com', 'thangs.com', 'old.reddit.com', 'www.reddit.com', 'mercadopago.com.ar', 'polygonscan.com', 'trello.com', 'npmjs.com']
 for site in js_enabled_sites :
     config.set('content.javascript.enabled', True, '*://*.'+site+'/*')
 
@@ -15,12 +15,15 @@ c.editor.command = ["urxvt", "-name", "qutebrowser-editor", "-e", "nvim", "-f", 
 
 config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
-    'yt': 'https://invidious.privacydev.net/search?q={}',
+    'sw': 'https://search.marginalia.nu/search?query={}&profile=default&js=default',
+    'yt': 'https://invidious.no-logs.com/search?q={}',
     'lgf': 'https://libgen.is/fiction/?q={}',
     'lga': 'https://libgen.is/search.php?req={}',
-    'tv': 'https://www.thingiverse.com/search?q={}&type=things&sort=popular&page=1',
+    'tg': 'https://thangs.com/search/{}?scope=all',
     'ml': 'https://listado.mercadolibre.com.ar/{}',
     'npm': 'https://www.npmjs.com/search?q={}',
+    'gh': 'https://github.com/search?q={}',
+    'crates': 'https://crates.io/search?q={}',
     'ens': 'https://etherscan.io/enslookup-search?search={}'
 })
 
@@ -29,10 +32,10 @@ config.bind('PeaM', 'open -- https://etherscan.io/address/{primary}')
 config.bind('petM', 'open -- https://etherscan.io/tx/{clipboard}')
 config.bind('PetM', 'open -- https://etherscan.io/tx/{primary}')
 
-config.bind('peak', 'open -- https://kovan.etherscan.io/address/{clipboard}')
-config.bind('Peak', 'open -- https://kovan.etherscan.io/address/{primary}')
-config.bind('petk', 'open -- https://kovan.etherscan.io/tx/{clipboard}')
-config.bind('Petk', 'open -- https://kovan.etherscan.io/tx/{primary}')
+config.bind('peas', 'open -- https://sepolia.etherscan.io/address/{clipboard}')
+config.bind('Peas', 'open -- https://sepolia.etherscan.io/address/{primary}')
+config.bind('pets', 'open -- https://sepolia.etherscan.io/tx/{clipboard}')
+config.bind('Pets', 'open -- https://sepolia.etherscan.io/tx/{primary}')
 
 config.bind('peag', 'open -- https://goerli.etherscan.io/address/{clipboard}')
 config.bind('Peag', 'open -- https://goerli.etherscan.io/address/{primary}')

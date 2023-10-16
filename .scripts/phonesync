@@ -9,6 +9,7 @@ reencode() {
 adb pull /sdcard/DCIM ~/phone
 adb pull /sdcard/OpenCamera ~/phone
 adb pull /sdcard/Notes ~/phone
+adb pull /sdcard/Pictures ~/phone
 adb pull /sdcard/Recordings ~/phone
 adb pull /sdcard/Movies ~/phone
 

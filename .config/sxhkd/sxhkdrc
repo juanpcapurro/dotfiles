@@ -1,11 +1,11 @@
 super+alt+b
   dm-tool lock
 super+ctrl+b
-  i3lock -i ~/.assets/images/plug.png -t -u ; xset dpms force off
+  i3lock -i ~/.assets/images/pitchblack.png -t -u  ; xset dpms force off
 super+b
-  cmus-remote -U ; i3lock -i ~/.assets/images/plug.png -t -u ; xset dpms force off
+  cmus-remote -U ; i3lock -i ~/.assets/images/pitchblack.png -t -u
 super+shift+b
-  cmus-remote -U ; i3lock -i ~/.assets/images/plug.png -t -u; loginctl suspend
+  cmus-remote -U ; i3lock -i ~/.assets/images/pitchblack.png -t -u; loginctl suspend
 
 super+w
   watchadoin
