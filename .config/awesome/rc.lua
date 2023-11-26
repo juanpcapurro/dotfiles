@@ -420,10 +420,10 @@ awful.rules.rules = {
     },
     { rule = { instance = "urxvt-logbook" }, properties = {
         floating = true,
-        x = 192, -- not enough lua-fu nor awesome-fu to not hardcode this simple rule
-        y = 108,
-        width = 1536,
-        height = 864,
+        x = 1080, -- not enough lua-fu nor awesome-fu to not hardcode this simple rule
+        y = 525,
+        width = 800,
+        height = 500,
         placement = awful.placement.centered
     }},
     { rule = { class = "Firefox-esr" }, properties = { tag = "4: APP", screen = displays.left} },

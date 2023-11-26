@@ -4,4 +4,4 @@ if [ -z "$videopath" ] ; then
   videopath=/var/www/html/youtube
 fi
 
-find $videopath -type f $@ |grep -v -e '\.part$' -e '\.vtt'| xargs ls -ct |dmenu -i -l 30|xargs -n 1 mpvappend
+find $videopath -type f $@ |grep -v -e '\.part$' -e '\.vtt'| xargs ls -ct |dmenu -i -l 20 -fn monospace:size=18 |xargs -n 1 mpvappend
