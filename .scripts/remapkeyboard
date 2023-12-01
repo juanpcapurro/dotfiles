@@ -1,4 +1,0 @@
-#!/bin/sh
-
-setxkbmap us altgr-intl
-xmodmap ~/.Xmodmap 
