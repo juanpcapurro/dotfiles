@@ -1,1 +1,0 @@
-COMMAND echo %s |xclip -selection clipboard

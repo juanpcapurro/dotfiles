@@ -1,8 +1,0 @@
-tags*
-.git
-*.make
-*.cmake
-*.asm
-build/
-node_modules/
-package-lock.json
