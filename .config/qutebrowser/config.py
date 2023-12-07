@@ -17,6 +17,7 @@ config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'sw': 'https://search.marginalia.nu/search?query={}&profile=default&js=default',
     'yt': 'https://invidious.no-logs.com/search?q={}',
+    'mdn': 'https://developer.mozilla.org/en-US/search?q={}',
     'lgf': 'https://libgen.is/fiction/?q={}',
     'lga': 'https://libgen.is/search.php?req={}',
     'tg': 'https://thangs.com/search/{}?scope=all',
