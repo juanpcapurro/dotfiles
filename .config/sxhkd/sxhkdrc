@@ -1,11 +1,11 @@
 super+alt+b
   dm-tool lock
 super+ctrl+b
-  i3lock -i $(ls ~/.assets/images/wallpapers/*.png |shuf -n 1) -t -u  ; xset dpms force off
+  slock; xset dpms force off
 super+b
-  cmus-remote -U ; i3lock -i $(ls ~/.assets/images/wallpapers/*.png |shuf -n 1) -t -u
+  cmus-remote -U ; slock
 super+shift+b
-  cmus-remote -U ; i3lock -i $(ls ~/.assets/images/wallpapers/*.png |shuf -n 1) -t -u; loginctl suspend
+  cmus-remote -U ; slock; loginctl suspend
 
 super+w
   watchadoin
@@ -31,8 +31,8 @@ super+backslash ; {q, f, shift+f, p, e, t, c, i}
 # launch memetic scripts
 super+backslash ; {k, shift+k, b, s, shift+s, ctrl+s, alt+s, c}
   {\
-    ~/.scripts/dmenu-keepassxc password,\
-    ~/.scripts/dmenu-keepassxc,\
+    dmenu-keepassxc password,\
+    dmenu-keepassxc,\
     feh -F ~/.assets/images/pitchblack.png ,\
     sleep 0.2 && rm ~/tmp_screenshot.png ; scrot -s ~/tmp_screenshot.png && xclip -selection clipboard -t image/png -i ~/tmp_screenshot.png ,\
     sleep 0.2 && rm ~/tmp_screenshot.png ; scrot -c -d 6 -s ~/tmp_screenshot.png && xclip -selection clipboard -t image/png -i ~/tmp_screenshot.png ,\

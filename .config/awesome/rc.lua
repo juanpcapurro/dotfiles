@@ -238,9 +238,9 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
+    awful.key({ modkey, "Shift" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift" }, "r", function () awful.spawn("remapkeyboard") end,
+    awful.key({ modkey, "Control" }, "r", function () awful.spawn("remapkeyboard") end,
               {description = "remap keyboard", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
@@ -385,13 +385,13 @@ awful.rules.rules = {
         height = 500,
         placement = awful.placement.centered
     }},
-    { rule = { class = "Firefox-esr" }, properties = { tag = "4: APP", screen = 2} },
-    { rule_any = { name = {"Telegram"}, class = {"qTox"} }, properties = { tag = "6: IM", screen = 1 } },
-    { rule = { class = "nvim-qt" }, properties = { tag = "7: VIM", screen = 1} },
-    { rule = { class = "qutebrowser" }, properties = { tag = "9: WEB", screen = 2 } },
-    { rule = { instance="urxvt" }, properties = { tag = "2: TERM", screen = 2} },
-    { rule = { instance = "urxvt-cmus" }, properties = { tag = "3: PLAY", screen = 1} },
-    { rule = { instance = "urxvt-irssi" }, properties = { tag = "6: IM", screen = 1} },
+    { rule = { class = "Firefox-esr" }, properties = { tag = "4: APP", screen = 1} },
+    { rule_any = { name = {"Telegram"}, class = {"qTox"} }, properties = { tag = "6: IM", screen = 2 } },
+    { rule = { class = "nvim-qt" }, properties = { tag = "7: VIM", screen = 2} },
+    { rule = { class = "qutebrowser" }, properties = { tag = "9: WEB", screen = 1 } },
+    { rule = { instance="urxvt" }, properties = { tag = "2: TERM", screen = 1} },
+    { rule = { instance = "urxvt-cmus" }, properties = { tag = "3: PLAY", screen = 2} },
+    { rule = { instance = "urxvt-irssi" }, properties = { tag = "6: IM", screen = 2} },
     { rule_any = { class = { "mpv", "vlc" } }, properties = { tag = "3: PLAY" } },
 }
 -- }}}
