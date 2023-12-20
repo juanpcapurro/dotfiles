@@ -153,32 +153,9 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
-local displays = {
-    left= "eDP-1",
-    aux= "eDP-1",
-    right= "eDP-1",
-}
-
-local configureDisplays = function()
-    if screen:instances() == 3 then
-        displays.left= "DP-1-1"
-        displays.aux= "eDP-1"
-        displays.right= "DP-1-3"
-    elseif screen:instances() == 2 then
-        displays.left= "HDMI-1"
-        displays.aux= "eDP-1"
-        displays.right= "HDMI-1"
-    else
-        displays.left= "eDP-1"
-        displays.aux= "eDP-1"
-        displays.right= "eDP-1"
-    end
-end
-
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
-    configureDisplays()
 
     -- Each screen has its own tag table.
     awful.tag({ "1: WEB", "2: TERM", "3: PLAY", "4: APP", "5", "6: IM", "7: VIM", "8", "9: WEB" }, s, awful.layout.layouts[1])
@@ -219,12 +196,6 @@ end)
 
 -- {{{ Key bindings
 --
-local reapply_rules = function()
-    awesome.restart()
-    for _, c in ipairs(client.get()) do
-        awful.rules.apply(c)
-    end
-end
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -269,8 +240,8 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "r", reapply_rules,
-              {description = "reapply rules", group = "awesome"}),
+    awful.key({ modkey, "Shift" }, "r", function () awful.spawn("remapkeyboard") end,
+              {description = "remap keyboard", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -283,19 +254,7 @@ globalkeys = gears.table.join(
               {description = "decrease the number of master clients", group = "layout"}),
     awful.key({ modkey,           }, "n",     function () scratch.toggle("urxvt -name urxvt-logbook -e nvim ~/logbook", {instance= "urxvt-logbook"})    end,
               {description = "toggle logbook scratchpad", group = "layout"}),
-    -- display managin'
-    awful.key({ modkey, "Control" },            "x",
-        function ()
-            awful.spawn.easy_async_with_shell("display_standalone ; sleep 0.5", reapply_rules)
-        end,
-              {description = "undock", group = "display management"}),
-    awful.key({ modkey },   "x",
-        function ()
-            awful.spawn.easy_async_with_shell("display_home_dock ; sleep 0.5", reapply_rules)
-            awful.spawn("remapkeyboard")
-        end,
     -- Prompt
-              {description = "dock", group = "display management"}),
     awful.key({ modkey },            "p",     function () awful.spawn("dmenu_run -l 20") end,
               {description = "run good ol dmenu", group = "launcher"})
 )
@@ -426,13 +385,13 @@ awful.rules.rules = {
         height = 500,
         placement = awful.placement.centered
     }},
-    { rule = { class = "Firefox-esr" }, properties = { tag = "4: APP", screen = displays.left} },
-    { rule_any = { name = {"Telegram"}, class = {"qTox"} }, properties = { tag = "6: IM", screen = displays.right } },
-    { rule = { class = "nvim-qt" }, properties = { tag = "7: VIM", screen = displays.right} },
-    { rule = { class = "qutebrowser" }, properties = { tag = "9: WEB", screen = displays.left } },
-    { rule = { instance="urxvt" }, properties = { tag = "2: TERM", screen = displays.left} },
-    { rule = { instance = "urxvt-cmus" }, properties = { tag = "3: PLAY", screen = displays.aux} },
-    { rule = { instance = "urxvt-irssi" }, properties = { tag = "6: IM", screen = displays.aux} },
+    { rule = { class = "Firefox-esr" }, properties = { tag = "4: APP", screen = 2} },
+    { rule_any = { name = {"Telegram"}, class = {"qTox"} }, properties = { tag = "6: IM", screen = 1 } },
+    { rule = { class = "nvim-qt" }, properties = { tag = "7: VIM", screen = 1} },
+    { rule = { class = "qutebrowser" }, properties = { tag = "9: WEB", screen = 2 } },
+    { rule = { instance="urxvt" }, properties = { tag = "2: TERM", screen = 2} },
+    { rule = { instance = "urxvt-cmus" }, properties = { tag = "3: PLAY", screen = 1} },
+    { rule = { instance = "urxvt-irssi" }, properties = { tag = "6: IM", screen = 1} },
     { rule_any = { class = { "mpv", "vlc" } }, properties = { tag = "3: PLAY" } },
 }
 -- }}}
