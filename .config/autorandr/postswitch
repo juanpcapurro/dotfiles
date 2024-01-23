@@ -1,5 +1,8 @@
 #! /bin/sh
 
+sleep 1
+awesome-client "awesome.restart()"
+sleep 1
 setxkbmap us altgr-intl
 xmodmap ~/.Xmodmap 
-awesome-client "awesome.restart()"
+xkbbell
