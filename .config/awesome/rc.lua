@@ -386,12 +386,12 @@ awful.rules.rules = {
         placement = awful.placement.centered
     }},
     { rule = { class = "Firefox-esr" }, properties = { tag = "4: APP", screen = 1} },
-    { rule_any = { name = {"Telegram"}, class = {"qTox"} }, properties = { tag = "6: IM", screen = 2 } },
-    { rule = { class = "nvim-qt" }, properties = { tag = "7: VIM", screen = 2} },
+    { rule_any = { name = {"Telegram"}, class = {"qTox"} }, properties = { tag = "6: IM", screen = awful.screen.primary } },
+    { rule = { class = "nvim-qt" }, properties = { tag = "7: VIM", screen = awful.screen.primary} },
     { rule = { class = "qutebrowser" }, properties = { tag = "9: WEB", screen = 1 } },
     { rule = { instance="urxvt" }, properties = { tag = "2: TERM", screen = 1} },
-    { rule = { instance = "urxvt-cmus" }, properties = { tag = "3: PLAY", screen = 2} },
-    { rule = { instance = "urxvt-irssi" }, properties = { tag = "6: IM", screen = 2} },
+    { rule = { instance = "urxvt-cmus" }, properties = { tag = "3: PLAY", screen = awful.screen.primary} },
+    { rule = { instance = "urxvt-irssi" }, properties = { tag = "6: IM", screen = awful.screen.primary} },
     { rule_any = { class = { "mpv", "vlc" } }, properties = { tag = "3: PLAY" } },
 }
 -- }}}

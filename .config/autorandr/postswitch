@@ -2,7 +2,9 @@
 
 sleep 1
 awesome-client "awesome.restart()"
-sleep 1
+sleep 3
+xset dpms 0 0 0
+xset s 0
 setxkbmap us altgr-intl
 xmodmap ~/.Xmodmap 
 xkbbell

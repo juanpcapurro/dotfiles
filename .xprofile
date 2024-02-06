@@ -5,7 +5,7 @@ remapkeyboard &
 pgrep compton || compton &
 pgrep pulseaudio || pulseaudio -D
 blueman-applet &
-which qtox && qtox &
+which utox && utox &
 
 nm-applet &
 dunst &

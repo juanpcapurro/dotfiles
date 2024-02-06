@@ -5,7 +5,7 @@ super+ctrl+b
 super+b
   cmus-remote -U ; slock
 super+shift+b
-  cmus-remote -U ; slock; loginctl suspend
+  cmus-remote -U ; slock systemctl suspend
 
 super+w
   watchadoin

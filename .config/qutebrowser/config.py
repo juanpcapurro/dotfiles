@@ -1,5 +1,5 @@
 config.set('content.javascript.enabled', False)
-js_enabled_sites=['windguru.cz', 'twitter.com', 'mercadolibre.com.ar', 'instagram.com', 'etherscan.io', 'github.com', 'gitlab.com', 'paypal.com','edensa.com.ar', 'airbnb.com', 'openstreetmap.org', 'duckduckgo.com', 'thingiverse.com', 'thangs.com', 'old.reddit.com', 'www.reddit.com', 'mercadopago.com.ar', 'polygonscan.com', 'trello.com', 'npmjs.com']
+js_enabled_sites=['windguru.cz', 'twitter.com', 'mercadolibre.com.ar', 'instagram.com', 'etherscan.io', 'github.com', 'gitlab.com', 'paypal.com','edensa.com.ar', 'airbnb.com', 'openstreetmap.org', 'duckduckgo.com', 'thingiverse.com', 'thangs.com', 'old.reddit.com', 'www.reddit.com', 'mercadopago.com.ar', 'polygonscan.com', 'trello.com', 'npmjs.com', 'developer.mozilla.org']
 for site in js_enabled_sites :
     config.set('content.javascript.enabled', True, '*://*.'+site+'/*')
 
@@ -11,12 +11,12 @@ c.auto_save.session = True
 config.set('content.user_stylesheets', ['~/.config/qutebrowser/styles.css'])
 
 # editor setting
-c.editor.command = ["urxvt", "-name", "qutebrowser-editor", "-e", "nvim", "-f", "{file}", "-c", "normal {line}G{column0}1"]
+c.editor.command = ["urxvt", "-name", "qutebrowser-editor", "-e", "nvim", "-f", "{file}","+set filetype=markdown" , "+normal {line}G{column0}1"]
 
 config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'sw': 'https://search.marginalia.nu/search?query={}&profile=default&js=default',
-    'yt': 'https://invidious.no-logs.com/search?q={}',
+    'yt': 'https://inv.tux.pizza/search?q={}',
     'mdn': 'https://developer.mozilla.org/en-US/search?q={}',
     'lgf': 'https://libgen.is/fiction/?q={}',
     'lga': 'https://libgen.is/search.php?req={}',
@@ -55,10 +55,10 @@ config.bind('Petm', 'open -- https://mumbai.polygonscan.com/tx/{primary}')
 
 # Bindings for normal mode
 config.bind('e', 'open-editor')
-config.bind(';v', 'hint links userscript ~/.scripts/mpvappend')
-config.bind(';V', 'hint --rapid links userscript ~/.scripts/mpvappend')
-config.bind(';r', 'hint links userscript ~/.scripts/rssadd')
-config.bind(';a', 'hint links userscript ~/.scripts/youtube-archive')
+config.bind(';v', 'hint links userscript /usr/bin/mpvappend')
+config.bind(';V', 'hint --rapid links userscript /usr/bin/mpvappend')
+config.bind(';r', 'hint links userscript /usr/bin/rssadd')
+config.bind(';a', 'hint links userscript /usr/bin/youtube-archive')
 # Bindings for insert mode
 config.bind('<Ctrl-f>', 'open-editor','insert')
 config.load_autoconfig(False)
