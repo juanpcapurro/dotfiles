@@ -1,2 +1,4 @@
 .config/fish/functions
 .config/PrusaSlicer/cache
+.config/PrusaSlicer/PrusaSlicer.ini
+.config/PrusaSlicer/PrusaSlicerGcodeViewer.ini
