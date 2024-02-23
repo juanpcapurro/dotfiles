@@ -1,18 +1,22 @@
+# vim: foldmethod=marker
+
+# Enable/disable js {{{
 config.set('content.javascript.enabled', False)
 js_enabled_sites=['windguru.cz', 'twitter.com', 'mercadolibre.com.ar', 'instagram.com', 'etherscan.io', 'github.com', 'gitlab.com', 'paypal.com','edensa.com.ar', 'airbnb.com', 'openstreetmap.org', 'duckduckgo.com', 'thingiverse.com', 'thangs.com', 'old.reddit.com', 'www.reddit.com', 'mercadopago.com.ar', 'polygonscan.com', 'trello.com', 'npmjs.com', 'developer.mozilla.org']
 for site in js_enabled_sites :
     config.set('content.javascript.enabled', True, '*://*.'+site+'/*')
+# }}}
 
+# Settings {{{
 c.downloads.location.prompt = False
 c.tabs.background = True
 c.auto_save.session = True
-
-# config.set('content.proxy', 'socks://localhost:9050')
 config.set('content.user_stylesheets', ['~/.config/qutebrowser/styles.css'])
-
 # editor setting
 c.editor.command = ["urxvt", "-name", "qutebrowser-editor", "-e", "nvim", "-f", "{file}","+set filetype=markdown" , "+normal {line}G{column0}1"]
+#}}}
 
+# Search Engines {{{
 config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'sw': 'https://search.marginalia.nu/search?query={}&profile=default&js=default',
@@ -27,7 +31,9 @@ config.set('url.searchengines', {
     'crates': 'https://crates.io/search?q={}',
     'ens': 'https://etherscan.io/enslookup-search?search={}'
 })
+#}}}
 
+# Explorer bindings {{{
 config.bind('peaM', 'open -- https://etherscan.io/address/{clipboard}')
 config.bind('PeaM', 'open -- https://etherscan.io/address/{primary}')
 config.bind('petM', 'open -- https://etherscan.io/tx/{clipboard}')
@@ -52,13 +58,17 @@ config.bind('peam', 'open -- https://mumbai.polygonscan.com/address/{clipboard}'
 config.bind('Peam', 'open -- https://mumbai.polygonscan.com/address/{primary}')
 config.bind('petm', 'open -- https://mumbai.polygonscan.com/tx/{clipboard}')
 config.bind('Petm', 'open -- https://mumbai.polygonscan.com/tx/{primary}')
+#}}}
 
+# Bindings {{{
 # Bindings for normal mode
 config.bind('e', 'open-editor')
 config.bind(';v', 'hint links userscript /usr/bin/mpvappend')
 config.bind(';V', 'hint --rapid links userscript /usr/bin/mpvappend')
 config.bind(';r', 'hint links userscript /usr/bin/rssadd')
 config.bind(';a', 'hint links userscript /usr/bin/youtube-archive')
+config.bind(';sv', 'config-source')
 # Bindings for insert mode
 config.bind('<Ctrl-f>', 'open-editor','insert')
+#}}}
 config.load_autoconfig(False)
